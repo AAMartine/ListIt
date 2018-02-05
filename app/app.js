@@ -18,6 +18,51 @@ var app = angular.module("myApp", []);
 //     $scope.message = "List It";
 // });
 
+
+
+// controllers
+app.controller('navCtrl', function ($scope) {
+    $scope.nav = {
+        navItems: ['home', 'add'],
+        selectedIndex: 0,
+        navClick: function ($index) {
+            $scope.nav.selectedIndex = $index;
+        }
+    };
+});
+
+
+app.controller('addItemController', ['$scope', function($scope) {
+
+    $scope.items = [];
+
+    $scope.addItem = function() {
+        $scope.items.push({'name': $scope.newItemName, 'done':false})
+        $scope.items.push({'address': $scope.newItemAddress, 'done':false})
+        $scope.items.push({'description': $scope.newItemDescription, 'done':false})
+        $scope.newItemName = ''
+        $scope.newItemAddress = ''
+        $scope.newItemDescription = ''
+    }
+
+    $scope.deleteItem = function(index) {
+        $scope.items.splice(index, 1);
+    }
+}]);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 app.controller("dynamicFields", function($scope) {
 
     $scope.choices = [{id: 'choice1', name: 'choice1'}, {id: 'choice2', name: 'choice2'}, {id: 'choice3', name: 'choice3'}];
