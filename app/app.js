@@ -14,22 +14,7 @@
 // }]);
 var app = angular.module("myApp", []);
 
-// app.controller("title", function($scope) {
-//     $scope.message = "List It";
-// });
 
-
-
-// controllers
-app.controller('navCtrl', function ($scope) {
-    $scope.nav = {
-        navItems: ['home', 'add'],
-        selectedIndex: 0,
-        navClick: function ($index) {
-            $scope.nav.selectedIndex = $index;
-        }
-    };
-});
 
 
 app.controller('addItemController', ['$scope', function($scope) {

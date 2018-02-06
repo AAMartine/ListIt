@@ -18,6 +18,8 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="app.css">
     <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
+    <link rel="stylesheet"; href="https://unpkg.com/ng-table@2.0.2/bundles/ng-table.min.css">
+    <script src="https://unpkg.com/ng-table@2.0.2/bundles/ng-table.min.js"></script>
 </head>
 <body ng-app="myApp" style="background-color:yellow;text-align:center">
 
@@ -25,15 +27,29 @@
     <h1>list It</h1>
 
     <form name="itemsFrm" ng-submit="addItem()">
-        <input type="text" placeholder="Name" name="newItemName" ng-model="newItemName" required/>
-        <input type="text" placeholder="Adress" name="newItemAddress" ng-model="newItemAddress" required/>
-        <input type="email" placeholder="Email"  name="newItemEmail" ng-model="newItemEmail" />
-        <input type="tel" placeholder="Tel"   name="newItemTel" ng-model="newItemTel" />
-        <textarea  placeholder="Description"  name="newItemDescription" ng-model="newItemDescription"></textarea>
-        <button  ng-disabled="itemsFrm.$invalid" ng-click="addItem()">Add Item</button>
+        <p>
+            <input type="text" placeholder="Name" name="newItemName" ng-model="newItemName" required/>
+            <input type="text" placeholder="Adress" name="newItemAddress" ng-model="newItemAddress" required/>
+        </p>
+        <p>
+            <input type="email" placeholder="Email" name="newItemEmail" ng-model="newItemEmail"/>
+            <input type="tel" placeholder="Tel" name="newItemTel" ng-model="newItemTel"/>
+        </p>
+        <p>
+            <textarea placeholder="Description" name="newItemDescription" ng-model="newItemDescription"></textarea>
+            <button ng-disabled="itemsFrm.$invalid" ng-click="addItem()">Add Item</button>
+        </p>
     </form>
 
-
+    <!--<table ng-table ="itemsTable" class="table table-striped">-->
+        <!--<tr ng-repeat="item in items">-->
+            <!--<td data-title="'Name'">{{item.name}}</td>-->
+            <!--<td data-title="'Age'">{{item.address}}</td>-->
+            <!--<td data-title="'Location'">{{item.description}}</td>-->
+            <!--<td data-title="'Tel'">{{item.tel}}</td>-->
+            <!--<td data-title="'Email'">{{item.email}}</td>-->
+        <!--</tr>-->
+    <!--</table>-->
     <table align="center">
 
         <tr>
