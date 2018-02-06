@@ -15,35 +15,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/normalize.css">
     <link rel="stylesheet" href="bower_components/html5-boilerplate/dist/css/main.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="app.css">
     <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
 </head>
-<body ng-app="myApp">
+<body ng-app="myApp" style="background-color:yellow;text-align:center">
 
 <div ng-controller="addItemController">
     <h1>list It</h1>
 
     <form name="itemsFrm" ng-submit="addItem()">
-        <input type="text" name="newItemName" ng-model="newItemName" required/>
-        <input type="text" name="newItemAddress" ng-model="newItemAddress" required/>
-        <textarea name="newItemDescription" ng-model="newItemDescription"></textarea>
-        <button ng-disabled="itemsFrm.$invalid" ng-click="addItem()">Add Item</button>
+        <input type="text" placeholder="Name" name="newItemName" ng-model="newItemName" required/>
+        <input type="text" placeholder="Adress" name="newItemAddress" ng-model="newItemAddress" required/>
+        <input type="email" placeholder="Email"  name="newItemEmail" ng-model="newItemEmail" />
+        <input type="tel" placeholder="Tel"   name="newItemTel" ng-model="newItemTel" />
+        <textarea  placeholder="Description"  name="newItemDescription" ng-model="newItemDescription"></textarea>
+        <button  ng-disabled="itemsFrm.$invalid" ng-click="addItem()">Add Item</button>
     </form>
 
 
-    <table class="table">
+    <table align="center">
 
         <tr>
             <th width="150"> Name</th>
             <th>Address</th>
+            <th>Email</th>
+            <th>Tel</th>
             <th>Description</th>
-            <!--<th>Quantity</th>-->
         </tr>
 
         <tr ng-repeat="item in items">
+
             <td>{{item.name}}</td>
             <td>{{item.address}}</td>
             <td>{{item.description}}</td>
+            <td>{{item.email}}</td>
+            <td>{{item.tel}}</td>
         </tr>
     </table>
 

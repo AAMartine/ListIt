@@ -39,9 +39,13 @@ app.controller('addItemController', ['$scope', function($scope) {
     $scope.addItem = function() {
         $scope.items.push({'name': $scope.newItemName, 'done':false})
         $scope.items.push({'address': $scope.newItemAddress, 'done':false})
+        $scope.items.push({'email': $scope.newItemEmail, 'done':false})
+        $scope.items.push({'tel': $scope.newItemTel, 'done':false})
         $scope.items.push({'description': $scope.newItemDescription, 'done':false})
         $scope.newItemName = ''
         $scope.newItemAddress = ''
+        $scope.newItemEmail = ''
+        $scope.newItemTel = ''
         $scope.newItemDescription = ''
     }
 
@@ -63,24 +67,3 @@ app.controller('addItemController', ['$scope', function($scope) {
 
 
 
-app.controller("dynamicFields", function($scope) {
-
-    $scope.choices = [{id: 'choice1', name: 'choice1'}, {id: 'choice2', name: 'choice2'}, {id: 'choice3', name: 'choice3'}];
-
-    $scope.addNewChoice = function() {
-        var newItemNo = $scope.choices.length+1;
-        $scope.choices.push({'id' : 'choice' + newItemNo, 'name' : 'choice' + newItemNo});
-    };
-
-    $scope.removeNewChoice = function() {
-        var newItemNo = $scope.choices.length-1;
-        if ( newItemNo !== 0 ) {
-            $scope.choices.pop();
-        }
-    };
-
-    $scope.showAddChoice = function(choice) {
-        return choice.id === $scope.choices[$scope.choices.length-1].id;
-    };
-
-});
