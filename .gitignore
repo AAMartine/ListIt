@@ -1,3 +1,23 @@
+<<<<<<< HEAD
+node_modules
+
+node_modules/angular/*
+!node_modules/angular/angular.js
+
+node_modules/angular-route/*
+!node_modules/angular-route/angular-route.js
+
+node_modules/angular-mocks/*
+node_modules/karma/*
+node_modules/.bin/*
+
+node_modules/todomvc-app-css/*
+!node_modules/todomvc-app-css/index.css
+
+node_modules/todomvc-common/*
+!node_modules/todomvc-common/base.css
+!node_modules/todomvc-common/base.js
+=======
 logs/*
 !.gitkeep
 node_modules/
@@ -5,3 +25,4 @@ bower_components/
 tmp
 .DS_Store
 .idea
+>>>>>>> a34d86b9c6a368f64427d5ff89fb0ef7e308d5f4
