@@ -1,38 +1,34 @@
-# `angular-seed` — the seed for AngularJS apps
+# 'list-it' — the application to help you track easier the places you visit for your venues
 
-This project is an application skeleton for a typical [AngularJS][angularjs] web app. You can use it
-to quickly bootstrap your angular webapp projects and dev environment for these projects.
-
-The seed contains a sample AngularJS application and is preconfigured to install the Angular
-framework and a bunch of development and testing tools for instant web development gratification.
-
-The seed app doesn't do much, just shows how to wire two controllers and views together.
-
+This project is a web app to help you group in a list the places you visited when you are 
+looking for a new home, an apartment or a venue for your events. It is developed using HTML,
+CSS3, AngularJs, Javascript in front-end and Firebase in the back-end.
 
 ## Getting Started
 
-To get you started you can simply clone the `angular-seed` repository and install the dependencies:
+To get you started you can simply clone the repository and install the dependencies:
 
 ### Prerequisites
 
-You need git to clone the `angular-seed` repository. You can get git from [here][git].
+You need git to clone the `ListIt` repository. You can get git from [here][git].
 
-We also use a number of Node.js tools to initialize and test `angular-seed`. You must have Node.js
+We also use a number of Node.js tools to initialize and test `ListIt`. You must have Node.js
 and its package manager (npm) installed. You can get them from [here][node].
 
-### Clone `angular-seed`
 
-Clone the `angular-seed` repository using git:
+### Clone `ListIt`
 
-```
-git clone https://github.com/angular/angular-seed.git
-cd angular-seed
-```
-
-If you just want to start a new project without the `angular-seed` commit history then you can do:
+Clone the `ListIt` repository using git:
 
 ```
-git clone --depth=1 https://github.com/angular/angular-seed.git <your-project-name>
+git clone https://github.com/eaghayi/ListIt
+cd ListIt
+```
+
+If you just want to start a new project without the `ListIt` commit history then you can do:
+
+```
+git clone --depth=1 https://github.com/eaghayi/ListIt <your-project-name>
 ```
 
 The `depth=1` tells git to only pull down one commit worth of historical data.

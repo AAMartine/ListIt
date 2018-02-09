@@ -1,125 +1,93 @@
-/*global angular */
+/*global listit, angular, Firebase */
+'use strict';
 
 /**
  * The main controller for the app. The controller:
- * - retrieves and persists the model via the todoStorage service
+ * - retrieves and persists the model via the $firebaseArray service
  * - exposes the model to the template and provides event handlers
  */
-angular.module('listIt')
-	.controller('listItCtrl', function TodoCtrl($scope, $routeParams, $filter, store) {
-		'use strict';
+listIt.controller('listItCtrl', function listItCtrl($scope, $location, $firebaseArray) {
+    var url = 'https://listit-23117.firebaseio.com';
+    var fireRef = new Firebase(url);
 
-		var todos = $scope.todos = store.todos;
+    // Bind the places to the firebase provider.
+    $scope.places = $firebaseArray(fireRef);
+    $scope.newPlace = '';
+    $scope.editedPlace = null;
 
-		$scope.newTodo = '';
-		$scope.editedTodo = null;
+    $scope.$watch('places', function () {
+        var total = 0;
+        var remaining = 0;
+        $scope.places.forEach(function (place) {
+            // Skip invalid entries so they don't break the entire app.
+            if (!place || !place.title) {
+                return;
+            }
 
-		$scope.$watch('todos', function () {
-			$scope.remainingCount = $filter('filter')(todos, { completed: false }).length;
-			$scope.completedCount = todos.length - $scope.remainingCount;
-			$scope.allChecked = !$scope.remainingCount;
-		}, true);
+            total++;
+            if (place.completed === false) {
+                remaining++;
+            }
+        });
+        $scope.totalCount = total;
+        $scope.remainingCount = remaining;
+        $scope.completedCount = total - remaining;
+        $scope.allChecked = remaining === 0;
+    }, true);
 
-		// Monitor the current route for changes and adjust the filter accordingly.
-		$scope.$on('$routeChangeSuccess', function () {
-			var status = $scope.status = $routeParams.status || '';
-			$scope.statusFilter = (status === 'active') ?
-				{ completed: false } : (status === 'completed') ?
-				{ completed: true } : {};
-		});
+    $scope.addPlace = function () {
+        var newPlace = $scope.newPlace.trim();
+        if (!newPlace.length) {
+            return;
+        }
+        $scope.places.$add({
+            title: newPlace,
+            completed: false
+        });
+        $scope.newPlace = '';
+    };
 
-		$scope.addTodo = function () {
-			var newTodo = {
-				title: $scope.newTodo.trim(),
-				completed: false
-			};
+    $scope.editPlace = function (place) {
+        $scope.editedPlace = place;
+        $scope.originalPlace = angular.extend({}, $scope.editedPlace);
+    };
 
-			if (!newTodo.title) {
-				return;
-			}
+    $scope.doneEditing = function (place) {
+        $scope.editedPlace = null;
+        var title = place.title.trim();
+        if (title) {
+            $scope.places.$save(place);
+        } else {
+            $scope.removePlace(place);
+        }
+    };
 
-			$scope.saving = true;
-			store.insert(newTodo)
-				.then(function success() {
-					$scope.newTodo = '';
-				})
-				.finally(function () {
-					$scope.saving = false;
-				});
-		};
+    $scope.revertEditing = function (place) {
+        place.title = $scope.originalPlace.title;
+        $scope.doneEditing(place);
+    };
 
-		$scope.editTodo = function (todo) {
-			$scope.editedTodo = todo;
-			// Clone the original todo to restore it on demand.
-			$scope.originalTodo = angular.extend({}, todo);
-		};
+    $scope.removePlace = function (place) {
+        $scope.places.$remove(place);
+    };
 
-		$scope.saveEdits = function (todo, event) {
-			// Blur events are automatically triggered after the form submit event.
-			// This does some unfortunate logic handling to prevent saving twice.
-			if (event === 'blur' && $scope.saveEvent === 'submit') {
-				$scope.saveEvent = null;
-				return;
-			}
+    $scope.clearCompletedPlaces = function () {
+        $scope.places.forEach(function (place) {
+            if (places.completed) {
+                $scope.removePlace(place);
+            }
+        });
+    };
 
-			$scope.saveEvent = event;
+    $scope.markAll = function (allCompleted) {
+        $scope.places.forEach(function (place) {
+            place.completed = allCompleted;
+            $scope.places.$save(place);
+        });
+    };
 
-			if ($scope.reverted) {
-				// Todo edits were reverted-- don't save.
-				$scope.reverted = null;
-				return;
-			}
-
-			todo.title = todo.title.trim();
-
-			if (todo.title === $scope.originalTodo.title) {
-				$scope.editedTodo = null;
-				return;
-			}
-
-			store[todo.title ? 'put' : 'delete'](todo)
-				.then(function success() {}, function error() {
-					todo.title = $scope.originalTodo.title;
-				})
-				.finally(function () {
-					$scope.editedTodo = null;
-				});
-		};
-
-		$scope.revertEdits = function (todo) {
-			todos[todos.indexOf(todo)] = $scope.originalTodo;
-			$scope.editedTodo = null;
-			$scope.originalTodo = null;
-			$scope.reverted = true;
-		};
-
-		$scope.removeTodo = function (todo) {
-			store.delete(todo);
-		};
-
-		$scope.saveTodo = function (todo) {
-			store.put(todo);
-		};
-
-		$scope.toggleCompleted = function (todo, completed) {
-			if (angular.isDefined(completed)) {
-				todo.completed = completed;
-			}
-			store.put(todo, todos.indexOf(todo))
-				.then(function success() {}, function error() {
-					todo.completed = !todo.completed;
-				});
-		};
-
-		$scope.clearCompletedTodos = function () {
-			store.clearCompleted();
-		};
-
-		$scope.markAll = function (completed) {
-			todos.forEach(function (todo) {
-				if (todo.completed !== completed) {
-					$scope.toggleCompleted(todo, completed);
-				}
-			});
-		};
-	});
+    if ($location.path() === '') {
+        $location.path('/');
+    }
+    $scope.location = $location;
+});

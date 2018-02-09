@@ -1,32 +1,30 @@
-/*global angular */
-
+/*global angular *
 /**
- * The main TodoMVC app module
+ * The main ListIt app module
  *
  * @type {angular.Module}
  */
-angular.module('listIt', ['ngRoute', 'ngResource'])
-	.config(function ($routeProvider) {
-		'use strict';
+'use strict';
 
-		var routeConfig = {
-			controller: 'listItCtrl',
-			templateUrl: 'listIt-index.html',
-			resolve: {
-				store: function (todoStorage) {
-					// Get the correct module (API or localStorage).
-					return todoStorage.then(function (module) {
-						module.get(); // Fetch the todo records in the background.
-						return module;
-					});
-				}
-			}
-		};
+var todomvc = angular.module('listIt', ['firebase']);
 
-		$routeProvider
-			.when('/', routeConfig)
-			.when('/:status', routeConfig)
-			.otherwise({
-				redirectTo: '/'
-			});
-	});
+todomvc.filter('todoFilter', function ($location) {
+    return function (input) {
+        var filtered = {};
+        angular.forEach(input, function (todo, id) {
+            var path = $location.path();
+            if (path === '/active') {
+                if (!todo.completed) {
+                    filtered[id] = todo;
+                }
+            } else if (path === '/completed') {
+                if (todo.completed) {
+                    filtered[id] = todo;
+                }
+            } else {
+                filtered[id] = todo;
+            }
+        });
+        return filtered;
+    };
+});
