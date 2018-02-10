@@ -6,9 +6,9 @@
  */
 'use strict';
 
-var todomvc = angular.module('listIt', ['firebase']);
+var listIt = angular.module('listIt', ['firebase', 'ngRoute']);
 
-todomvc.filter('todoFilter', function ($location) {
+listIt.filter('listItFilter', function ($location) {
     return function (input) {
         var filtered = {};
         angular.forEach(input, function (todo, id) {
@@ -27,4 +27,20 @@ todomvc.filter('todoFilter', function ($location) {
         });
         return filtered;
     };
+});
+
+listIt.config(function ($routeProvider) {
+
+     $routeProvider
+        .when('/',{
+               templateUrl: firebase-login/login.html,
+               controller: listItCtrl
+        })
+        .when('/addplace', {
+            templateUrl: app/addPlace/add.html,
+            controller: listItCtrl
+        })
+        .otherwise({
+            redirectTo: '/'
+        });
 });

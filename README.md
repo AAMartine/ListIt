@@ -2,7 +2,7 @@
 
 This project is a web app to help you group in a list the places you visited when you are 
 looking for a new home, an apartment or a venue for your events. It is developed using HTML,
-CSS3, AngularJs, Javascript in front-end and Firebase in the back-end.
+CSS3, AngularJs, Javascript and AngularFire to connect to a Firebase Real Time Database in the back-end.
 
 ## Getting Started
 
