@@ -1,0 +1,18 @@
+{
+  "database": {
+    "rules": "database.rules.json"
+  },
+  "hosting": {
+    "public": "firebase-login",
+    "rewrites": [
+      {
+        "source": "/widget",
+        "destination": "/widget.html"
+      },
+      {
+        "source": "**",
+        "destination": "/login.html"
+      }
+    ]
+  }
+}
