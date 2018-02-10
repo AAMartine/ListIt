@@ -146,29 +146,10 @@ var deleteAccount = function() {
   });
 };
 
-
-/**
- * Handles when the user changes the reCAPTCHA config.
- */
-function handleRecaptchaConfigChange() {
-  var newRecaptchaValue = document.querySelector(
-      'input[name="recaptcha"]:checked').value;
-  location.replace(location.pathname + '#recaptcha=' + newRecaptchaValue);
-
-  // Reset the inline widget so the config changes are reflected.
-  ui.reset();
-  ui.start('#firebaseui-container', getUiConfig());
-}
-
-
 /**
  * Initializes the app.
  */
 var initApp = function() {
-  document.getElementById('sign-in-with-redirect').addEventListener(
-      'click', signInWithRedirect);
-  document.getElementById('sign-in-with-popup').addEventListener(
-      'click', signInWithPopup);
   document.getElementById('sign-out').addEventListener('click', function() {
     firebase.auth().signOut();
   });
@@ -176,15 +157,6 @@ var initApp = function() {
       'click', function() {
         deleteAccount();
       });
-
-  document.getElementById('recaptcha-normal').addEventListener(
-      'change', handleRecaptchaConfigChange);
-  document.getElementById('recaptcha-invisible').addEventListener(
-      'change', handleRecaptchaConfigChange);
-  // Check the selected reCAPTCHA mode.
-  document.querySelector(
-      'input[name="recaptcha"][value="' + getRecaptchaMode() + '"]')
-      .checked = true;
-};
+  };
 
 window.addEventListener('load', initApp);

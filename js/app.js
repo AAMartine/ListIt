@@ -7,7 +7,7 @@
  */
 'use strict';
 
-var listIt = angular.module('listIt', ['firebase', 'ngRoute']);
+var listIt = angular.module('listIt', ['firebase', 'ngRoute', 'ngResource']);
 
 listIt.filter('listItFilter', function ($location) {
     return function (input) {
@@ -30,18 +30,3 @@ listIt.filter('listItFilter', function ($location) {
     };
 });
 
-listIt.config(function ($routeProvider) {
-
-     $routeProvider
-        .when('/',{
-               templateUrl: firebase-login/login.html,
-               controller: listItCtrl
-        })
-        .when('/addplace', {
-            templateUrl: app/addPlace/add.html,
-            controller: listItCtrl
-        })
-        .otherwise({
-            redirectTo: '/'
-        });
-});

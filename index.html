@@ -3,62 +3,108 @@
 		<head>
 			<meta charset="utf-8">
 			<title>List-it</title>
+			<script src="https://www.gstatic.com/firebasejs/live/4.3/firebase.js"></script>
+			<script src="firebase-login/config.js"></script>
+			<script src="firebase-login/common.js"></script>
+			<script src="https://cdn.firebase.com/libs/firebaseui/2.6.0/firebaseui.js"></script>
+			<link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/2.6.0/firebaseui.css" />
 			<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 			<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-teal.css">
 			<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css">
 			<style>[ng-cloak] { display: none; }</style>
 		</head>
+
+
+		<!--header and app declaration-->
 		<div id="listItapp" ng-controller="listItCtrl">
 			<header class="w3-container w3-theme w3-padding" id="myHeader">
 					<img src="http://www.flatstanleyproject.com/images/pushpin4.png" alt="Red pin" style="margin-right:20px; padding:0; float:left;">
 					<h1 class="w3-xxxlarge w3-animate-bottom">list It</h1>
 			</header>
-            <section id="login">
-                <div class="w3-row-padding w3-center w3-margin-top">
-                    <div class="w3-third">
-                        <div  style="min-height:260px">
-                        </div>
-                    </div>
-                    <div class="w3-third">
-                    <div class="w3-card w3-container" style="min-height:260px">
-                       <form class="w3-container">
-                          <div class="w3-container">
-                                <h3 class="w3-theme"> Login form </h3>
-                          </div>
-                          <div class="w3-container">
-                            <input class ="w3-input" type="text" placeholder="Enter Username" name="username" required>
-                          </div>
-                          <div class="w3-container">
-                            <input class ="w3-input" type="password" placeholder="Enter Password" name="psw" required>
-                          </div>
+			<!--fin header__>
+			<!--login handler-->
+			<div id="loading"></div>
+			<div id="loaded" class="hidden">
+			<div id="loginAuth">
+				<!--login form-->
+				<div class="w3-row-padding w3-center w3-margin-top">
+					<div class="w3-third">
+						<div  style="min-height:260px">
+						</div>
+					</div>
+					<div class="w3-third">
+						<div class="w3-card w3-container" style="min-height:260px">
+							<form class="w3-container">
+								<div class="w3-container">
+									<h3 class="w3-theme"> Have an account? </h3>
+								</div>
+								<div class="w3-container">
+									<input class ="w3-input" type="text" ng-model="email" placeholder="Enter email" name="email" required>
+								</div>
+								<div class="w3-container">
+									<input class ="w3-input" type="password" ng-model="password" placeholder="Enter Password" name="password" required>
+								</div>
 
-                          <div class="w3-container">
-                            <button class="w3-button w3-right w3-theme" type="submit">Login</button>
-                          </div>
-                          <div class="w3-container ">
-                             <label>
-                                <input class="w3-check" type="checkbox" checked="checked" name="remember"> Remember me |
-                             </label>
-                            <span class="w3-text-teal"><a href="#">Forgot password?</a></span>
-                        </div>
+								<div class="w3-container">
+									<button class="w3-button w3-right w3-theme" type="button" ng-click="signIn()">Login</button>
+								</div>
+								<div class="w3-container ">
+									<label>
+										<input class="w3-check" type="checkbox" checked="checked" name="remember"> Remember me |
+									</label>
+									<span class="w3-text-teal"><a href="#">Forgot password?</a></span>
+								</div>
 
-                           <div class="w3-container ">
-                               <label>
-                                   New user?
-                               </label>
-                               <span class="w3-text-teal"><a href="#">Sign up here</a></span>
-                           </div>
-                    </form>
-                    </div>
-                    </div>
-                    <div class="w3-third">
-                        <div style="min-height:260px">
-                        </div>
-                    </div>
-                <div/>
-                </div>
+								<div class="w3-container ">
+									<label>
+										New user?
+									</label>
+									<span class="w3-text-teal"><a href="#">Sign up here</a></span>
+								</div>
+							</form>
+						</div>
+					</div>
+					<div class="w3-third">
+						<div style="min-height:260px">
+						</div>
+					</div>
+					<div/>
+				</div>
+				<!--fin login form-->
+				<!--login by providers-->
+				<div id="container">
+						<div>
+							<div id="user-signed-out" class="hidden">
+								<h4>You are signed out.</h4>
+								<div id="firebaseui-spa">
+									<div id="firebaseui-container"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+            <!--fin login section-->
             </section>
-            <section id="main" style="display: none;">
+
+			<!--user signed in showing pic and logout button-->
+			 <section id="main" style="display: none;">
+				 <div id="user-signed-in" class="hidden">
+					 <div id="user-info">
+						 <div id="photo-container">
+							 <img id="photo">
+						 </div>
+						 <div id="name"></div>
+						 <div id="email"></div>
+						 <div id="phone"></div>
+						 <div class="clearfix"></div>
+					 </div>
+					 <p>
+						 <button id="sign-out">Sign Out</button>
+						 <button id="delete-account">Delete account</button>
+					 </p>
+				 </div>
+				 <!--user signed in showing the list of places-->
             <div>
                 <form class="w3-container  w3-card-4" id="listform" ng-submit="addPlace()">
                     <div class="w3-section">
@@ -120,14 +166,17 @@
        	</footer>
         </section>
         </div>
-        <script src="//cdn.firebase.com/js/client/2.2.2/firebase.js"></script>
+
 		<script src="node_modules/todomvc-common/base.js"></script>
 		<script src="node_modules/angular/angular.js"></script>
 		<script src="node_modules/angularfire/dist/angularfire.js"></script>
+        <script src="node_modules/angular-route/angular-route.js"></script>
+        <script src="node_modules/angular-resource/angular-resource.js"></script>
 		<script src="js/app.js"></script>
 		<script src="js/controllers/listItCtrl.js"></script>
 		<script src="js/directives/todoFocus.js"></script>
 		<script src="js/directives/todoBlur.js"></script>
 		<script src="js/directives/todoEscape.js"></script>
+		<script src="firebase-login/loginConfig.js"></script>
 		</body>
 	</html>

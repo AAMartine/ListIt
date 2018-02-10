@@ -6,7 +6,7 @@
  * - retrieves and persists the model via the $firebaseArray service
  * - exposes the model to the template and provides event handlers
  */
-listIt.controller('listItCtrl', function listItCtrl($scope, $location, $firebaseArray, $firebaseAuth) {
+listIt.controller('listItCtrl', function listItCtrl($scope, $routeParams, $filter, $location, $firebaseArray, $firebaseAuth) {
     var url = 'https://listit-23117.firebaseio.com';
     var fireRef = new Firebase(url);
 
@@ -15,6 +15,38 @@ listIt.controller('listItCtrl', function listItCtrl($scope, $location, $firebase
     $scope.places = $firebaseArray(fireRef);
     $scope.newPlace = '';
     $scope.editedPlace = null;
+
+    $scope.signUp = function(){
+         $scope.authObj.$createUser({
+             email: $scope.email,
+             password: $scope.password
+
+         }).then(function (userData) {
+             console.log(userData.uid)
+         }, function (error) {
+             console.log(error)
+         })
+    };
+
+    $scope.signIn = function() {
+        firebase.auth().signInWithEmailAndPassword(
+            $scope.email, $scope.password).catch(function (error) {
+            // Handle Errors here.
+            console.log(error.code + " " + error.message);
+
+        })
+    };
+
+        $scope.authObj.$authWithPassword({
+            email: $scope.email,
+            password: $scope.password
+
+        }).then(function (userData) {
+            console.log(userData.uid)
+        }, function (error) {
+            console.log(error)
+        })
+    };
 
     $scope.$watch('places', function () {
         var total = 0;
@@ -47,6 +79,14 @@ listIt.controller('listItCtrl', function listItCtrl($scope, $location, $firebase
         });
         $scope.newPlace = '';
     };
+
+    // Monitor the current route for changes and adjust the filter accordingly.
+    $scope.$on('$routeChangeSuccess', function () {
+        var status = $scope.status = $routeParams.status || '';
+        $scope.statusFilter = (status === 'active') ?
+            { completed: false } : (status === 'completed') ?
+                { completed: true } : {};
+    });
 
     $scope.editPlace = function (place) {
         $scope.editedPlace = place;
@@ -90,5 +130,5 @@ listIt.controller('listItCtrl', function listItCtrl($scope, $location, $firebase
     if ($location.path() === '') {
         $location.path('/');
     }
-    $scope.location = $location;
+    $scope.location = $location
 });
