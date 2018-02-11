@@ -96,11 +96,59 @@
 					 <!--</p>-->
 				 <!--&lt;!&ndash;user signed in showing the list of places&ndash;&gt;-->
             <div>
-                <form class="w3-container  w3-card-4" id="listform" ng-submit="addPlace()">
-                    <div class="w3-section">
-                        <input class="w3-input" id="new-place" placeholder="What is your new list of places about?" ng-model="newPlace" ng-disabled="saving" autofocus>
-                    </div>
-                </form>
+				<div class="w3-row-padding w3-center w3-margin-top">
+				<div class="w3-third">
+				<div  style="min-height:260px">
+				</div>
+				</div>
+				<div class="w3-third">
+				<div class="w3-card" style="min-height:260px;">
+				<form class="w3-container  w3-card-4" id="listform" ng-submit="addPlace()">
+				<div class="w3-container">
+				<h3 class="w3-theme"> What place did you visited? </h3>
+				</div>
+				<div class="w3-container">
+					<input class="w3-input" id="title" placeholder="Title" ng-model="title" ng-disabled="saving" autofocus required>
+				</div>
+				<div class="w3-container">
+						<input class="w3-input" id="placeType" placeholder="Type" ng-model="placeType" ng-disabled="saving" autofocus required>
+				</div>
+				<div class="w3-container">
+						<input class="w3-input" id="address"  placeholder="Address" ng-model="address" ng-disabled="saving" autofocus>
+				</div>
+				<div class="w3-container">
+						<input class="w3-input" id="price" placeholder="Price" ng-model="price" ng-disabled="saving" autofocus>
+				</div>
+				<div class="w3-container">
+						<input class="w3-input" type="date" id="date" placeholder="Date visited" ng-model="date" ng-disabled="saving" autofocus>
+				</div>
+				<div class="w3-container">
+						<h3>Contact information</h3>
+				</div>
+				<div class="w3-container">
+				<input class ="w3-input" id="email" type="email" placeholder="Email" ng-model="email" ng-disabled="saving" autofocus>
+				</div>
+				<div class="w3-container">
+				<input class ="w3-input" id="phone" placeholder="Telephone" ng-model="phone" ng-disabled="saving" autofocus>
+				</div>
+				<div class="w3-container">
+						<h3>Notes</h3>
+				</div>
+				<div class="w3-container">
+						<input class ="w3-input" id="notes" type="text" placeholder="What do you think about this place" ng-model="notes" ng-disabled="saving" autofocus>
+				</div>
+				<div class="w3-container">
+				<button class="w3-button w3-right w3-theme" type="submit" ng-submit="addPlace()">Add place</button>
+				</div>
+				</form>
+				</div>
+				</div>
+				<div class="w3-third">
+				<div style="min-height:260px">
+				</div>
+				</div>
+				<div/>
+				</div>
             </div>
 			<div class="w3-row-padding w3-center w3-margin-top">
 				<div class="w3-quarter w3-container">
@@ -163,6 +211,7 @@
 		<script src="node_modules/todomvc-common/base.js"></script>
 		<script src="node_modules/angular/angular.js"></script>
 		<script src="node_modules/angularfire/dist/angularfire.js"></script>
+
 		<script src="node_modules/angular-route/angular-route.js"></script>
 		<script src="node_modules/angular-resource/angular-resource.js"></script>
 		<script src="js/app.js"></script>

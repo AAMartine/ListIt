@@ -1,6 +1,6 @@
 /*global listit, angular, Firebase */
 'use strict';
-
+/*trying to see if emafd geting latest version*/
 /**
  * The main controller for the app. The controller:
  * - retrieves and persists the model via the $firebaseArray service
@@ -59,15 +59,22 @@ listIt.controller('listItCtrl', function listItCtrl($scope, $filter, $location, 
     }, true);
 
     $scope.addPlace = function () {
-        var newPlace = $scope.newPlace.trim();
-        if (!newPlace.length) {
+        var title = $scope.title.trim();
+        var placeType = $scope.placeType.trim();
+        if (!title.length) {
             return;
         }
         $scope.places.$add({
-            title: newPlace,
-            completed: false
+            title: title,
+			placeType: placeType
+			/*address: $scope.address,
+			price: $scope.price,
+			date: $scope.date
+			/*email: $scope.email,
+			telephone: $scope.telephone,
+			notes: $scope.notes*/
         });
-        $scope.newPlace = '';
+        //$scope.newPlace = '';
     };
 
     $scope.editPlace = function (place) {
