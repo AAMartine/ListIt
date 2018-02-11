@@ -61,18 +61,25 @@ listIt.controller('listItCtrl', function listItCtrl($scope, $filter, $location, 
     $scope.addPlace = function () {
         var title = $scope.title.trim();
         var placeType = $scope.placeType.trim();
-        if (!title.length) {
+		var price = $scope.price.trim();
+		var address = $scope.address.trim();
+		//var date = $scope.date.trim();
+		var email = $scope.email.trim();
+		var telephone = $scope.telephone.trim();
+		var notes = $scope.notes.trim();
+
+		if (!title.length) {
             return;
         }
         $scope.places.$add({
             title: title,
-			placeType: placeType
-			/*address: $scope.address,
-			price: $scope.price,
-			date: $scope.date
-			/*email: $scope.email,
-			telephone: $scope.telephone,
-			notes: $scope.notes*/
+			placeType: placeType,
+			address: address,
+			price: price,
+			//date: date,
+			email: email,
+			telephone: telephone,
+			notes: notes
         });
         //$scope.newPlace = '';
     };
@@ -85,11 +92,11 @@ listIt.controller('listItCtrl', function listItCtrl($scope, $filter, $location, 
     $scope.doneEditing = function (place) {
         $scope.editedPlace = null;
         var title = place.title.trim();
-        if (title) {
-            $scope.places.$save(place);
-        } else {
-            $scope.removePlace(place);
-        }
+        // if (title) {
+             $scope.places.$save(place);
+        // } else {
+            //$scope.removePlace(place);
+        //}
     };
 
     $scope.revertEditing = function (place) {
