@@ -6,14 +6,17 @@
  * - retrieves and persists the model via the $firebaseArray service
  * - exposes the model to the template and provides event handlers
  */
-listIt.controller('listItCtrl', function listItCtrl($scope, $filter, $location, $firebaseArray, $firebaseAuth) {
-
-    $scope.authObj = $firebaseAuth();
+listIt.controller('listItCtrl', function listItCtrl($scope, $filter, $location, $firebaseArray){
+	var url = 'https://listit-23117.firebaseio.com';
+	var ref = new Firebase(url);
+	// /var ref = firebase.database().ref();
+    //$scope.authObj = $firebaseAuth();
     // Bind the places to the firebase provider.
-    $scope.places = '';
+    $scope.places = $firebaseArray(ref);
     $scope.newPlace = '';
     $scope.editedPlace = null;
 
+    /* commenting out authentication
     $scope.signUp = function(){
          $scope.authObj.$createUser({
              email: $scope.email,
@@ -34,7 +37,7 @@ listIt.controller('listItCtrl', function listItCtrl($scope, $filter, $location, 
             console.log(error)
         })
     };
-
+    */
     $scope.$watch('places', function () {
         var total = 0;
         var remaining = 0;
