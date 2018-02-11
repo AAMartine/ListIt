@@ -6,8 +6,8 @@
     "public": "",
     "rewrites": [
       {
-        "source": "/",
-        "destination": "/index.html"
+        "source": "/widget",
+        "destination": "/widget.html"
       },
       {
         "source": "**",

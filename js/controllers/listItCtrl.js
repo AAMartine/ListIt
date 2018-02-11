@@ -6,13 +6,11 @@
  * - retrieves and persists the model via the $firebaseArray service
  * - exposes the model to the template and provides event handlers
  */
-listIt.controller('listItCtrl', function listItCtrl($scope, $routeParams, $filter, $location, $firebaseArray, $firebaseAuth) {
-    var url = 'https://listit-23117.firebaseio.com';
-    var fireRef = new Firebase(url);
+listIt.controller('listItCtrl', function listItCtrl($scope, $filter, $location, $firebaseArray, $firebaseAuth) {
 
-    $scope.authObj = $firebaseAuth(fireRef);
+    $scope.authObj = $firebaseAuth();
     // Bind the places to the firebase provider.
-    $scope.places = $firebaseArray(fireRef);
+    $scope.places = '';
     $scope.newPlace = '';
     $scope.editedPlace = null;
 
@@ -29,19 +27,8 @@ listIt.controller('listItCtrl', function listItCtrl($scope, $routeParams, $filte
     };
 
     $scope.signIn = function() {
-        firebase.auth().signInWithEmailAndPassword(
-            $scope.email, $scope.password).catch(function (error) {
-            // Handle Errors here.
-            console.log(error.code + " " + error.message);
-
-        })
-    };
-
-        $scope.authObj.$authWithPassword({
-            email: $scope.email,
-            password: $scope.password
-
-        }).then(function (userData) {
+            $scope.authObj.$signInWithEmailAndPassword($scope.email,$scope.password
+			).then(function (userData) {
             console.log(userData.uid)
         }, function (error) {
             console.log(error)
@@ -79,14 +66,6 @@ listIt.controller('listItCtrl', function listItCtrl($scope, $routeParams, $filte
         });
         $scope.newPlace = '';
     };
-
-    // Monitor the current route for changes and adjust the filter accordingly.
-    $scope.$on('$routeChangeSuccess', function () {
-        var status = $scope.status = $routeParams.status || '';
-        $scope.statusFilter = (status === 'active') ?
-            { completed: false } : (status === 'completed') ?
-                { completed: true } : {};
-    });
 
     $scope.editPlace = function (place) {
         $scope.editedPlace = place;
