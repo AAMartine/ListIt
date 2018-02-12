@@ -150,6 +150,7 @@
 				<div/>
 				</div>
             </div>
+			<h4 class="w3-theme"> My Places </h4>
 			<div class="w3-row-padding w3-center w3-margin-top">
 				<div class="w3-quarter w3-container">
 				<section id="placesList" ng-show="totalCount" ng-cloak>
@@ -165,6 +166,11 @@
 						<form ng-submit="doneEditing(place)">
 							<input class="edit" ng-model="place.title" todo-escape="revertEditing(place)" todo-blur="doneEditing(place)" todo-focus="place == editedPlace">
 						</form>
+						<div id="title"></div>
+						<div id="type"></div>
+						<div id="address"></div>
+						<div id="price"></div>
+						<div id="email"></div>
 					</li>
 				</ul>
 			  </section>
