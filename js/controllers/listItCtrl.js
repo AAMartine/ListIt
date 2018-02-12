@@ -9,8 +9,6 @@
 listIt.controller('listItCtrl', function listItCtrl($scope, $filter, $location, $firebaseArray){
 	var url = 'https://listit-23117.firebaseio.com';
 	var ref = new Firebase(url);
-	// /var ref = firebase.database().ref();
-    //$scope.authObj = $firebaseAuth();
     // Bind the places to the firebase provider.
     $scope.places = $firebaseArray(ref);
     $scope.newPlace = '';
