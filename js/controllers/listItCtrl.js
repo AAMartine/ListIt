@@ -79,6 +79,23 @@ if (typeof(Storage) !== "undefined") {
 		if (!title.length) {
             return;
         }
+	    //HTML5 webstoreage attempt. See https://www.w3schools.com/HTML/html5_webstorage.asp
+	if (typeof(Storage) !== "undefined") {
+    // Store
+    	localStorage.setItem("price", "price");
+	localStorage.setItem("address", "address");
+	localStorage.setItem("title", "title");
+	localStorage.setItem("placeType", "placeType");	
+	localStorage.setItem("email", "email");
+    // Retrieve
+    	document.getElementById("price").innerHTML = localStorage.getItem("price");
+	document.getElementById("address").innerHTML = localStorage.getItem("address");
+	document.getElementById("title").innerHTML = localStorage.getItem("title");
+	document.getElementById("placeType").innerHTML = localStorage.getItem("placeType");
+	document.getElementById("email").innerHTML = localStorage.getItem("email");
+} else {
+    document.getElementById("title").innerHTML = "Sorry, your browser does not support Web Storage...";
+}
         $scope.places.$add({
             title: title,
 			placeType: placeType,
