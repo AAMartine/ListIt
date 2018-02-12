@@ -12,7 +12,15 @@ listIt.controller('listItCtrl', function listItCtrl($scope, $filter, $location, 
 	// /var ref = firebase.database().ref();
     //$scope.authObj = $firebaseAuth();
     // Bind the places to the firebase provider.
-    $scope.places = $firebaseArray(ref);
+    //$scope.places = $firebaseArray(ref);
+	
+	//bind places to local storage in html: https://www.w3schools.com/HTML/html5_webstorage.asp
+	$scope.places = new Array();
+if (typeof(Storage) !== "undefined") {
+    // Code for localStorage/sessionStorage.
+} else {
+    // Sorry! No Web Storage support..
+}
     $scope.newPlace = '';
     $scope.editedPlace = null;
 
