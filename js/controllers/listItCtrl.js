@@ -6,11 +6,12 @@
  * - retrieves and persists the model via the $firebaseArray service
  * - exposes the model to the template and provides event handlers
  */
-listIt.controller('listItCtrl', function listItCtrl($scope, $filter, $location, $firebaseArray){
+listIt.controller('listItCtrl', function listItCtrl($scope, $filter, $location, $firebaseObject, $firebaseArray){
 	var url = 'https://listit-23117.firebaseio.com';
 	var ref = new Firebase(url);
     // Bind the places to the firebase provider.
     $scope.places = $firebaseArray(ref);
+    console.log($firebaseArray(ref));
     $scope.newPlace = '';
     $scope.editedPlace = null;
 
