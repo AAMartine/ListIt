@@ -61,23 +61,19 @@ listIt.controller('listItCtrl', function listItCtrl($scope, $filter, $location, 
     $scope.addPlace = function () {
         var title = $scope.title.trim();
         var placeType = $scope.placeType.trim();
-		var price = $scope.price.trim();
+		var price = $scope.price;
 		var address = $scope.address.trim();
-		//var date = $scope.date.trim();
-		var email = $scope.email.trim();
-		var telephone = $scope.telephone.trim();
+		var dateVisited = new Date($scope.dateVisited);
+		var emailContact = $scope.emailContact;
+		var telephone = $scope.phone;
 		var notes = $scope.notes.trim();
-
-		if (!title.length) {
-            return;
-        }
         $scope.places.$add({
             title: title,
 			placeType: placeType,
 			address: address,
 			price: price,
-			//date: date,
-			email: email,
+			dateVisited: dateVisited,
+			emailContact: emailContact,
 			telephone: telephone,
 			notes: notes
         });
@@ -92,11 +88,11 @@ listIt.controller('listItCtrl', function listItCtrl($scope, $filter, $location, 
     $scope.doneEditing = function (place) {
         $scope.editedPlace = null;
         var title = place.title.trim();
-        // if (title) {
+        if (title) {
              $scope.places.$save(place);
-        // } else {
-            //$scope.removePlace(place);
-        //}
+        } else {
+            $scope.removePlace(place);
+        }
     };
 
     $scope.revertEditing = function (place) {
@@ -107,6 +103,7 @@ listIt.controller('listItCtrl', function listItCtrl($scope, $filter, $location, 
     $scope.removePlace = function (place) {
         $scope.places.$remove(place);
     };
+
 
     $scope.clearCompletedPlaces = function () {
         $scope.places.forEach(function (place) {

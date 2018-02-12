@@ -9,21 +9,17 @@
 
 var listIt = angular.module('listIt', ['firebase', 'ngRoute', 'ngResource']);
 
-listIt.filter('listItFilter', function ($location) {
-    return function (input) {
+listIt.filter('listItFilter', function () {
+    return function (input, textsearch) {
         var filtered = {};
-        angular.forEach(input, function (todo, id) {
-            var path = $location.path();
-            if (path === '/active') {
-                if (!todo.completed) {
-                    filtered[id] = todo;
-                }
-            } else if (path === '/completed') {
-                if (todo.completed) {
-                    filtered[id] = todo;
-                }
+        angular.forEach(input, function (place, id) {
+			if(textsearch){
+				var term= textsearch.toLowerCase();
+				if (place.title.toLowerCase().indexOf(term) !=-1 ||place.placeType.toLowerCase().indexOf(term)!=-1 ) {
+					filtered[id] = place;
+			}
             } else {
-                filtered[id] = todo;
+                filtered[id] = place;
             }
         });
         return filtered;
