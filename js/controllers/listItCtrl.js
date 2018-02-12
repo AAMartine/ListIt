@@ -81,7 +81,7 @@ if (typeof(Storage) !== "undefined") {
         }
 	    //HTML5 webstoreage attempt. See https://www.w3schools.com/HTML/html5_webstorage.asp
 	if (typeof(Storage) !== "undefined") {
-    // Store
+    // Store - do I need to do this in the index.html??
     	localStorage.setItem("price", "price");
 	localStorage.setItem("address", "address");
 	localStorage.setItem("title", "title");
@@ -96,15 +96,16 @@ if (typeof(Storage) !== "undefined") {
 } else {
     document.getElementById("title").innerHTML = "Sorry, your browser does not support Web Storage...";
 }
+	    //is this $add a native js function? or firebase related?
         $scope.places.$add({
-            title: title,
-			placeType: placeType,
-			address: address,
-			price: price,
-			//date: date,
-			email: email,
-			telephone: telephone,
-			notes: notes
+		title: localStorage.getItem("title"),
+		placeType: localStorage.getItem("placeType"),
+		address: localStorage.getItem("address"),
+		price: localStorage.getItem("price"),
+		//date: date,
+		email: localStorage.getItem("email"),
+		//telephone: telephone,
+		//notes: notes
         });
         //$scope.newPlace = '';
     };
