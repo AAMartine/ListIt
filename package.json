@@ -9,7 +9,6 @@
     "angular-route": "^1.6.9",
     "angularfire": "^2.3.0",
     "connect": "^3.6.5",
-    "firebase": "2.2.2",
     "serve-static": "^1.13.2",
     "todomvc-app-css": "^1.0.1",
     "todomvc-common": "^1.0.0"
