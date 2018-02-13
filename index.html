@@ -159,7 +159,7 @@
 				<div style="height: 10px"> </div>
 				<section id="placesList" ng-show="totalCount" ng-cloak>
 					<ul class="w3-ul w3-border w3-hoverable" id="todo-list">
-						<li ng-repeat="(id, place) in places | listItFilter: textfilter|orderBy:'title'"
+						<li ng-repeat="(id, place) in places | listItFilter: textfilter"
 							ng-class="'w3-padding-16 w3-button w3-block w3-left-align w3-grey'">
 							<div class="view">
 								<label>{{place.title}}</label>
@@ -216,11 +216,11 @@
 		</div>
 	</footer>
 </div>
-<script src="firebase-login/config.js"></script>
 <script src="node_modules/todomvc-common/base.js"></script>
 <script src="node_modules/angular/angular.js"></script>
-<script src="//cdn.firebase.com/js/client/2.2.2/firebase.js"></script>
+<!--script src="//cdn.firebase.com/js/client/2.2.2/firebase.js"></script-->
 <script src="https://www.gstatic.com/firebasejs/3.0.3/firebase.js"></script>
+<script src="firebase-login/config.js"></script>
 <script src="node_modules/angularfire/dist/angularfire.js"></script>
 <script src="node_modules/angular-route/angular-route.js"></script>
 <script src="node_modules/angular-resource/angular-resource.js"></script>
