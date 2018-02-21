@@ -19,84 +19,7 @@
 			 style="margin-right:20px; padding:0; float:left;">
 		<h1 class="w3-xxxlarge w3-animate-bottom">list It</h1>
 	</header>
-	<!--fin header-->
-	<!--login handler-->
-	<!--div id="container"-->
-	<!--<div id="loading"></div>-->
-	<!--<div id="loaded" class="hidden">-->
-	<!--<div id="main">-->
-	<!---->
-	<!--<div id="user-signed-out" class="hidden" style="display:none">-->
-	<!--&lt;!&ndash;login form&ndash;&gt;-->
-	<!--<div class="w3-row-padding w3-center w3-margin-top">-->
-	<!--<div class="w3-third">-->
-	<!--<div  style="min-height:260px">-->
-	<!--</div>-->
-	<!--</div>-->
-	<!--<div class="w3-third">-->
-	<!--<div class="w3-card w3-container" style="min-height:260px;">-->
-	<!--<form class="w3-container">-->
-	<!--<div class="w3-container">-->
-	<!--<h3 class="w3-theme"> Have an account? </h3>-->
-	<!--</div>-->
-	<!--<div class="w3-container">-->
-	<!--<input class ="w3-input" id="email" type="text" ng-model="email" placeholder="Enter email" name="email" required>-->
-	<!--</div>-->
-	<!--<div class="w3-container">-->
-	<!--<input class ="w3-input" id="password" type="password" ng-model="password" placeholder="Enter Password" name="password" required>-->
-	<!--</div>-->
-
-	<!--<div class="w3-container">-->
-	<!--<button class="w3-button w3-right w3-theme" type="button" ng-click="signIn()">Login</button>-->
-	<!--</div>-->
-	<!--<div class="w3-container ">-->
-	<!--<label>-->
-	<!--<input class="w3-check" type="checkbox" checked="checked" name="remember"> Remember me |-->
-	<!--</label>-->
-	<!--<span class="w3-text-teal"><a href="#">Forgot password?</a></span>-->
-	<!--</div>-->
-
-	<!--<div class="w3-container ">-->
-	<!--<label>-->
-	<!--New user?-->
-	<!--</label>-->
-	<!--<span class="w3-text-teal"><a href="#">Sign up here</a></span>-->
-	<!--</div>-->
-	<!--</form>-->
-	<!--</div>-->
-	<!--</div>-->
-	<!--<div class="w3-third">-->
-	<!--<div style="min-height:260px">-->
-	<!--</div>-->
-	<!--</div>-->
-	<!--<div/>-->
-	<!--</div>-->
-	<!--&lt;!&ndash;fin login form&ndash;&gt;-->
-	<!--&lt;!&ndash;login by providers&ndash;&gt;-->
-	<!--<h4>You are signed out.</h4>-->
-	<!--<div id="firebaseui-spa">-->
-	<!--<div id="firebaseui-container"></div>-->
-	<!--</div>-->
-	<!--</div>-->
-	<!--&lt;!&ndash;fin login section&ndash;&gt;-->
-
-	<!--user signed in showing pic and logout button-->
-	<!--<div id="user-signed-in" class="hidden">-->
-	<!--<div id="user-info" style="display:none">-->
-	<!--<div id="photo-container">-->
-	<!--<img id="photo">-->
-	<!--</div>-->
-	<!--<div id="name"></div>-->
-	<!--<div id="emailSigned"></div>-->
-	<!--<div id="phone"></div>-->
-	<!--<div class="clearfix"></div>-->
-	<!--</div>-->
-	<!--<p>-->
-	<!--<button id="sign-out">Sign Out</button>-->
-	<!--<button id="delete-account">Delete account</button>-->
-	<!--</p>-->
-	<!--&lt;!&ndash;user signed in showing the list of places&ndash;&gt;-->
-	<div>
+		<div>
 		<div class="w3-row-padding w3-center w3-margin-top">
 			<div class="w3-half">
 				<div class="w3-card" style="min-height:260px;">
@@ -109,9 +32,11 @@
 								   autofocus required>
 						</div>
 
+						<div style="height: 10px"> </div>
 						<div class="w3-container">
-							<input class="w3-input" id="placeType" placeholder="Type" ng-model="placeType"
-								   ng-disabled="saving" autofocus required>
+							<label class="w3-left" style="margin-right: 10px">Specify the type</label>
+							<select id="placeType" style="width: 100%" class="w3-left" data-ng-model="placeType" data-ng-options="type for type in placeTypes" autofocus required>
+							</select>
 						</div>
 						<div class="w3-container">
 							<input class="w3-input" id="address" placeholder="Address" ng-model="address"
@@ -121,7 +46,9 @@
 							<input class="w3-input" type="number" id="price" placeholder="Price" ng-model="price"
 								   ng-disabled="saving" autofocus>
 						</div>
+						<div style="height: 10px"> </div>
 						<div class="w3-container">
+							<label for="dateVisited" class="w3-left" style="margin-right: 10px">Pick the date you visited it</label>
 							<input class="w3-input" type="date" id="dateVisited" placeholder="Date visited"
 								   ng-model="dateVisited" ng-disabled="saving" autofocus>
 						</div>
@@ -149,7 +76,7 @@
 				</div>
 			</div>
 
-			<div class="w3-half w3-card white" style="min-height:460px;">
+			<div class="w3-half w3-card white" style="min-height:505px;">
 				<div class="w3-container">
 					<h3 class="w3-text-teal"> List of visited places </h3>
 				</div>
@@ -203,16 +130,11 @@
 	<!--</div>-->
     <div style="height: 20px"> </div>
 	<footer class="w3-container w3-theme w3-padding-16">
-		<h3>User Interface Design</h3>
-		<p>Credits:
-		<p>list-it' — the application to help you track easier the places you visit for your venues</p>
-		<p>Used Css template from <a href="https://www.w3schools.com/w3css/tryw3css_templates_teal.htm" target="_blank">w3.css</a>
-		</p>
-		</p>
+		<h3>list It — the application to help you track easier the places you visit for your venues</h3>
 
 		<div style="position:relative;bottom:55px;" class="w3-tooltip w3-right">
 			<span class="w3-text w3-theme-light w3-padding">Go To Top</span>
-			<a class="w3-text-white" href="#listItapp"><span class="w3-xlarge">
+			<a class="w3-text-white" href="listItapp"><span class="w3-xlarge">
                   <i class="fa fa-chevron-circle-up"></i></span></a>
 		</div>
 	</footer>

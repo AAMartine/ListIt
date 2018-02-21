@@ -11,7 +11,7 @@ listIt.controller('listItCtrl', function listItCtrl($scope, $filter, $location, 
     $scope.places = $firebaseArray(ref);
     $scope.newPlace = '';
     $scope.editedPlace = null;
-
+	$scope.placeTypes = ["Appartment", "Conference", "House", "Party", "Wedding Venue"];
     /* commenting out authentication
     $scope.signUp = function(){
          $scope.authObj.$createUser({
