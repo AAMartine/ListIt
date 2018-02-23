@@ -8,6 +8,7 @@
 	<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-teal.css">
 	<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-teal.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="css/app.css">
 	<style>[ng-cloak] {
 		display: none;
 	}</style>
@@ -20,11 +21,14 @@
 		<img src="img/pushpin4.png" alt="Red pin"
 			 style="margin-right:20px; padding:0; float:left">
 		<h1 class="w3-xxxlarge w3-animate-bottom">list It</h1>
-		<!--div class="w3-tooltip w3-right">
+		<div style ="min-height: 60px">
+
+		</div>
+		<div class="w3-tooltip w3-right">
 			<span class="w3-text w3-theme-light w3-padding">Help</span> 
 			<a class="w3-text-white" href="#myHeader"><span class="w3-xlarge">
-				<i class="fa fa-question" style=" margin-bottom: 0px;font-size:36px;color:white"></i></span></a>
-		</div-->
+				<i class="fa fa-question" style=" margin-bottom: 0px;font-size:36px;color:white"> Help</i></span></a>
+		</div>
 	</header>
 	<div id="slider" class="carousel slide" data-ride="carousel">
 			<ol class="carousel-indicators">
@@ -50,9 +54,9 @@
 		         <img class="d-block w-100" src="/img/appartment.jpg">
 			</div>
 		</div>
-		<div class="w3-center carousel-caption d-none d-md-block w3-margin-top">
+		<div class="w3-center carousel-caption w3-margin-top">
 			<div class="w3-center">
-			<h1 class="w3-xxxlarge w3-text-teal w3-animate-bottom">We help you save places you visit for your events</h1>
+			<h1 class="d-none d-md-block w3-xxxlarge w3-text-teal w3-animate-bottom">We help you save places you visit for your events</h1>
 			</div>
 			<div class="w3-row-padding w3-center w3-margin-top">
 				<input class="w3-input w3-padding-16" id="placeTitle" placeholder="What place did you visited?" ng-model="title" ng-disabled="saving" autofocus required>
@@ -115,15 +119,27 @@
 			</form>
 		</div>
 
-		<div class="w3-half w3-card white" style="min-height:505px;">
-			<div class="w3-container">
-				<h3 class="w3-text-teal"> List of visited places </h3>
+
+		<div class="w3-card white">
+
+			<div class="row">
+				<div class="col-sm-4">
+				</div>
+				<div class="col-sm-8">
+				<div class="input-group add-on">
+				   <input autocomplete="on" class="form-control" id="search" placeholder="Search for a place" ng-model="textfilter" ng-disabled="saving"
+					style="outline: none; margin-top:5px; margin-right: 5px" autofocus required>
+				<div class="input-group-btn">
+					<button class="btn btn-default">
+					<i class="fa fa-search w3-left" style="color:teal"></i>
+					</button>
+				</div>
+			   </div>
+			   </div>
 			</div>
-			<div class="w3-container">
-				<input class="w3-input" id="search" placeholder="Search a place" ng-model="textfilter" ng-disabled="saving"
-					   autofocus required>
+			<div class="w3-container w3-left">
+				<h1 class="w3-text-teal"> Most recent visited places </h1>
 			</div>
-			<div style="height: 10px"> </div>
 			<section id="placesList" ng-show="totalCount" ng-cloak>
 				<ul class="w3-ul w3-border w3-hoverable" id="todo-list">
 					<li ng-repeat="(id, place) in places | listItFilter: textfilter"

@@ -1,8 +1,13 @@
-/*
-
-app-template.css overrides
-
-remove this comment if used
-remove this file if not
-
-*/
+/* remove border between controls */
+.add-on .input-group-btn > .btn {
+	border-left-width: 0;
+	left:-2px;
+	-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+}
+/* stop the glowing blue shadow */
+.add-on .form-control:focus {
+	-webkit-box-shadow: none;
+	box-shadow: none;
+	border-color:#cccccc;
+}

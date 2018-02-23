@@ -7,7 +7,7 @@
  */
 'use strict';
 
-var listIt = angular.module('listIt', ['firebase', 'ngRoute', 'ngResource']);
+var listIt = angular.module('listIt', ['firebase', '', 'ngResource']);
 
 listIt.filter('listItFilter', function () {
     return function (input, textsearch) {
