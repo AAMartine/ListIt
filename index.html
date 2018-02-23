@@ -3,7 +3,9 @@
 <head>
 	<meta charset="utf-8">
 	<title>List-it</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+	<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-teal.css">
 	<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-teal.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css">
 	<style>[ng-cloak] {
@@ -14,86 +16,123 @@
 <body>
 <!--header and app declaration-->
 <div id="listItapp" ng-controller="listItCtrl">
-	<header class="w3-container w3-theme w3-padding" style="height: 150px;" id="myHeader">
-		<img src="http://www.flatstanleyproject.com/images/pushpin4.png" alt="Red pin"
-			 style="margin-right:20px; padding:0; float:left;">
+	<header class="w3-container w3-theme w3-padding" id="myHeader">
+		<img src="img/pushpin4.png" alt="Red pin"
+			 style="margin-right:20px; padding:0; float:left">
 		<h1 class="w3-xxxlarge w3-animate-bottom">list It</h1>
+		<!--div class="w3-tooltip w3-right">
+			<span class="w3-text w3-theme-light w3-padding">Help</span> 
+			<a class="w3-text-white" href="#myHeader"><span class="w3-xlarge">
+				<i class="fa fa-question" style=" margin-bottom: 0px;font-size:36px;color:white"></i></span></a>
+		</div-->
 	</header>
-		<div>
-		<div class="w3-row-padding w3-center w3-margin-top">
-			<div class="w3-half">
-				<div class="w3-card" style="min-height:260px;">
-					<form class="w3-container  w3-card-4" id="listform" ng-submit="addPlace()">
-						<div class="w3-container">
-							<h3 class="w3-theme"> What place did you visited? </h3>
-						</div>
-						<div class="w3-container">
-							<input class="w3-input" id="title" placeholder="Title" ng-model="title" ng-disabled="saving"
-								   autofocus required>
-						</div>
-
-						<div style="height: 10px"> </div>
-						<div class="w3-container">
-							<label class="w3-left" style="margin-right: 10px">Specify the type</label>
-							<select id="placeType" style="width: 100%" class="w3-left" data-ng-model="placeType" data-ng-options="type for type in placeTypes" autofocus required>
-							</select>
-						</div>
-						<div class="w3-container">
-							<input class="w3-input" id="address" placeholder="Address" ng-model="address"
-								   ng-disabled="saving" autofocus>
-						</div>
-						<div class="w3-container">
-							<input class="w3-input" type="number" id="price" placeholder="Price" ng-model="price"
-								   ng-disabled="saving" autofocus>
-						</div>
-						<div style="height: 10px"> </div>
-						<div class="w3-container">
-							<label for="dateVisited" class="w3-left" style="margin-right: 10px">Pick the date you visited it</label>
-							<input class="w3-input" type="date" id="dateVisited" placeholder="Date visited"
-								   ng-model="dateVisited" ng-disabled="saving" autofocus>
-						</div>
-						<div class="w3-container">
-							<input class="w3-input" id="emailContact" type="email" placeholder="Email"
-								   ng-model="emailContact" ng-disabled="saving" autofocus>
-						</div>
-						<div class="w3-container">
-							<input class="w3-input" id="phone" type="number" placeholder="Telephone" ng-model="phone"
-								   ng-disabled="saving" autofocus>
-						</div>
-						<div class="w3-container">
-							<textarea class="w3-input" id="notes" type="text"
-									  placeholder="What do you think about this place" ng-model="notes"
-									  ng-disabled="saving" autofocus>
-							</textarea>
-						</div>
-						<div style="height: 10px"> </div>
-						<div class="w3-container">
-							<button class="w3-button w3-right w3-theme" type="submit" ng-submit="addPlace()">Add place
-							</button>
-						</div>
-						<div style="height: 10px"> </div>
-					</form>
-				</div>
+	<div id="slider" class="carousel slide" data-ride="carousel">
+			<ol class="carousel-indicators">
+				<li data-target="#slider" data-slide-to="0" class="active"></li>
+				<li data-target="#slider" data-slide-to="1"></li>
+				<li data-target="#slider" data-slide-to="2"></li>
+				<li data-target="#slider" data-slide-to="3"></li>
+			</ol>
+		<div class="carousel-innner">
+			<div class="carousel-item active">
+		        <img class="d-block w-100" src="/img/apartment.jpg">
 			</div>
-
-			<div class="w3-half w3-card white" style="min-height:505px;">
+			<div class="carousel-item">
+		         <img class="d-block w-100" src="/img/conference.jpg">
+			</div>
+			<div class="carousel-item">
+		          <img class="d-block w-100" src="/img/jessica-furtney-244838-unsplash.jpg">
+			</div>
+			<div class="carousel-item">
+		       <img class="d-block w-100" src="/img/wedding%20venue.jpg">
+			</div>
+			<div class="carousel-item">
+		         <img class="d-block w-100" src="/img/appartment.jpg">
+			</div>
+		</div>
+		<div class="w3-center carousel-caption d-none d-md-block w3-margin-top">
+			<div class="w3-center">
+			<h1 class="w3-xxxlarge w3-text-teal w3-animate-bottom">We help you save places you visit for your events</h1>
+			</div>
+			<div class="w3-row-padding w3-center w3-margin-top">
+				<input class="w3-input w3-padding-16" id="placeTitle" placeholder="What place did you visited?" ng-model="title" ng-disabled="saving" autofocus required>
+				<button style="margin-top: 1px; margin-left: 0px" id="addPlace" class="w3-btn w3-xlarge w3-right w3-teal w3-hover-light-grey" onclick="document.getElementById('form').style.display='block'" style="font-weight:120; margin: 0;">ADD DETAILS
+				</button>
+			</div>
+		</div>
+	</div>
+	<div class="w3-row-padding w3-center w3-margin-top">
+		<div id="form" class="w3-modal" style="min-height:260px;">
+			<form class="w3-container  w3-card-4" id="listform" ng-submit="addPlace()">
 				<div class="w3-container">
-					<h3 class="w3-text-teal"> List of visited places </h3>
+					<h3 class="w3-theme"> What place did you visited? </h3>
 				</div>
 				<div class="w3-container">
-					<input class="w3-input" id="search" placeholder="Search a place" ng-model="textfilter" ng-disabled="saving"
+					<input class="w3-input" id="title" placeholder="Title" ng-model="title" ng-disabled="saving"
 						   autofocus required>
 				</div>
+
 				<div style="height: 10px"> </div>
-				<section id="placesList" ng-show="totalCount" ng-cloak>
-					<ul class="w3-ul w3-border w3-hoverable" id="todo-list">
-						<li ng-repeat="(id, place) in places | listItFilter: textfilter"
-							ng-class="'w3-padding-16 w3-button w3-block w3-left-align w3-grey'">
-							<div class="view">
-								<label>{{place.title}}</label>
-								<a class="w3-button w3-circle w3-large w3-right w3-teal" ng-click="removePlace(place)"><i class="fa fa-remove" style="font-size:24px;color:red"></i></a>
-							</div>
-							<div id="placeDetails" class="w3-show">
+				<div class="w3-container">
+					<label class="w3-left" style="margin-right: 10px">Specify the type</label>
+					<select id="placeType" style="width: 100%" class="w3-left" data-ng-model="placeType" data-ng-options="type for type in placeTypes" autofocus required>
+					</select>
+				</div>
+				<div class="w3-container">
+					<input class="w3-input" id="address" placeholder="Address" ng-model="address"
+						   ng-disabled="saving" autofocus>
+				</div>
+				<div class="w3-container">
+					<input class="w3-input" type="number" id="price" placeholder="Price" ng-model="price"
+						   ng-disabled="saving" autofocus>
+				</div>
+				<div style="height: 10px"> </div>
+				<div class="w3-container">
+					<label for="dateVisited" class="w3-left" style="margin-right: 10px">Pick the date you visited it</label>
+					<input class="w3-input" type="date" id="dateVisited" placeholder="Date visited"
+						   ng-model="dateVisited" ng-disabled="saving" autofocus>
+				</div>
+				<div class="w3-container">
+					<input class="w3-input" id="emailContact" type="email" placeholder="Email"
+						   ng-model="emailContact" ng-disabled="saving" autofocus>
+				</div>
+				<div class="w3-container">
+					<input class="w3-input" id="phone" type="number" placeholder="Telephone" ng-model="phone"
+						   ng-disabled="saving" autofocus>
+				</div>
+				<div class="w3-container">
+								<textarea class="w3-input" id="notes" type="text"
+										  placeholder="What do you think about this place" ng-model="notes"
+										  ng-disabled="saving" autofocus>
+								</textarea>
+				</div>
+				<div style="height: 10px"> </div>
+				<div class="w3-container">
+					<button class="w3-button w3-right w3-theme" type="submit" ng-submit="addPlace()">Add place
+					</button>
+				</div>
+				<div style="height: 10px"> </div>
+			</form>
+		</div>
+
+		<div class="w3-half w3-card white" style="min-height:505px;">
+			<div class="w3-container">
+				<h3 class="w3-text-teal"> List of visited places </h3>
+			</div>
+			<div class="w3-container">
+				<input class="w3-input" id="search" placeholder="Search a place" ng-model="textfilter" ng-disabled="saving"
+					   autofocus required>
+			</div>
+			<div style="height: 10px"> </div>
+			<section id="placesList" ng-show="totalCount" ng-cloak>
+				<ul class="w3-ul w3-border w3-hoverable" id="todo-list">
+					<li ng-repeat="(id, place) in places | listItFilter: textfilter"
+						ng-class="'w3-padding-16 w3-button w3-block w3-left-align w3-grey'">
+						<div class="view">
+							<label>{{place.title}}</label>
+							<a class="w3-button w3-circle w3-large w3-right w3-teal" ng-click="removePlace(place)"><i class="fa fa-remove" style="font-size:24px;color:red"></i></a>
+						</div>
+						<div id="placeDetails" class="w3-show">
 							<table class="w3-table w3-striped w3-bordered">
 								<thead>
 								<tr class="w3-theme">
@@ -110,35 +149,37 @@
 								</tr>
 								</tbody>
 							</table>
-							</div>
-						</li>
-					</ul>
-				</section>
+						</div>
+					</li>
+				</ul>
+			</section>
 
 			<div ng-show="totalCount" ng-cloak>
-				<span class="w3-text-teal" id="place-count"><strong>{{totalCount}}</strong>
-					<ng-pluralize count="totalCount"
-								  when="{ one: 'place visited', other: 'places visited' }"></ng-pluralize>
-				</span>
-			</div>
+					<span class="w3-text-teal" id="place-count"><strong>{{totalCount}}</strong>
+						<ng-pluralize count="totalCount"
+									  when="{ one: 'place visited', other: 'places visited' }"></ng-pluralize>
+					</span>
 			</div>
 		</div>
 	</div>
-	<!--</div>-->
-	<!--</div>-->
-	<!--</div>-->
-	<!--</div>-->
-    <div style="height: 20px"> </div>
-	<footer class="w3-container w3-theme w3-padding-16">
-		<h3>list It — the application to help you track easier the places you visit for your venues</h3>
-
-		<div style="position:relative;bottom:55px;" class="w3-tooltip w3-right">
-			<span class="w3-text w3-theme-light w3-padding">Go To Top</span>
-			<a class="w3-text-white" href="listItapp"><span class="w3-xlarge">
-                  <i class="fa fa-chevron-circle-up"></i></span></a>
-		</div>
-	</footer>
 </div>
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<!--</div>-->
+<div style="height: 20px"> </div>
+<footer class="w3-container w3-theme w3-padding-16">
+	<h3>list It — the application to help you track easier the places you visit for your venues</h3>
+
+	<div style="position:relative;bottom:55px;" class="w3-tooltip w3-right">
+		<span class="w3-text w3-theme-light w3-padding">Go To Top</span>
+		<a class="w3-text-white" href="listItapp"><span class="w3-xlarge">
+					  <i class="fa fa-chevron-circle-up"></i></span></a>
+	</div>
+</footer>
+</div>
+
+<script src="js/directives/animation.js"></script>
 <script src="node_modules/todomvc-common/base.js"></script>
 <script src="node_modules/angular/angular.js"></script>
 <script src="https://www.gstatic.com/firebasejs/3.0.3/firebase.js"></script>
@@ -148,8 +189,12 @@
 <script src="node_modules/angular-resource/angular-resource.js"></script>
 <script src="js/app.js"></script>
 <script src="js/controllers/listItCtrl.js"></script>
+<script src="js/directives/animation.js"></script>
 <script src="js/directives/todoFocus.js"></script>
 <script src="js/directives/todoBlur.js"></script>
 <script src="js/directives/todoEscape.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>
 </html>
