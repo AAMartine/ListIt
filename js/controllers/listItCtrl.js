@@ -34,7 +34,8 @@ listIt.controller('listItCtrl', function listItCtrl($scope, $filter, $location, 
         })
     };
     */
-    $scope.$watch('places', function () {
+
+	$scope.$watch('places', function () {
         var total = 0;
         var remaining = 0;
         $scope.places.forEach(function (place) {
@@ -75,6 +76,21 @@ listIt.controller('listItCtrl', function listItCtrl($scope, $filter, $location, 
         });
         //$scope.newPlace = '';
     };
+
+	$scope.searchPlace = function(textSearch) {
+			var filtered = {};
+			angular.forEach(input, function (place, id) {
+				if(textSearch){
+					var term= textsearch.toLowerCase();
+					if (place.title.toLowerCase().indexOf(term) !=-1 ||place.placeType.toLowerCase().indexOf(term)!=-1 ) {
+						filtered[id] = place;
+					}
+				} else {
+					filtered[id] = place;
+				}
+			});
+		$scope.selectedPlaces = filtered;
+		};
 
     $scope.editPlace = function (place) {
         $scope.editedPlace = place;
