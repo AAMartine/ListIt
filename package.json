@@ -5,12 +5,12 @@
   },
   "dependencies": {
     "angular": "^1.6.9",
-    "firebase":"3.0.3",
     "angular-resource": "^1.6.9",
     "angular-route": "^1.6.9",
     "angularfire": "^2.3.0",
     "connect": "^3.6.5",
     "debug": "^3.1.0",
+    "firebase": "3.0.3",
     "serve-static": "^1.13.2",
     "todomvc-app-css": "^1.0.1",
     "todomvc-common": "^1.0.1"
