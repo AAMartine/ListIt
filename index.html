@@ -6,10 +6,9 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 	<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-teal.css">
+	<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-teal.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css">
-	<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.5.1/dist/instantsearch.min.css">
-	<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.5.1/dist/instantsearch-theme-algolia.min.css">
-	<link rel="stylesheet" type="text/css" href="css/app.css">
+	<link rel="stylesheet" href="css/app.css">
 	<style>[ng-cloak] {
 		display: none;
 	}</style>
@@ -18,7 +17,7 @@
 <body>
 <!--header and app declaration-->
 <div id="listItapp" ng-controller="listItCtrl">
-	<div class="w3-container w3-theme w3-padding" id="myHeader">
+	<header class="w3-container w3-theme w3-padding" id="myHeader">
 		<img src="img/pushpin4.png" alt="Red pin"
 			 style="margin-right:20px; padding:0; float:left">
 		<h1 class="w3-xxxlarge w3-animate-bottom">list It</h1>
@@ -30,7 +29,7 @@
 			<a class="w3-text-white" href="#myHeader"><span class="w3-xlarge">
 				<i class="fa fa-question" style=" margin-bottom: 0;font-size:36px;color:white"> Help</i></span></a>
 		</div>
-	</div>
+	</header>
 	<div id="slider" class="carousel slide" data-ride="carousel">
 		<ol class="carousel-indicators">
 			<li data-target="#slider" data-slide-to="0" class="active"></li>
@@ -61,7 +60,7 @@
 			</div>
 			<div class="w3-row-padding w3-center w3-margin-top">
 				<input class="w3-input w3-padding-16" id="placeTitle" placeholder="What place did you visited?" ng-model="title" autofocus required>
-				<button style="margin-top: 1px; margin-left: 0; background-color: #3069E5" id="addPlace" class="w3-btn w3-xlarge w3-right w3-hover-grey" onclick="document.getElementById('form').style.display='block'">ADD DETAILS
+				<button style="margin-top: 1px; margin-left: 0" id="addPlace" class="w3-btn w3-xlarge w3-right w3-teal w3-hover-grey" onclick="document.getElementById('form').style.display='block'">ADD DETAILS
 				</button>
 			</div>
 		</div>
@@ -117,63 +116,92 @@
 			</form>
 		</div>
 	</div>
- <div>
-              <header>
-					<div>
-						<input id="search-input" placeholder="Search for a place" ng-model="search" autofocus required>
+
+		<div class="w3-card white">
+			<div class="row">
+				<div class="col-sm-6">
+				</div>
+				<div class="col-sm-6">
+					<div class="input-group add-on">
+						<input id="search" class="form-control" placeholder="Search for a place" ng-model="search"
+							   style="margin:5px 0 5px 5px" autofocus required>
+						<div class="input-group-btn">
+							<button class="btn btn-default w3-theme w3-hover-grey" style="margin-top: 3px; margin-right: 5px;">
+								<i class="fa fa-search w3-left" style="color:white; font-size:24px"></i>
+							</button>
+						</div>
 					</div>
-			  </header>
-	          <main style="min-height: 700px">
-				  <div id="left-column">
-					  <div id="clear-all"></div>
-					  <div id="type" class="facet"></div>
-					  <div id="priceTitle" class="facet"></div>
-					  <div id="price-range" class="facet"></div>
-					  <div id="date" class="facet"></div>
-				  </div>
-				  <div id = right-column>
-				  <div id="stats"></div>
-				  <div id="active-filters"></div>
-					  <h2 class="w3-xx-large w3-text-teal">List of visited places</h2>
-				  <div  id="hits"></div>
-				  <div  id="pagination"></div>
-				  </div>
-			  </main>
- </div>
-	<div class="w3-container w3-theme w3-padding-16">
+				</div>
+			</div>
+			<div class="w3-row">
+				<div id="searchFilter" class="col-md-3">
+					<label for="allPlace" class="w3-left">Filter by:</label>
+					<button id ="allPlace" class=" col-md-1 w3-btn w3-xlarge w3-teal w3-hover-grey"  ng-click="filter('home')">Show all</button>
+					<select id="filterType" class="w3-teal w3-xlarge w3-hover-grey w3-left" data-ng-model="placeType" autofocus required>
+						<option value="">Select Type</option>
+						<option ng-repeat="option in placeTypes" value="{{option}}">{{option}}</option>
+					</select>
+					<button class="w3-btn w3-xlarge w3-right w3-teal w3-hover-grey" ng-click="filter('education')">Education</button>
+					<h5>Sorting</h5>
+						<button class="btn btn-default"  ng-click="rankers = null">Original order</button>
+						<button class="btn btn-default" ng-click="orderBy('added')">Time created</button>
+				</div>
+
+				<div class="col-md-9">
+					<h1 class="w3-text-teal"> List of visited places </h1>
+				<section id="placesList" ng-show="totalCount" ng-cloak>
+								<div ng-repeat="(id, place) in places | listItFilter: textfilter"
+									ng-class="'w3-padding-16 w3-button w3-block w3-left-align w3-grey'">
+								<div class="view">
+									<label>{{place.title}}</label>
+									<a class="w3-button w3-circle w3-large w3-right w3-teal" ng-click="removePlace(place)"><i class="fa fa-remove" style="font-size:24px;color:red"></i></a>
+								</div>
+								<div id="placeDetails" class="w3-show">
+									<table class="w3-table w3-striped w3-bordered">
+										<thead>
+										<tr class="w3-theme">
+											<th>Type</th>
+											<th>Address</th>
+											<th>Price</th>
+										</tr>
+										</thead>
+										<tbody>
+										<tr class="w3-white">
+											<td>{{place.placeType}}</td>
+											<td style="word-wrap: break-word">{{place.address}}</td>
+											<td>{{place.price}}</td>
+										</tr>
+										</tbody>
+									</table>
+								</div>
+								</div>
+				</section>
+
+				<div ng-show="totalCount" ng-cloak>
+					<span class="w3-text-teal" id="place-count"><strong>{{totalCount}}</strong>
+						<ng-pluralize count="totalCount"
+									  when="{ one: 'place visited', other: 'places visited' }"></ng-pluralize>
+					</span>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--</div>-->
+	<!--</div>-->
+	<!--</div>-->
+	<!--</div>-->
+	<div style="height: 20px"> </div>
+	<footer class="w3-container w3-theme w3-padding-16">
 		<h3>list It — the application to help you track easier the places you visit for your venues</h3>
 
 		<div style="position:relative;bottom:55px;" class="w3-tooltip w3-right">
 			<span class="w3-text w3-theme-light w3-padding">Go To Top</span>
-			<a class="w3-text-white" href="#myHeader"><span class="w3-xlarge">
+			<a class="w3-text-white" href="#listItapp"><span class="w3-xlarge">
 					  <i class="fa fa-chevron-circle-up"></i></span></a>
 		</div>
-	</div>
-
-<script type="text/html" id="hit-template">
-	<div class="hit">
-		<div class="hit-image">
-			<img src="img/defaul-image.jpg" alt="default">
-		</div>
-		<div class="hit-content">
-			<a title= "Delete" id="delete-row" class="w3-delete w3-button w3-right w3-hover-grey" style="margin-top: 10px" ng-click="removePlace(placeId)"><i class="fa fa-remove"
-		        style="font-size:24px;color:red"></i></a>
-			<input class="placeId" style="display: none" type="text" name="input" ng-model="placeId" value={{objectID}} ng-trim="false">
-			<h1 class="w3-teal">{{title}}</h1>
-			<h2>{{placeType}}</h2>
-			<h4>Visited on {{dateVisited}}</h4>
-			<p class="hit-description">
-				<a  class="w3-text-blue w3-large" href="https://www.google.com/maps/search/?api=1&{{address}}" target="_blank">{{address}}</a>
-			</p>
-			<h2 class="hit-price">${{price}}</h2>
-			<h4 class="w3-text-teal w3-large">--Contact--</h4>
-			<a  class="w3-text-blue w3-large" href="mailto:{{emailContact}}">{{emailContact}} | </a>
-			<a class="w3-text-blue w3-large" href="tel:{{telephone}}">{{telephone}}</a>
-			<h4 class="w3-text-teal">--Notes-</h4>
-			<p class="hit-description">{{{_highlightResult.notes.value}}}</p>
-		</div>
-	</div>
-</script>
+	</footer>
+</div>
+<script src="js/directives/animation.js"></script>
 <script src="node_modules/todomvc-common/base.js"></script>
 <script src="node_modules/angular/angular.js"></script>
 <script src="https://www.gstatic.com/firebasejs/3.0.3/firebase.js"></script>
@@ -187,15 +215,11 @@
 <script src="js/directives/todoFocus.js"></script>
 <script src="js/directives/todoBlur.js"></script>
 <script src="js/directives/todoEscape.js"></script>
-<script src="js/services/autocompleaddress.js"></script>
-<script src="node_modules/algoliasearch/dist/algoliasearch.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.5.1"></script>
-<script src="js/services/search.js"></script>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAw2fMB-oijLJx9mUVLexvniluMaKL6BR8&libraries=places&callback=initAutocomplete"
 		async defer></script>
-</div>
+<script src="js/services/autocomplete.js"></script>
 </body>
 </html>
