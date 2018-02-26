@@ -4,13 +4,16 @@
     "test": "karma start test/config/karma.conf.js"
   },
   "dependencies": {
+    "algoliasearch": "^3.24.11",
     "angular": "^1.6.9",
     "angular-resource": "^1.6.9",
     "angular-route": "^1.6.9",
     "angularfire": "^2.3.0",
     "connect": "^3.6.5",
     "debug": "^3.1.0",
+    "dotenv": "^5.0.0",
     "firebase": "3.0.3",
+    "instantsearch.js": "^2.5.1",
     "serve-static": "^1.13.2",
     "todomvc-app-css": "^1.0.1",
     "todomvc-common": "^1.0.1"

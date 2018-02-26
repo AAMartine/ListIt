@@ -6,7 +6,7 @@
  * - exposes the model to the template and provides event handlers
  */
 listIt.controller('listItCtrl', function listItCtrl($scope, $filter, $location, $firebaseObject, $firebaseArray){
-	var ref= firebase.database().ref();
+	var ref= firebase.database().ref('places');
 	// Bind the places to the firebase provider.
     $scope.places = $firebaseArray(ref);
     $scope.newPlace = '';
@@ -57,10 +57,11 @@ listIt.controller('listItCtrl', function listItCtrl($scope, $filter, $location, 
 
     $scope.addPlace = function () {
         var title = $scope.title.trim();
-        var placeType = $scope.placeType.trim();
+        var placeType = $scope.placeType;
 		var price = $scope.price;
-		var address = $scope.address.trim();
-		var dateVisited = new Date($scope.dateVisited);
+		var address = $scope.address;
+		var dateVisited = new Date($scope.dateVisited).toDateString();
+		var dateValue = new Date($scope.dateVisited).getTime();
 		var emailContact = $scope.emailContact;
 		var telephone = $scope.phone;
 		var notes = $scope.notes.trim();
@@ -72,7 +73,8 @@ listIt.controller('listItCtrl', function listItCtrl($scope, $filter, $location, 
 			dateVisited: dateVisited,
 			emailContact: emailContact,
 			telephone: telephone,
-			notes: notes
+			notes: notes,
+            dateValue: dateValue
         });
         //$scope.newPlace = '';
     };
@@ -112,10 +114,30 @@ listIt.controller('listItCtrl', function listItCtrl($scope, $filter, $location, 
         $scope.doneEditing(place);
     };
 
-    $scope.removePlace = function (place) {
-        $scope.places.$remove(place);
-    };
+    $scope.removePlace = function (placeId) {
+    	var place = $scope.places.filter(function( obj ) {
+			return obj.$id == placeId;
+		});
 
+		var result = confirm("Do you want to delete the place " + place[0].title + "?");
+    	if (result) {
+			$scope.places.$remove(place[0]);
+			alert("Deleting.....");
+			var delayInMilliseconds = 1000; //1 second
+			setTimeout(function() {
+				location.reload(true);
+			}, delayInMilliseconds);
+		}
+    };
+	document.addEventListener('click', function (e) {
+		if(hasClass(e.target, 'fa-remove') ) {
+				$scope.removePlace(e.path[2].children[1].value);
+			}
+	}, false);
+
+	function hasClass(elem, className) {
+		return elem.className.split(' ').indexOf(className) > -1;
+	}
 
     $scope.clearCompletedPlaces = function () {
         $scope.places.forEach(function (place) {
