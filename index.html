@@ -3,12 +3,15 @@
 <head>
 	<meta charset="utf-8">
 	<title>List-it</title>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+		  integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 	<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-teal.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css">
-	<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.5.1/dist/instantsearch.min.css">
-	<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.5.1/dist/instantsearch-theme-algolia.min.css">
+	<link rel="stylesheet" type="text/css"
+		  href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.5.1/dist/instantsearch.min.css">
+	<link rel="stylesheet" type="text/css"
+		  href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.5.1/dist/instantsearch-theme-algolia.min.css">
 	<link rel="stylesheet" type="text/css" href="css/app.css">
 	<style>[ng-cloak] {
 		display: none;
@@ -22,16 +25,16 @@
 		<img src="img/pushpin4.png" alt="Red pin"
 			 style="margin-right:20px; padding:0; float:left">
 		<h1 class="w3-xxxlarge w3-animate-bottom">list It</h1>
-		<div style ="min-height: 60px">
+		<div style="min-height: 30px">
 
 		</div>
 		<div class="w3-tooltip w3-right">
 			<span class="w3-text w3-theme-light w3-padding">Help</span> 
 			<a class="w3-text-white" href="#myHeader"><span class="w3-xlarge">
-				<i class="fa fa-question" style=" margin-bottom: 0;font-size:36px;color:white"> Help</i></span></a>
+				<i class="fa fa-question" style=" margin-bottom: 0;font-size:large;color:white"> Help</i></span></a>
 		</div>
 	</div>
-	<div id="slider" class="carousel slide" data-ride="carousel">
+	<div id="slider" class="carousel slide" data-ride="carousel" >
 		<ol class="carousel-indicators">
 			<li data-target="#slider" data-slide-to="0" class="active"></li>
 			<li data-target="#slider" data-slide-to="1"></li>
@@ -57,90 +60,100 @@
 		</div>
 		<div class="w3-center carousel-caption w3-margin-top">
 			<div class="w3-center">
-				<h1 class="d-none d-md-block w3-xxxlarge w3-text-teal w3-animate-bottom">We help you save places you visit for your events</h1>
+				<h1 class="d-none d-md-block w3-xxlarge w3-text-teal w3-animate-bottom">We help you save places you	visit for your events</h1>
 			</div>
 			<div class="w3-row-padding w3-center w3-margin-top">
-				<input class="w3-input w3-padding-16" id="placeTitle" placeholder="What place did you visited?" ng-model="title" autofocus required>
-				<button style="margin-top: 1px; margin-left: 0; background-color: #3069E5" id="addPlace" class="w3-btn w3-xlarge w3-right w3-hover-grey" onclick="document.getElementById('form').style.display='block'">ADD DETAILS
+				<input class="w3-input w3-padding-14" style="width: 100%" id="placeTitle" placeholder="What place did you visited?"  ng-model="title" autofocus required>
+				<button id="addPlace" style="width: 50%; border: 5px solid #FFF;margin-top:10px;"class="w3-button  w3-theme w3"	onclick="document.getElementById('form').style.display='block'">Add Details
 				</button>
 			</div>
 		</div>
 	</div>
-	<div class="w3-row-padding w3-center w3-margin-top">
-		<div id="form" class="w3-modal" style="min-height:260px;">
-			<form class="w3-container  w3-card-4" id="listform" ng-submit="addPlace()">
-				<div class="w3-container">
-					<h3 class="w3-theme"> What place did you visited? </h3>
-				</div>
-				<div class="w3-container">
-					<input class="w3-input" id="title" placeholder="Title" ng-model="title"
-						   autofocus required/>
-				</div>
+	<!--// add form -->
+	<div  >
+		<div id="form" class="modal" style="min-height:260px;">
+			<div class="modal-content">
+				<span class="close">&times;</span>
+				<form class=" w3-container  w3-card-4" id="listform" ng-submit="addPlace()">
+					<!--<div class="w3-container">-->
+					<!--<h3 class="w3-theme"> What place did you visited? </h3>-->
+					<!--</div>-->
+					<div class="w3-container">
+						<input class="w3-input" id="title" placeholder="Title" ng-model="title"
+							   autofocus required/>
+					</div>
 
-				<div style="height: 10px"> </div>
-				<div class="w3-container">
-					<select id="placeType" style="width: 100%" class="w3-left" data-ng-model="placeType" autofocus required>
-						<option value="">- Please Choose Type -</option>
-						<option ng-repeat="option in placeTypes" value="{{option}}">{{option}}</option>
-					</select>
-				</div>
-				<div class="w3-container">
-					<input class="w3-input" id="autocomplete" placeholder="Enter the address" ng-model="address" onFocus="geolocate()" type="text">
-				</div>
-				<div class="w3-container">
-					<input class="w3-input" type="number" id="price" placeholder="Price" ng-model="price" autofocus>
-				</div>
-				<div style="height: 10px"> </div>
-				<div class="w3-container">
-					<label for="dateVisited" class="w3-left" style="margin-right: 10px">Pick the date you visited it</label>
-					<input class="w3-input" type="date" id="dateVisited" placeholder="Date visited"
-						   ng-model="dateVisited" autofocus>
-				</div>
-				<div class="w3-container">
-					<input class="w3-input" id="emailContact" type="email" placeholder="Email"
-						   ng-model="emailContact" autofocus>
-				</div>
-				<div class="w3-container">
-					<input class="w3-input" id="phone" type="number" placeholder="Telephone" ng-model="phone" autofocus>
-				</div>
-				<div class="w3-container">
+					<!--<div style="height: 10px"></div>-->
+					<div class="w3-container">
+						<select id="placeType" style="width: 100%" class="w3-left" data-ng-model="placeType"  autofocus
+								required>
+							<option value=""> - Choose Type - </option>
+							<option ng-repeat="option in placeTypes" value="{{option}}" ng-selected="Apartment" >{{option}}</option>
+						</select>
+					</div>
+					<div class="w3-container">
+						<input class="w3-input" id="autocomplete" placeholder="Address" ng-model="address"
+							   onFocus="geolocate()" type="text">
+					</div>
+					<div class="w3-container">
+						<input class="w3-input" type="number" id="price" placeholder="Price" ng-model="price" autofocus>
+					</div>
+					<!--<div style="height: 10px"></div>-->
+					<div class="w3-container">
+						<!--<label for="dateVisited" class="w3-left" style="margin-right: 10px">Pick the date you visited-->
+						<!--it</label>-->
+						<input class="w3-input" type="date" id="dateVisited" placeholder="Pick the date you visited
+						it"
+							   ng-model="dateVisited" autofocus>
+					</div>
+					<div class="w3-container">
+						<input class="w3-input" id="emailContact" type="email" placeholder="Email"
+							   ng-model="emailContact" autofocus>
+					</div>
+					<div class="w3-container">
+						<input class="w3-input" id="phone" type="number" placeholder="Phone Number" ng-model="phone"
+							   autofocus>
+					</div>
+					<div class="w3-container">
 								<textarea class="w3-input" id="notes"
 										  placeholder="What do you think about this place" ng-model="notes" autofocus>
 								</textarea>
-				</div>
-				<div style="height: 10px"> </div>
-				<div class="w3-container">
-					<button class="w3-button w3-right w3-theme" type="submit">Add place
-					</button>
-				</div>
-				<div style="height: 10px"> </div>
-			</form>
+					</div>
+
+					<div class="w3-container">
+						<button class="w3-button w3-theme" style="width: 100%;margin-top:15px; "
+								type="submit">Add place
+						</button>
+					</div>
+					<div style="height: 10px"></div>
+				</form>
+			</div>
 		</div>
 	</div>
- <div>
-              <header>
-					<div>
-						<input id="search-input" placeholder="Search for a place" ng-model="search" autofocus required>
-					</div>
-			  </header>
-	          <main style="min-height: 700px">
-				  <div id="left-column">
-					  <div id="clear-all"></div>
-					  <div id="type" class="facet"></div>
-					  <div id="priceTitle" class="facet"></div>
-					  <div id="price-range" class="facet"></div>
-					  <div id="date" class="facet"></div>
-				  </div>
-				  <div id = right-column>
-				  <div id="stats"></div>
-				  <div id="active-filters"></div>
-					  <h2 class="w3-xx-large w3-text-teal">List of visited places</h2>
-				  <div  id="hits"></div>
-				  <div  id="pagination"></div>
-				  </div>
-			  </main>
- </div>
-	<div class="w3-container w3-theme w3-padding-16">
+	<div>
+		<header>
+			<div>
+				<input id="search-input" placeholder="Search for a place" ng-model="search" autofocus required>
+			</div>
+		</header>
+		<main style="min-height: 700px">
+			<div id="left-column">
+				<div id="clear-all"></div>
+				<div id="type" class="facet"></div>
+				<div id="priceTitle" class="facet"></div>
+				<div id="price-range" class="facet"></div>
+				<div id="date" class="facet"></div>
+			</div>
+			<div id=right-column>
+				<div id="stats"></div>
+				<div id="active-filters"></div>
+				<h2 class="w3-xx-large w3-text-teal">List of visited places</h2>
+				<div id="hits"></div>
+				<div id="pagination"></div>
+			</div>
+		</main>
+	</div>
+	<div class="w3-container w3-theme w3-padding-16" style="font-size:small;">
 		<h3>list It — the application to help you track easier the places you visit for your venues</h3>
 
 		<div style="position:relative;bottom:55px;" class="w3-tooltip w3-right">
@@ -150,52 +163,63 @@
 		</div>
 	</div>
 
-<script type="text/html" id="hit-template">
-	<div class="hit">
-		<div class="hit-image">
-			<img src="img/defaul-image.jpg" alt="default">
+	<script type="text/html" id="hit-template">
+		<div class="hit">
+			<div class="hit-image">
+				<img src="img/defaul-image.jpg" alt="default">
+			</div>
+			<div class="hit-content">
+				<a title="Delete" id="delete-row" class="w3-delete w3-button w3-right w3-hover-grey"
+				   style="margin-top: 10px" ng-click="removePlace(placeId)"><i class="fa fa-remove"
+																			   style="font-size:24px;color:red"></i></a>
+				<input class="placeId" style="display: none" type="text" name="input" ng-model="placeId"
+					   value={{objectID}} ng-trim="false">
+				<h1 class="w3-teal">{{title}}</h1>
+				<h2>{{placeType}}</h2>
+				<h4>Visited on {{dateVisited}}</h4>
+				<p class="hit-description">
+					<a class="w3-text-blue w3-large" href="https://www.google.com/maps/search/?api=1&{{address}}"
+					   target="_blank">{{address}}</a>
+				</p>
+				<h2 class="hit-price">${{price}}</h2>
+				<h4 class="w3-text-teal w3-large">--Contact--</h4>
+				<a class="w3-text-blue w3-large" href="mailto:{{emailContact}}">{{emailContact}} | </a>
+				<a class="w3-text-blue w3-large" href="tel:{{telephone}}">{{telephone}}</a>
+				<h4 class="w3-text-teal">--Notes-</h4>
+				<p class="hit-description">{{{_highlightResult.notes.value}}}</p>
+			</div>
 		</div>
-		<div class="hit-content">
-			<a title= "Delete" id="delete-row" class="w3-delete w3-button w3-right w3-hover-grey" style="margin-top: 10px" ng-click="removePlace(placeId)"><i class="fa fa-remove"
-		        style="font-size:24px;color:red"></i></a>
-			<input class="placeId" style="display: none" type="text" name="input" ng-model="placeId" value={{objectID}} ng-trim="false">
-			<h1 class="w3-teal">{{title}}</h1>
-			<h2>{{placeType}}</h2>
-			<h4>Visited on {{dateVisited}}</h4>
-			<p class="hit-description">
-				<a  class="w3-text-blue w3-large" href="https://www.google.com/maps/search/?api=1&{{address}}" target="_blank">{{address}}</a>
-			</p>
-			<h2 class="hit-price">${{price}}</h2>
-			<h4 class="w3-text-teal w3-large">--Contact--</h4>
-			<a  class="w3-text-blue w3-large" href="mailto:{{emailContact}}">{{emailContact}} | </a>
-			<a class="w3-text-blue w3-large" href="tel:{{telephone}}">{{telephone}}</a>
-			<h4 class="w3-text-teal">--Notes-</h4>
-			<p class="hit-description">{{{_highlightResult.notes.value}}}</p>
-		</div>
-	</div>
-</script>
-<script src="node_modules/todomvc-common/base.js"></script>
-<script src="node_modules/angular/angular.js"></script>
-<script src="https://www.gstatic.com/firebasejs/3.0.3/firebase.js"></script>
-<script src="firebase-login/config.js"></script>
-<script src="node_modules/angularfire/dist/angularfire.js"></script>
-<script src="node_modules/angular-route/angular-route.js"></script>
-<script src="node_modules/angular-resource/angular-resource.js"></script>
-<script src="js/app.js"></script>
-<script src="js/controllers/listItCtrl.js"></script>
-<script src="js/directives/animation.js"></script>
-<script src="js/directives/todoFocus.js"></script>
-<script src="js/directives/todoBlur.js"></script>
-<script src="js/directives/todoEscape.js"></script>
-<script src="js/services/autocompleaddress.js"></script>
-<script src="node_modules/algoliasearch/dist/algoliasearch.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.5.1"></script>
-<script src="js/services/search.js"></script>
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAw2fMB-oijLJx9mUVLexvniluMaKL6BR8&libraries=places&callback=initAutocomplete"
-		async defer></script>
+	</script>
+	<script src="node_modules/todomvc-common/base.js"></script>
+	<script src="node_modules/angular/angular.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/3.0.3/firebase.js"></script>
+	<script src="firebase-login/config.js"></script>
+	<script src="node_modules/angularfire/dist/angularfire.js"></script>
+	<script src="node_modules/angular-route/angular-route.js"></script>
+	<script src="node_modules/angular-resource/angular-resource.js"></script>
+	<script src="js/app.js"></script>
+	<script src="js/controllers/listItCtrl.js"></script>
+	<script src="js/directives/animation.js"></script>
+	<script src="js/directives/todoFocus.js"></script>
+	<script src="js/directives/todoBlur.js"></script>
+	<script src="js/directives/todoEscape.js"></script>
+	<script src="js/services/autocompleaddress.js"></script>
+	<script src="node_modules/algoliasearch/dist/algoliasearch.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.5.1"></script>
+	<script src="js/services/search.js"></script>
+	<script src="js/services/places.js"></script>
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+			integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+			crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+			integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+			crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+			integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+			crossorigin="anonymous"></script>
+	<script type="text/javascript"
+			src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAw2fMB-oijLJx9mUVLexvniluMaKL6BR8&libraries=places&callback=initAutocomplete"
+			async defer></script>
 </div>
 </body>
 </html>
