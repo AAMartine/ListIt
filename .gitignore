@@ -26,3 +26,6 @@ tmp
 .DS_Store
 .idea
 >>>>>>> a34d86b9c6a368f64427d5ff89fb0ef7e308d5f4
+*.log
+*.log
+firebase-debug.log

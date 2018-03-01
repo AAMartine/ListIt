@@ -36,15 +36,17 @@ listIt.controller('listItCtrl', function listItCtrl($scope, $filter, $location, 
     }, true);
 
     $scope.addPlace = function () {
+
+		// (x === undefined) ? def_val : x
         var title = $scope.title.trim();
         var placeType = $scope.placeType;
-		var price = $scope.price;
-		var address = $scope.address;
+		var price = ($scope.price === undefined) ? 0 : $scope.price;
+		var address = ($scope.address === undefined) ? '-' : $scope.address;
 		var dateVisited = new Date($scope.dateVisited).toDateString();
 		var dateValue = new Date($scope.dateVisited).getTime();
-		var emailContact = $scope.emailContact;
-		var telephone = $scope.phone;
-		var notes = $scope.notes;
+		var emailContact = ( $scope.emailContact == 'myname@example.com') ? '-' : $scope.emailContact ;
+		var telephone = ($scope.phone=== undefined) ? '-' : $scope.phone;
+		var notes = ($scope.notes=== undefined) ? '-' : $scope.notes;
         $scope.places.$add({
             title: title,
 			placeType: placeType,
