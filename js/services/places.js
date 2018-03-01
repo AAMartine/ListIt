@@ -6,6 +6,11 @@ var spanClose = document.getElementsByClassName("close")[0];
 // When the user clicks on <span> (x), close the modal
 spanClose.onclick = function() {
 	modal.style.display = "none";
+	alert("Refreshing....");
+	var delayInMilliseconds = 1000; //1 second
+	setTimeout(function() {
+		location.reload(true);
+	}, delayInMilliseconds);
 }
 
 // When the user clicks anywhere outside of the modal, close it

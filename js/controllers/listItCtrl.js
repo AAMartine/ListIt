@@ -41,10 +41,13 @@ listIt.controller('listItCtrl', function listItCtrl($scope, $filter, $location, 
         var title = $scope.title.trim();
         var placeType = $scope.placeType;
 		var price = ($scope.price === undefined) ? 0 : $scope.price;
+
+		console.log($scope.address);
 		var address = ($scope.address === undefined) ? '-' : $scope.address;
-		var dateVisited = new Date($scope.dateVisited).toDateString();
-		var dateValue = new Date($scope.dateVisited).getTime();
-		var emailContact = ( $scope.emailContact == 'myname@example.com') ? '-' : $scope.emailContact ;
+		console.log($scope.address);
+		var dateVisited =($scope.dateVisited ===undefined) ? new Date().toDateString(): new Date($scope.dateVisited).toDateString();
+		var dateValue = ($scope.dateVisited ===undefined) ? new Date().getTime():new Date($scope.dateVisited).getTime();
+		var emailContact = ( $scope.emailContact == undefined) ? '-' : $scope.emailContact ;
 		var telephone = ($scope.phone=== undefined) ? '-' : $scope.phone;
 		var notes = ($scope.notes=== undefined) ? '-' : $scope.notes;
         $scope.places.$add({
