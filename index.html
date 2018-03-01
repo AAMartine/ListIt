@@ -29,7 +29,7 @@
 
 		</div>
 		<!-- Trigger/Open The Modal -->
-		<button id="myBtn" class="w3-right" style="background: url(img/help-btn-small.png);width: 64px;height: 64px;" ></button>
+		<button id="myBtn" class="w3-right w3-hover-light-grey" style="background: url(img/help-btn-small.png);width: 64px;height: 64px;" ></button>
 
 		<!-- The Modal -->
 		<div id="myModalHelp" class="modalHelp">
@@ -37,8 +37,9 @@
 			<!-- Modal content -->
 			<div class="modal-content-help">
 				<span class="close-help">&times;</span>
-				<p>List it helps you to keep the places you have seen. You can add information of the places via 'Add details' button.
-					Input values of tile and type of the plcae is required. You can search between places you have seen. </p>
+				<p>List it helps you keep details of places you have visited for your event. You can add a place via 'Add details' button.
+					Title and Type of the place are required. You can search between places you have seen using different filters in the left side of the main page.
+					If you need any help please <a style="color: darkblue" href="mailto:aaugust4@gmu.edu">email us here</a>. </p>
 			</div>
 
 		</div>
@@ -78,7 +79,7 @@
 			</div>
 			<div class="w3-row-padding w3-center w3-margin-top">
 				<input class="w3-input w3-padding-14" style="width: 100%" id="placeTitle" placeholder="What place did you visited?"  ng-model="title" autofocus required>
-				<button id="addPlace" style="width: 50%; border: 5px solid #FFF;margin-top:10px;"class="w3-button  w3-theme w3"	onclick="document.getElementById('form').style.display='block'">Add Details
+				<button id="addPlace" style="width: 50%; border: 5px solid #FFF;margin-top:10px; background-color: #3369E7"class="w3-button"	onclick="document.getElementById('form').style.display='block'">Add Details
 				</button>
 			</div>
 		</div>
@@ -99,20 +100,19 @@
 					<div class="w3-container">
 						<select id="placeType" style="width: 100%" class="w3-left" data-ng-model="placeType"  autofocus
 								required>
-							<option value=""> - Choose Type (required) - </option>
+							<option value=""> - Choose Type - </option>
 							<option ng-repeat="option in placeTypes" value="{{option}}" ng-selected="Apartment" >{{option}}</option>
 						</select>
 					</div>
 					<div class="w3-container">
-						<input class="w3-input" id="autocomplete" placeholder="Address" ng-model="address"  onFocus="geolocate()" type="text">
+						<input class="w3-input" id="autocomplete" placeholder="Enter your address" ng-model="address" onFocus="geolocate()"
+							   type="text">
+					     </input>
 					</div>
 					<div class="w3-container">
 						<input class="w3-input" type="number" min="0" id="price" placeholder="Price" ng-model="price" autofocus>
 					</div>
-					<!--<div style="height: 10px"></div>-->
 					<div class="w3-container">
-						<!--<label for="dateVisited" class="w3-left" style="margin-right: 10px">Pick the date you visited-->
-						<!--it</label>-->
 						<input class="w3-input" type="date" id="dateVisited" placeholder="Pick the date you visited it"
 							   ng-model="dateVisited" autofocus>
 					</div>
@@ -129,9 +129,9 @@
 										  placeholder="What do you think about this place" ng-model="notes" autofocus>
 								</textarea>
 					</div>
-
 					<div class="w3-container">
-						<button class="w3-button w3-theme" style="width: 100%;margin-top:15px; " type="submit">Add place</button>
+						<button class="w3-button w3-text-white w3-right" style="margin-top:15px; margin-left: 3px; background-color: #3369E7" type="submit">Add place</button>
+						<button class="w3-button w3-text-white w3-right" style="margin-top:15px; background-color: #3369E7" ng-click="document.forms['listform'].reset()" type="reset">Clear form</button>
 					</div>
 					<div style="height: 10px"></div>
 				</form>

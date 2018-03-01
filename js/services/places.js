@@ -15,6 +15,3 @@ window.onclick = function(event) {
 	}
 }
 
-// document.getElementById("listform").onsubmit = function(){
-// 	location.reload(true);
-// }

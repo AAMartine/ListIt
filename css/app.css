@@ -578,7 +578,7 @@ footer a:hover {
 	text-decoration: none;
 	cursor: pointer;
 }
-
+.pac-container { z-index: 10000 !important; }
 div.field-wrapper input {
 	float: right;
 }

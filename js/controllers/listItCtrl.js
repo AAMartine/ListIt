@@ -11,30 +11,9 @@ listIt.controller('listItCtrl', function listItCtrl($scope, $filter, $location, 
     $scope.places = $firebaseArray(ref);
     $scope.newPlace = '';
     $scope.editedPlace = null;
-	$scope.placeTypes = ["Apartment", "Conference", "House", "Party", "Wedding Venue","University","Others"];
-
-    /* commenting out authentication
-    $scope.signUp = function(){
-         $scope.authObj.$createUser({
-             email: $scope.email,
-             password: $scope.password
-
-         }).then(function (userData) {
-             console.log(userData.uid)
-         }, function (error) {
-             console.log(error)
-         })
-    };
-
-    $scope.signIn = function() {
-            $scope.authObj.$signInWithEmailAndPassword($scope.email,$scope.password
-			).then(function (userData) {
-            console.log(userData.uid)
-        }, function (error) {
-            console.log(error)
-        })
-    };
-    */
+	$scope.placeTypes = ["Apartment", "Conference", "House", "Party", "Wedding Venue","University","Other"];
+	$scope.dateVisited = new Date();
+	$scope.emailContact = "myname@example.com";
 
 	$scope.$watch('places', function () {
         var total = 0;
@@ -79,7 +58,7 @@ listIt.controller('listItCtrl', function listItCtrl($scope, $filter, $location, 
         });
 
 
-        //$scope.newPlace = '';
+        $scope.title ='';
     };
 
 	$scope.searchPlace = function(textSearch) {
