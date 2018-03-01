@@ -65,7 +65,7 @@ listIt.controller('listItCtrl', function listItCtrl($scope, $filter, $location, 
 		var dateValue = new Date($scope.dateVisited).getTime();
 		var emailContact = $scope.emailContact;
 		var telephone = $scope.phone;
-		var notes = $scope.notes.trim();
+		var notes = $scope.notes;
         $scope.places.$add({
             title: title,
 			placeType: placeType,
@@ -77,6 +77,8 @@ listIt.controller('listItCtrl', function listItCtrl($scope, $filter, $location, 
 			notes: notes,
             dateValue: dateValue
         });
+
+
         //$scope.newPlace = '';
     };
 

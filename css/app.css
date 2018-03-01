@@ -579,4 +579,11 @@ footer a:hover {
 	cursor: pointer;
 }
 
-
+div.field-wrapper input {
+	float: right;
+}
+div.required-field::before {
+	content: "*";
+	float: right;
+	color: red;
+}

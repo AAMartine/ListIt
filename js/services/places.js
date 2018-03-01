@@ -14,3 +14,7 @@ window.onclick = function(event) {
 		modal.style.display = "none";
 	}
 }
+
+// document.getElementById("listform").onsubmit = function(){
+// 	location.reload(true);
+// }

@@ -13,6 +13,7 @@
 	<link rel="stylesheet" type="text/css"
 		  href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.5.1/dist/instantsearch-theme-algolia.min.css">
 	<link rel="stylesheet" type="text/css" href="css/app.css">
+	<link rel="stylesheet" type="text/css" href="css/modal.css">
 	<style>[ng-cloak] {
 		display: none;
 	}</style>
@@ -22,17 +23,30 @@
 <!--header and app declaration-->
 <div id="listItapp" ng-controller="listItCtrl">
 	<div class="w3-container w3-theme w3-padding" id="myHeader">
-		<img src="img/pushpin4.png" alt="Red pin"
-			 style="margin-right:20px; padding:0; float:left">
-		<h1 class="w3-xxxlarge w3-animate-bottom">list It</h1>
+		<img src="img/pushpin4.png" alt="Red pin" style="margin-right:20px; padding:0; float:left">
+		<h1 class="w3-xxxlarge w3-animate-bottom">List It</h1>
 		<div style="min-height: 30px">
 
 		</div>
-		<div class="w3-tooltip w3-right">
-			<span class="w3-text w3-theme-light w3-padding">Help</span> 
-			<a class="w3-text-white" href="#myHeader"><span class="w3-xlarge">
-				<i class="fa fa-question" style=" margin-bottom: 0;font-size:large;color:white"> Help</i></span></a>
+		<!-- Trigger/Open The Modal -->
+		<button id="myBtn" class="w3-right" style="background: url(img/help-btn-small.png);width: 64px;height: 64px;" ></button>
+
+		<!-- The Modal -->
+		<div id="myModalHelp" class="modalHelp">
+
+			<!-- Modal content -->
+			<div class="modal-content-help">
+				<span class="close-help">&times;</span>
+				<p>List it helps you to keep the places you have seen. You can add information of the places via 'Add details' button.
+					Input values of tile and type of the plcae is required. You can search between places you have seen. </p>
+			</div>
+
 		</div>
+		<!--<div class="w3-tooltip w3-right">-->
+			<!--&lt;!&ndash;<span class="w3-text w3-theme-light w3-padding">Help</span> &ndash;&gt;-->
+			<!--<a class="w3-text-white" href="#myHeader"><span class="w3-xlarge">-->
+				<!--<i class="fa fa-question" style=" margin-bottom: 0;font-size:large;color:white"> Help</i></span></a>-->
+		<!--</div>-->
 	</div>
 	<div id="slider" class="carousel slide" data-ride="carousel" >
 		<ol class="carousel-indicators">
@@ -74,12 +88,10 @@
 		<div id="form" class="modal" style="min-height:260px;">
 			<div class="modal-content">
 				<span class="close">&times;</span>
-				<form class=" w3-container  w3-card-4" id="listform" ng-submit="addPlace()">
-					<!--<div class="w3-container">-->
-					<!--<h3 class="w3-theme"> What place did you visited? </h3>-->
-					<!--</div>-->
-					<div class="w3-container">
-						<input class="w3-input" id="title" placeholder="Title" ng-model="title"
+				<form class=" w3-container  w3-card-4" id="listform" ng-submit="addPlace()" onSubmit="alert('Successfully! you add it. '); document.forms['listform'].reset()">
+
+					<div class="field-wrapper required-field w3-container">
+						<input class="w3-input" id="title" placeholder="Title (required)" ng-model="title"
 							   autofocus required/>
 					</div>
 
@@ -87,23 +99,21 @@
 					<div class="w3-container">
 						<select id="placeType" style="width: 100%" class="w3-left" data-ng-model="placeType"  autofocus
 								required>
-							<option value=""> - Choose Type - </option>
+							<option value=""> - Choose Type (required) - </option>
 							<option ng-repeat="option in placeTypes" value="{{option}}" ng-selected="Apartment" >{{option}}</option>
 						</select>
 					</div>
 					<div class="w3-container">
-						<input class="w3-input" id="autocomplete" placeholder="Address" ng-model="address"
-							   onFocus="geolocate()" type="text">
+						<input class="w3-input" id="autocomplete" placeholder="Address" ng-model="address"  onFocus="geolocate()" type="text">
 					</div>
 					<div class="w3-container">
-						<input class="w3-input" type="number" id="price" placeholder="Price" ng-model="price" autofocus>
+						<input class="w3-input" type="number" min="0" id="price" placeholder="Price" ng-model="price" autofocus>
 					</div>
 					<!--<div style="height: 10px"></div>-->
 					<div class="w3-container">
 						<!--<label for="dateVisited" class="w3-left" style="margin-right: 10px">Pick the date you visited-->
 						<!--it</label>-->
-						<input class="w3-input" type="date" id="dateVisited" placeholder="Pick the date you visited
-						it"
+						<input class="w3-input" type="date" id="dateVisited" placeholder="Pick the date you visited it"
 							   ng-model="dateVisited" autofocus>
 					</div>
 					<div class="w3-container">
@@ -111,7 +121,7 @@
 							   ng-model="emailContact" autofocus>
 					</div>
 					<div class="w3-container">
-						<input class="w3-input" id="phone" type="number" placeholder="Phone Number" ng-model="phone"
+						<input class="w3-input" id="phone" min="0" type="number" placeholder="Phone Number" ng-model="phone"
 							   autofocus>
 					</div>
 					<div class="w3-container">
@@ -121,9 +131,7 @@
 					</div>
 
 					<div class="w3-container">
-						<button class="w3-button w3-theme" style="width: 100%;margin-top:15px; "
-								type="submit">Add place
-						</button>
+						<button class="w3-button w3-theme" style="width: 100%;margin-top:15px; " type="submit">Add place</button>
 					</div>
 					<div style="height: 10px"></div>
 				</form>
@@ -208,6 +216,7 @@
 	<script src="https://cdn.jsdelivr.net/npm/instantsearch.js@2.5.1"></script>
 	<script src="js/services/search.js"></script>
 	<script src="js/services/places.js"></script>
+	<script src="js/services/help.js"></script>
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
 			integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
 			crossorigin="anonymous"></script>
