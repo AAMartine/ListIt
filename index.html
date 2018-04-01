@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="listIt" data-framework="firebase">
+<html lang="en" ng-app="listIt" data-framework="firebase" xmlns="http://www.w3.org/1999/html">
 <head>
 	<meta charset="utf-8">
 	<title>List-it</title>
+
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
 		  integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -19,24 +20,20 @@
 	}</style>
 </head>
 
-<body>
+<body ng-controller="listItCtrl">
 <!--header and app declaration-->
-<div id="listItapp" ng-controller="listItCtrl">
+<div id="listItapp">
 	<div class="w3-container w3-theme " id="myHeader">
 		<img src="img/pushpin4.png" alt="Red pin"
 			 style="margin-right:20px; padding:0;  width: 80px;height: 80px; float:left">
 		<h1 class="w3-xxxlarge w3-animate-bottom">List It</h1>
-		<!-- Trigger/Open The Modal -->
+		<h3>We help you save places you visit for your events</h3>
 		<button id="myBtn" class="w3-right w3-hover-light-grey"
 				style="background: url(img/help-btn-small.png);width: 64px;height: 64px;"></button>
 		<!--<div style="min-height: 30px">-->
 	</div>
 </div>
 <div>
-	<!-- Trigger/Open The Modal -->
-	<!--<button id="myBtn" class="w3-right w3-hover-light-grey"-->
-	<!--style="background: url(img/help-btn-small.png);width: 64px;height: 64px;"></button>-->
-
 	<!-- The Modal -->
 	<div id="myModalHelp" class="modalHelp" style="z-index: 9999">
 
@@ -92,78 +89,97 @@
 			<img class="d-block w-100" src="/img/appartment.jpg">
 		</div>
 	</div>
-	<div class="w3-center carousel-caption w3-margin-top">
-		<div class="w3-center">
-			<h1 class="d-none d-md-block w3-xxlarge w3-text-teal w3-animate-bottom">We help you save places you visit
-				for your events</h1>
-		</div>
-		<div class="w3-row-padding w3-center w3-margin-top">
-			<input class="w3-input w3-padding-14" style="width: 100%" id="placeTitle"
-				   placeholder="What place did you visited?" ng-model="title" autofocus required>
-			<button id="addPlace" style="width: 50%; border: 5px solid #FFF;margin-top:10px; background-color: #3369E7"
-					class="w3-button" onclick="document.getElementById('form').style.display='block'">Add Details
-			</button>
-		</div>
+
+	<div class="w3-center carousel-caption w3-margin-top" style="width:40%">
+
+
+		<!--<div class="w3-row-padding w3-center w3-margin-top" style="width:50%">-->
+			<form class="input-group" id="listform" ng-submit="addPlace()"	  onSubmit="alert('Successfully added. '); document.forms['listform'].reset(); window.location.href=window.location.href">
+				<input class="w3-input" id="title" placeholder="Title (required)" ng-model="title" style="margin-bottom: 10px" autofocus required/>
+
+				<select id="placeType" style="width: 100%" class="w3-left" ng-model="placeType"   autofocus required>
+					<option value=""> - Choose Type - </option>
+					<option ng-repeat="option in placeTypes" value="{{option}}" ng-selected="Apartment">{{option}}
+					</option>
+				</select>
+
+				<input class="w3-input" id="autocomplete" placeholder="Enter your address" ng-model="address" style="margin-bottom: 5px; margin-top: 5px"
+					   onFocus="geolocate()" type="text"> </input>
+
+				<input class="w3-input" type="number" min="0" id="price" placeholder="Price" ng-model="price"  style="margin-bottom: 5px" autofocus>
+
+				<input class="w3-input" type="date" id="dateVisited" placeholder="Pick the date you visited it" style="margin-bottom: 5px"  ng-model="dateVisited" autofocus>
+
+				<input class="w3-input" id="emailContact" type="email" placeholder="Email" ng-model="emailContact" style="margin-bottom: 5px"  autofocus>
+
+				<input class="w3-input" id="phone" min="0" type="number" placeholder="Phone Number" ng-model="phone" style="margin-bottom: 5px"  autofocus>
+
+				<textarea class="w3-input" id="notes" placeholder="What do you think about this place" ng-model="notes" style="margin-bottom: 5px"  autofocus> </textarea>
+
+				<button class="w3-button w3-text-white input-block-level"
+						style="margin-top:15px; margin-left: 3px; background-color: #3369E7" type="submit"> Add place </button>
+				<!--<button class="w3-button w3-text-white w3-right" style="margin-top:15px; background-color: #3369E7"-->
+						<!--ng-click="document.forms['listform'].reset()" type="reset">Clear form-->
+				<!--</button>-->
+
+
+			</form>
+		<!--</div>-->
 	</div>
 </div>
 <!--// add form -->
 <div>
 	<div id="form" class="modal" style="min-height:260px;">
 		<div class="modal-content">
-			<span class="close">&times;</span>
-			<form class=" w3-container  w3-card-4" id="listform" ng-submit="addPlace()"
-				  onSubmit="alert('Successfully added. '); document.forms['listform'].reset()">
+			<!--<span class="close">&times;</span>-->
+			<!--<form class=" w3-container  w3-card-4" id="listform" ng-submit="addPlace()"-->
+			<!--onSubmit="alert('Successfully added. '); document.forms['listform'].reset()">-->
 
-				<div class="field-wrapper required-field w3-container">
-					<input class="w3-input" id="title" placeholder="Title (required)" ng-model="title"
-						   autofocus required/>
-				</div>
+			<!--<div class="field-wrapper required-field w3-container">-->
+			<!--<input class="w3-input" id="title" placeholder="Title (required)" ng-model="title"  autofocus required/>-->
+			<!--</div>-->
 
-				<!--<div style="height: 10px"></div>-->
-				<div class="w3-container">
-					<select id="placeType" style="width: 100%" class="w3-left" data-ng-model="placeType" autofocus
-							required>
-						<option value=""> - Choose Type -</option>
-						<option ng-repeat="option in placeTypes" value="{{option}}" ng-selected="Apartment">{{option}}
-						</option>
-					</select>
-				</div>
-				<div class="w3-container">
-					<input class="w3-input" id="autocomplete" placeholder="Enter your address" ng-model="address"
-						   onFocus="geolocate()"
-						   type="text">
-					</input>
-				</div>
-				<div class="w3-container">
-					<input class="w3-input" type="number" min="0" id="price" placeholder="Price" ng-model="price"
-						   autofocus>
-				</div>
-				<div class="w3-container">
-					<input class="w3-input" type="date" id="dateVisited" placeholder="Pick the date you visited it"
-						   ng-model="dateVisited" autofocus>
-				</div>
-				<div class="w3-container">
-					<input class="w3-input" id="emailContact" type="email" placeholder="Email"
-						   ng-model="emailContact" autofocus>
-				</div>
-				<div class="w3-container">
-					<input class="w3-input" id="phone" min="0" type="number" placeholder="Phone Number" ng-model="phone"
-						   autofocus>
-				</div>
-				<div class="w3-container">
-								<textarea class="w3-input" id="notes"
-										  placeholder="What do you think about this place" ng-model="notes" autofocus>
-								</textarea>
-				</div>
-				<div class="w3-container">
-					<button class="w3-button w3-text-white w3-right"
-							style="margin-top:15px; margin-left: 3px; background-color: #3369E7" type="submit">Add place
-					</button>
-					<button class="w3-button w3-text-white w3-right" style="margin-top:15px; background-color: #3369E7"
-							ng-click="document.forms['listform'].reset()" type="reset">Clear form
-					</button>
-				</div>
-				<div style="height: 10px"></div>
+			<!--<div style="height: 10px"></div>-->
+			<!--<div class="w3-container">-->
+			<!--<select id="placeType" style="width: 100%" class="w3-left" data-ng-model="placeType" autofocus-->
+			<!--required>-->
+			<!--<option value=""> - Choose Type -</option>-->
+			<!--<option ng-repeat="option in placeTypes" value="{{option}}" ng-selected="Apartment">{{option}}-->
+			<!--</option>-->
+			<!--</select>-->
+			<!--</div>-->
+			<!--<div class="w3-container">-->
+			<!--<input class="w3-input" id="autocomplete" placeholder="Enter your address" ng-model="address"-->
+			<!--onFocus="geolocate()"-->
+			<!--type="text">-->
+			<!--</input>-->
+			<!--</div>-->
+			<!--<div class="w3-container">-->
+			<!--<input class="w3-input" type="number" min="0" id="price" placeholder="Price" ng-model="price"   autofocus>-->
+			<!--</div>-->
+			<!--<div class="w3-container">-->
+			<!--<input class="w3-input" type="date" id="dateVisited" placeholder="Pick the date you visited it" ng-model="dateVisited" autofocus>-->
+			<!--</div>-->
+			<!--<div class="w3-container">-->
+			<!--<input class="w3-input" id="emailContact" type="email" placeholder="Email"  ng-model="emailContact" autofocus>-->
+			<!--</div>-->
+			<!--<div class="w3-container">-->
+			<!--<input class="w3-input" id="phone" min="0" type="number" placeholder="Phone Number" ng-model="phone"  autofocus>-->
+			<!--</div>-->
+			<!--<div class="w3-container">-->
+			<!--<textarea class="w3-input" id="notes"-->
+			<!--placeholder="What do you think about this place" ng-model="notes" autofocus>-->
+			<!--</textarea>-->
+			<!--</div>-->
+			<div class="w3-container">
+				<!--<button class="w3-button w3-text-white w3-right"-->
+						<!--style="margin-top:15px; margin-left: 3px; background-color: #3369E7" type="submit">Add place-->
+				<!--</button>-->
+				<!--<button class="w3-button w3-text-white w3-right" style="margin-top:15px; background-color: #3369E7"-->
+						<!--ng-click="document.forms['listform'].reset()" type="reset">Clear form-->
+				<!--</button>-->
+			</div>
+			<div style="height: 10px"></div>
 			</form>
 		</div>
 	</div>

@@ -13,7 +13,7 @@ listIt.controller('listItCtrl', function listItCtrl($scope, $filter, $location, 
     $scope.editedPlace = null;
 	$scope.placeTypes = ["Apartment", "Conference", "House", "Party", "Wedding Venue","University","Other"];
 	$scope.dateVisited = new Date();
-	$scope.emailContact = "myname@example.com";
+	$scope.emailContact = '';
 
 	$scope.$watch('places', function () {
         var total = 0;
