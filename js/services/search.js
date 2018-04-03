@@ -25,7 +25,7 @@ var search = instantsearch({
 	indexName: 'places',
 	urlSync: true,
 	searchParameters: {
-		hitsPerPage: 10
+		hitsPerPage: 5
 	}
 });
 
@@ -43,21 +43,10 @@ priceAscIndex.setSettings({
 	],
 });*/
 
-var search = instantsearch({
-	// Replace with your own values
-	appId: 'TKQ0MXPBU5',
-	apiKey: '48a167ccc2a2912194f2ad2957ad0e22', // search only API key, no ADMIN key
-	indexName: 'places',
-	urlSync: true,
-	searchParameters: {
-		hitsPerPage: 10
-	}
-});
-
 search.addWidget(
 	instantsearch.widgets.searchBox({
 		container: '#search-input',
-		placeholder: 'Search for products'
+		placeholder: 'Search for places'
 	})
 );
 
@@ -95,11 +84,11 @@ search.addWidget(
 			limit: 10,
 		},
 		templates: {
-			header: getHeader('Type'),
+			header: getHeader('type'),
 		},
-		collapsible: {
+		/*collapsible: {
 			collapsed: false,
-		},
+		},*/
 	})
 );
 
@@ -113,15 +102,15 @@ search.addWidget(
 			},
 		},
 		templates: {
-			header: getHeader('Price'),
+			header: getHeader('price'),
 			empty: "We didn't find any results for the search <em>\"{{query}}\"</em>",
 		},
-		collapsible: {
+		/*collapsible: {
 			collapsed: false,
-		},
+		},*/
 	})
 );
-search.addWidget(
+/*search.addWidget(
 	instantsearch.widgets.clearAll({
 		container: '#clear-all',
 		templates: {
@@ -130,25 +119,25 @@ search.addWidget(
 		autoHideContainer: false,
 		clearsQuery: true,
 	})
-);
+);*/
 search.addWidget(
 	instantsearch.widgets.numericRefinementList({
 		container: '#date',
 		attributeName: 'dateValue',
 		options: [
 			{name: 'All'},
-			{start:new Date().getTime()- (7 * 24 * 60 * 60 * 1000),  end:new Date().getTime(), name: 'This week'},
-			{start:new Date().getTime()- (30 * 24 * 60 * 60 * 1000),  end:new Date().getTime(), name: 'This month'},
-			{start:new Date().getTime()- (180 * 24 * 60 * 60 * 1000),  end:new Date().getTime(), name: 'Last six month'},
-			{start:new Date().getTime()- (365 * 24 * 60 * 60 * 1000),  end:new Date().getTime(), name: 'This year'},
+			{start:new Date().getTime()- (7 * 24 * 60 * 60 * 1000),  end:new Date().getTime(), name: 'Past 7 days'},
+			{start:new Date().getTime()- (30 * 24 * 60 * 60 * 1000),  end:new Date().getTime(), name: 'Past 30 days'},
+			{start:new Date().getTime()- (180 * 24 * 60 * 60 * 1000),  end:new Date().getTime(), name: 'Past six month'},
+			{start:new Date().getTime()- (365 * 24 * 60 * 60 * 1000),  end:new Date().getTime(), name: 'Past year'},
 		],
 templates: {
-	header: getHeader('Date visited'),
+	header: getHeader('date'),
 	empty: "We didn't find any results for the search"
 },
-collapsible: {
+/*collapsible: {
 	collapsed: false,
-},
+},*/
 })
 );
 
@@ -156,7 +145,7 @@ search.addWidget(
 	instantsearch.widgets.currentRefinedValues({
 		container: '#active-filters',
 		clearAll: 'after',
-		clearsQuery: true,
+		clearsQuery: false,
 		attributes: [
 			{name: 'placeType', label: 'Type'},
 			{name: 'price', label: 'Price'},
@@ -175,12 +164,12 @@ search.addWidget(
 			button: 'Apply',
 		},
 		templates: {
-			header: getHeader('Price range'),
+			header: getHeader('range'),
 			empty: "We didn't find any results for the search"
 		},
-		collapsible: {
+		/*collapsible: {
 			collapsed: false,
-		},
+		},*/
 	})
 );
 /*search.addWidget(
@@ -217,7 +206,10 @@ function getTemplate(templateName) {
 }
 
 function getHeader(title) {
-	return `<h5>${title}</h5>`;
+	return `<h5>Sort by ${title}</h5>
+            <a title="How to sort by ${title}?" id=sortBy${title}  class="w3-delete w3-button w3-right w3-hover-grey"
+				   style="margin-left: 10px; display: inline-block"><i class="fa fa-question-circle ${title}"
+											   style="font-size:24px;color:black; display: inline-block"></i></a>`;
 }
 
 search.start();

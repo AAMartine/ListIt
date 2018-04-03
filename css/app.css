@@ -44,7 +44,7 @@ header img {
 #search-input input {
 	font-size: 28px;
 	font-weight: 100;
-	width: 74%;
+	width: 100%;
 	margin-left: 26%;
 	padding: 10px 0 6px;
 	border: none;
@@ -263,6 +263,7 @@ header img {
 .facet h5 {
 	margin: 0 0 6px;
 	padding: 0 0 6px;
+	display: inline-block;
 	text-transform: uppercase;
 	border-bottom: 2px solid #eee;
 }
@@ -279,6 +280,7 @@ header img {
 .facet a {
 	color: #000;
 	text-decoration: none;
+	display: inline-block;
 	cursor: pointer;
 }
 
