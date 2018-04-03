@@ -207,8 +207,8 @@ function getTemplate(templateName) {
 
 function getHeader(title) {
 	return `<h5>Sort by ${title}</h5>
-            <a title="How to sort by ${title}?" id=sortBy${title}  class="w3-delete w3-button w3-right w3-hover-grey"
-				   style="margin-left: 10px; display: inline-block"><i class="fa fa-question-circle ${title}"
+            <a title="How to sort by ${title}?" id="${title}-sort"  class="w3-delete w3-button w3-right w3-hover-grey"
+				   style="margin-left: 10px; display: inline-block"><i class="fa fa-question-circle ${title}-sort"
 											   style="font-size:24px;color:black; display: inline-block"></i></a>`;
 }
 

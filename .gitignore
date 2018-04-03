@@ -30,3 +30,4 @@ tmp
 *.log
 firebase-debug.log
 firebase-debug.log
+*.log

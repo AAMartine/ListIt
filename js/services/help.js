@@ -50,16 +50,16 @@ var spanDatehelp = document.getElementById("closeDate-help");
 
 // When the user clicks on the button, open the modal
 document.addEventListener('click', function (e) {
-	if(hasClass(e.target).indexOf('type') > -1 ) {
+	if(hasClass(e.target).indexOf('type-sort') > -1 ) {
 		modalTypeHelp.style.display = "block";
 	}
-	if(hasClass(e.target).indexOf('price') > -1 ) {
+	if(hasClass(e.target).indexOf('price-sort') > -1 ) {
 		modalPriceHelp.style.display = "block";
 	}
-	if(hasClass(e.target).indexOf('range') > -1) {
+	if(hasClass(e.target).indexOf('range-sort') > -1) {
 		modalRangeHelp.style.display = "block";
 	}
-	if(hasClass(e.target).indexOf('date') > -1 ) {
+	if(hasClass(e.target).indexOf('date-sort') > -1 ) {
 		modalDateHelp.style.display = "block";
 	}
 
