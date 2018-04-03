@@ -16,6 +16,7 @@ listIt.controller('listItCtrl', function listItCtrl($scope, $filter, $location, 
 	$scope.emailContact = '';
 	$scope.placeType='Apartment';
 
+
 	$scope.$watch('places', function () {
         var total = 0;
         var remaining = 0;
@@ -69,7 +70,7 @@ listIt.controller('listItCtrl', function listItCtrl($scope, $filter, $location, 
 
 		setTimeout(function() {
 			location.reload(true);
-		}, 2000);
+		}, 1000);
     };
 
 	$scope.searchPlace = function(textSearch) {
