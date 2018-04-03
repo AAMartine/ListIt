@@ -14,6 +14,7 @@ listIt.controller('listItCtrl', function listItCtrl($scope, $filter, $location, 
 	$scope.placeTypes = ["Apartment", "Conference", "House", "Party", "Wedding Venue","University","Other"];
 	$scope.dateVisited = new Date();
 	$scope.emailContact = '';
+	$scope.placeType='Apartment';
 
 	$scope.$watch('places', function () {
         var total = 0;
@@ -38,6 +39,7 @@ listIt.controller('listItCtrl', function listItCtrl($scope, $filter, $location, 
     $scope.addPlace = function () {
 
 		// (x === undefined) ? def_val : x
+
         var title = $scope.title.trim();
         var placeType = $scope.placeType;
 		var price = ($scope.price === undefined) ? 0 : $scope.price;
@@ -64,6 +66,10 @@ listIt.controller('listItCtrl', function listItCtrl($scope, $filter, $location, 
 
 
         $scope.title ='';
+
+		setTimeout(function() {
+			location.reload(true);
+		}, 2000);
     };
 
 	$scope.searchPlace = function(textSearch) {
@@ -109,8 +115,8 @@ listIt.controller('listItCtrl', function listItCtrl($scope, $filter, $location, 
 		var result = confirm("Do you want to delete the place " + place[0].title + "?");
     	if (result) {
 			$scope.places.$remove(place[0]);
-			alert("Deleting.....");
-			var delayInMilliseconds = 1000; //1 second
+			//alert("Deleting.....");
+			var delayInMilliseconds = 3000; //1 second
 			setTimeout(function() {
 				location.reload(true);
 			}, delayInMilliseconds);

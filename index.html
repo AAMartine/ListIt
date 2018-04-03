@@ -95,11 +95,16 @@
 
 		<!--<div class="w3-row-padding w3-center w3-margin-top" style="width:50%">-->
 			<form class="input-group" id="listform" ng-submit="addPlace()"	  onSubmit="alert('Successfully added. '); document.forms['listform'].reset(); window.location.href=window.location.href">
-				<input class="w3-input" id="title" placeholder="Title (required)" ng-model="title" style="margin-bottom: 10px" autofocus required/>
+				<!--<div class="form-group" style="width:100%">-->
+					<!--<label for="title"  style=" text-align: left">Title of place you want to add  <span style="color:red;">*</span></label>-->
+				<input class="w3-input" id="title" placeholder="Title - required field (*) " ng-model="title" style="margin-bottom: 10px" autofocus required/>
+				<!--</div>-->
 
 				<select id="placeType" style="width: 100%" class="w3-left" ng-model="placeType"   autofocus required>
-					<option value=""> - Choose Type - </option>
-					<option ng-repeat="option in placeTypes" value="{{option}}" ng-selected="Apartment">{{option}}
+					<!--<option value=""> - Choose Type - </option>-->
+					<!--<option ng-selected="placeType">{{placeTypes[2]}}}</option>-->
+
+					<option ng-repeat="option in placeTypes" value="{{option}}" >{{option}}
 					</option>
 				</select>
 
