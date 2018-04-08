@@ -1,31 +1,31 @@
-[debug] [2018-04-03T18:02:07.360Z] ----------------------------------------------------------------------
-[debug] [2018-04-03T18:02:07.363Z] Command:       /usr/local/Cellar/node/9.5.0/bin/node /usr/local/bin/firebase serve
-[debug] [2018-04-03T18:02:07.363Z] CLI Version:   3.17.6
-[debug] [2018-04-03T18:02:07.363Z] Platform:      darwin
-[debug] [2018-04-03T18:02:07.363Z] Node Version:  v9.5.0
-[debug] [2018-04-03T18:02:07.364Z] Time:          Tue Apr 03 2018 14:02:07 GMT-0400 (EDT)
-[debug] [2018-04-03T18:02:07.364Z] ----------------------------------------------------------------------
+[debug] [2018-04-08T23:54:36.379Z] ----------------------------------------------------------------------
+[debug] [2018-04-08T23:54:36.381Z] Command:       /usr/local/Cellar/node/9.5.0/bin/node /usr/local/bin/firebase serve
+[debug] [2018-04-08T23:54:36.382Z] CLI Version:   3.17.6
+[debug] [2018-04-08T23:54:36.382Z] Platform:      darwin
+[debug] [2018-04-08T23:54:36.382Z] Node Version:  v9.5.0
+[debug] [2018-04-08T23:54:36.383Z] Time:          Sun Apr 08 2018 19:54:36 GMT-0400 (EDT)
+[debug] [2018-04-08T23:54:36.383Z] ----------------------------------------------------------------------
 [debug] 
-[debug] [2018-04-03T18:02:07.375Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2018-04-03T18:02:07.376Z] > authorizing via signed-in user
-[debug] [2018-04-03T18:02:07.377Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/listit-23117  
+[debug] [2018-04-08T23:54:36.393Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-04-08T23:54:36.393Z] > authorizing via signed-in user
+[debug] [2018-04-08T23:54:36.399Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/listit-23117  
   
- Tue Apr 03 2018 14:02:07 GMT-0400 (EDT)
-[debug] [2018-04-03T18:02:07.672Z] <<< HTTP RESPONSE 200
-[debug] [2018-04-03T18:02:07.672Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/listit-23117/tokens  
+ Sun Apr 08 2018 19:54:36 GMT-0400 (EDT)
+[debug] [2018-04-08T23:54:36.662Z] <<< HTTP RESPONSE 200
+[debug] [2018-04-08T23:54:36.663Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/listit-23117/tokens  
   
- Tue Apr 03 2018 14:02:07 GMT-0400 (EDT)
-[debug] [2018-04-03T18:02:08.070Z] <<< HTTP RESPONSE 200
-[debug] [2018-04-03T18:02:08.071Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/listit-23117  
+ Sun Apr 08 2018 19:54:36 GMT-0400 (EDT)
+[debug] [2018-04-08T23:54:36.945Z] <<< HTTP RESPONSE 200
+[debug] [2018-04-08T23:54:36.945Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/listit-23117  
   
- Tue Apr 03 2018 14:02:08 GMT-0400 (EDT)
-[debug] [2018-04-03T18:02:08.257Z] <<< HTTP RESPONSE 200
+ Sun Apr 08 2018 19:54:36 GMT-0400 (EDT)
+[debug] [2018-04-08T23:54:37.187Z] <<< HTTP RESPONSE 200
 [info] 
 [info] === Serving from '/Users/emadaghayi/Dropbox/PhD_Materials/Second_Semester/UI_Design_632/HomeWorks/Hw5/Workespace/ListIt'...
 [info] 
-[debug] [2018-04-03T18:02:08.259Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/8829946545/clients/_:getWebAppConfig  
+[debug] [2018-04-08T23:54:37.189Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/8829946545/clients/_:getWebAppConfig  
   
- Tue Apr 03 2018 14:02:08 GMT-0400 (EDT)
-[debug] [2018-04-03T18:02:08.552Z] <<< HTTP RESPONSE 200
+ Sun Apr 08 2018 19:54:37 GMT-0400 (EDT)
+[debug] [2018-04-08T23:54:37.481Z] <<< HTTP RESPONSE 200
 [info] ✔  hosting: Local server: http://localhost:5000
 

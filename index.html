@@ -26,49 +26,60 @@
 	}</style>
 </head>
 
-<body ng-controller="listItCtrl">
+<body ng-controller="listItCtrl" class="container">
 <!--header and app declaration-->
-<div id="listItapp">
-	<div class="w3-container w3-theme " id="myHeader">
-		<img src="img/pushpin4.png" alt="Red pin"
-			 style="margin-right:20px; padding:0;  width: 80px;height: 80px; float:left">
-		<h1 class="w3-xxxlarge w3-animate-bottom">List It</h1>
-		<h3>We help you save places you visit for your events</h3>
-		<button id="myBtn" class="w3-right w3-hover-light-grey"
-				style="background: url(img/help-btn-small.png);width: 64px;height: 64px;"></button>
-		<!--<div style="min-height: 30px">-->
-	</div>
-</div>
-<div>
-	<!-- The Modal -->
-	<div id="myModalHelp" class="modalHelp" style="z-index: 9999">
 
-		<!-- Modal content -->
-		<div class="modal-content-help">
-			<span class="close-help">&times;</span>
-			<p>List it helps you keep details of places you have visited for your event.
-			</p>
-			<ul>
-				<li>You can add a place easily right from the home page.
-					<ul>
-						<li>After you hit the button you can insert all information about the place.</li>
-						<li>Just pay attention Title and Type of the place are required for adding a place.</li>
-						<li>You can save the information of the place via 'Add place' button</li>
-					</ul>
-				</li>
-				<li>You can search between places you have seen using different filters in the left side of the main
-					page.
-				</li>
-				<li>
-					You can remove the place that you have added via red cross button on the right top of each item in
-					list.
-				</li>
-				<li>If you need any help please <a style="color: darkblue" href="mailto:aaugust4@gmu.edu">email us
-					here</a>.
-				</li>
-			</ul>
+<div class="container">
+	<div id="listItapp">
+
+		<div class="p-3 mb-2 text-white" style="background-color: #009688" id="myHeader">
+			<!--<img src="img/pushpin4.png" alt="Red pin"-->
+			<!--style="margin-right:20px; padding:0;  width: 80px;height: 80px; float:left">-->
+			<div class="row">
+				<img  src="img/todo-llist.png"/>
+				<div class="col-10">
+				<h1 >List-it application</h1>
+					<h6 >We help you save places you visit for your events</h6>
+				</div>
+
+				<button id="myBtn"  style="background: url(img/help-btn-small.png);width: 64px;height: 64px;"></button>
+				<!--<div style="min-height: 30px">-->
+			</div>
+
 		</div>
+	</div>
+	<div>
+		<!-- The Modal -->
+		<div id="myModalHelp" class="modalHelp" style="z-index: 9999">
 
+			<!-- Modal content -->
+			<div class="modal-content-help">
+				<span class="close-help">&times;</span>
+				<p>List it helps you keep details of places you have visited for your event.
+				</p>
+				<ul>
+					<li>You can add a place easily right from the home page.
+						<ul>
+							<li>After you hit the button you can insert all information about the place.</li>
+							<li>Just pay attention Title and Type of the place are required for adding a place.</li>
+							<li>You can save the information of the place via 'Add place' button</li>
+						</ul>
+					</li>
+					<li>You can search between places you have seen using different filters in the left side of the main
+						page.
+					</li>
+					<li>
+						You can remove the place that you have added via red cross button on the right top of each item
+						in
+						list.
+					</li>
+					<li>If you need any help please <a style="color: darkblue" href="mailto:aaugust4@gmu.edu">email us
+						here</a>.
+					</li>
+				</ul>
+			</div>
+
+		</div>
 	</div>
 </div>
 <!--<div id="slider" class="carousel slide" data-ride="carousel" >-->
@@ -96,9 +107,13 @@
 <!--</div>-->
 <!--</div>-->
 <!--</div>-->
-<div style="background-image: url('/img/apartment.jpg');">
+<!--<div style="background-image: url('/img/apartment.jpg');">-->
+<div class="container">
 
-
+	<div class="card">
+		<div class="card-header"> Insert the data of the place in the bellow form
+		</div>
+		<div class="card-body">
 	<!--<div class="w3-row-padding w3-center w3-margin-top" style="width:50%">-->
 	<div class="row">
 		<div class="col-lg-1"></div>
@@ -140,7 +155,8 @@
 			<div class="form-group row">
 				<label for="price" class="col-3 col-form-label">Price </label>
 				<div class="col-9">
-					<input class="form-control" type="number" min="0" id="price" placeholder="Price of the place" ng-model="price"
+					<input class="form-control" type="number" min="0" id="price" placeholder="Price of the place"
+						   ng-model="price"
 						   autofocus>
 				</div>
 			</div>
@@ -178,93 +194,96 @@
 			</div>
 			<div class="form-group row">
 				<div class="col-3"></div>
-					<div class="col-9">
-						<button class="btn btn-primary btn-block"
-								style="margin-top:15px;margin-bottom:15px; background-color: #3369E7" type="submit"> Save It
-						</button>
-					</div>
+				<div class="col-9">
+					<button class="btn btn-primary btn-block"
+							style="margin-top:15px;margin-bottom:15px; background-color: #3369E7" type="submit"> Save It
+					</button>
+				</div>
 
 			</div>
 		</form>
 		<!--</div>-->
 		<div class="col-lg-1"></div>
 	</div>
-</div>
-</div>
-<!--// add form -->
-<div>
-	<div id="form" class="modal" style="min-height:260px;">
-		<div class="modal-content">
-			<!--<span class="close">&times;</span>-->
-			<!--<form class=" w3-container  w3-card-4" id="listform" ng-submit="addPlace()"-->
-			<!--onSubmit="alert('Successfully added. '); document.forms['listform'].reset()">-->
-
-			<!--<div class="field-wrapper required-field w3-container">-->
-			<!--<input class="w3-input" id="title" placeholder="Title (required)" ng-model="title"  autofocus required/>-->
-			<!--</div>-->
-
-			<!--<div style="height: 10px"></div>-->
-			<!--<div class="w3-container">-->
-			<!--<select id="placeType" style="width: 100%" class="w3-left" data-ng-model="placeType" autofocus-->
-			<!--required>-->
-			<!--<option value=""> - Choose Type -</option>-->
-			<!--<option ng-repeat="option in placeTypes" value="{{option}}" ng-selected="Apartment">{{option}}-->
-			<!--</option>-->
-			<!--</select>-->
-			<!--</div>-->
-			<!--<div class="w3-container">-->
-			<!--<input class="w3-input" id="autocomplete" placeholder="Enter your address" ng-model="address"-->
-			<!--onFocus="geolocate()"-->
-			<!--type="text">-->
-			<!--</input>-->
-			<!--</div>-->
-			<!--<div class="w3-container">-->
-			<!--<input class="w3-input" type="number" min="0" id="price" placeholder="Price" ng-model="price"   autofocus>-->
-			<!--</div>-->
-			<!--<div class="w3-container">-->
-			<!--<input class="w3-input" type="date" id="dateVisited" placeholder="Pick the date you visited it" ng-model="dateVisited" autofocus>-->
-			<!--</div>-->
-			<!--<div class="w3-container">-->
-			<!--<input class="w3-input" id="emailContact" type="email" placeholder="Email"  ng-model="emailContact" autofocus>-->
-			<!--</div>-->
-			<!--<div class="w3-container">-->
-			<!--<input class="w3-input" id="phone" min="0" type="number" placeholder="Phone Number" ng-model="phone"  autofocus>-->
-			<!--</div>-->
-			<!--<div class="w3-container">-->
-			<!--<textarea class="w3-input" id="notes"-->
-			<!--placeholder="What do you think about this place" ng-model="notes" autofocus>-->
-			<!--</textarea>-->
-			<!--</div>-->
-			<div class="w3-container">
-				<!--<button class="w3-button w3-text-white w3-right"-->
-				<!--style="margin-top:15px; margin-left: 3px; background-color: #3369E7" type="submit">Add place-->
-				<!--</button>-->
-				<!--<button class="w3-button w3-text-white w3-right" style="margin-top:15px; background-color: #3369E7"-->
-				<!--ng-click="document.forms['listform'].reset()" type="reset">Clear form-->
-				<!--</button>-->
-			</div>
-			<div style="height: 10px"></div>
-			</form>
 		</div>
 	</div>
 </div>
+</div>
+<!--// add form -->
+<!--<div>-->
+	<!--<div id="form" class="modal" style="min-height:260px;">-->
+		<!--<div class="modal-content">-->
+			<!--&lt;!&ndash;<span class="close">&times;</span>&ndash;&gt;-->
+			<!--&lt;!&ndash;<form class=" w3-container  w3-card-4" id="listform" ng-submit="addPlace()"&ndash;&gt;-->
+			<!--&lt;!&ndash;onSubmit="alert('Successfully added. '); document.forms['listform'].reset()">&ndash;&gt;-->
+
+			<!--&lt;!&ndash;<div class="field-wrapper required-field w3-container">&ndash;&gt;-->
+			<!--&lt;!&ndash;<input class="w3-input" id="title" placeholder="Title (required)" ng-model="title"  autofocus required/>&ndash;&gt;-->
+			<!--&lt;!&ndash;</div>&ndash;&gt;-->
+
+			<!--&lt;!&ndash;<div style="height: 10px"></div>&ndash;&gt;-->
+			<!--&lt;!&ndash;<div class="w3-container">&ndash;&gt;-->
+			<!--&lt;!&ndash;<select id="placeType" style="width: 100%" class="w3-left" data-ng-model="placeType" autofocus&ndash;&gt;-->
+			<!--&lt;!&ndash;required>&ndash;&gt;-->
+			<!--&lt;!&ndash;<option value=""> - Choose Type -</option>&ndash;&gt;-->
+			<!--&lt;!&ndash;<option ng-repeat="option in placeTypes" value="{{option}}" ng-selected="Apartment">{{option}}&ndash;&gt;-->
+			<!--&lt;!&ndash;</option>&ndash;&gt;-->
+			<!--&lt;!&ndash;</select>&ndash;&gt;-->
+			<!--&lt;!&ndash;</div>&ndash;&gt;-->
+			<!--&lt;!&ndash;<div class="w3-container">&ndash;&gt;-->
+			<!--&lt;!&ndash;<input class="w3-input" id="autocomplete" placeholder="Enter your address" ng-model="address"&ndash;&gt;-->
+			<!--&lt;!&ndash;onFocus="geolocate()"&ndash;&gt;-->
+			<!--&lt;!&ndash;type="text">&ndash;&gt;-->
+			<!--&lt;!&ndash;</input>&ndash;&gt;-->
+
+			<!--&lt;!&ndash;</div>&ndash;&gt;-->
+			<!--&lt;!&ndash;<div class="w3-container">&ndash;&gt;-->
+			<!--&lt;!&ndash;<input class="w3-input" type="number" min="0" id="price" placeholder="Price" ng-model="price"   autofocus>&ndash;&gt;-->
+			<!--&lt;!&ndash;</div>&ndash;&gt;-->
+			<!--&lt;!&ndash;<div class="w3-container">&ndash;&gt;-->
+			<!--&lt;!&ndash;<input class="w3-input" type="date" id="dateVisited" placeholder="Pick the date you visited it" ng-model="dateVisited" autofocus>&ndash;&gt;-->
+			<!--&lt;!&ndash;</div>&ndash;&gt;-->
+			<!--&lt;!&ndash;<div class="w3-container">&ndash;&gt;-->
+			<!--&lt;!&ndash;<input class="w3-input" id="emailContact" type="email" placeholder="Email"  ng-model="emailContact" autofocus>&ndash;&gt;-->
+			<!--&lt;!&ndash;</div>&ndash;&gt;-->
+			<!--&lt;!&ndash;<div class="w3-container">&ndash;&gt;-->
+			<!--&lt;!&ndash;<input class="w3-input" id="phone" min="0" type="number" placeholder="Phone Number" ng-model="phone"  autofocus>&ndash;&gt;-->
+			<!--&lt;!&ndash;</div>&ndash;&gt;-->
+			<!--&lt;!&ndash;<div class="w3-container">&ndash;&gt;-->
+			<!--&lt;!&ndash;<textarea class="w3-input" id="notes"&ndash;&gt;-->
+			<!--&lt;!&ndash;placeholder="What do you think about this place" ng-model="notes" autofocus>&ndash;&gt;-->
+			<!--&lt;!&ndash;</textarea>&ndash;&gt;-->
+			<!--&lt;!&ndash;</div>&ndash;&gt;-->
+			<!--<div class="w3-container">-->
+				<!--&lt;!&ndash;<button class="w3-button w3-text-white w3-right"&ndash;&gt;-->
+				<!--&lt;!&ndash;style="margin-top:15px; margin-left: 3px; background-color: #3369E7" type="submit">Add place&ndash;&gt;-->
+				<!--&lt;!&ndash;</button>&ndash;&gt;-->
+				<!--&lt;!&ndash;<button class="w3-button w3-text-white w3-right" style="margin-top:15px; background-color: #3369E7"&ndash;&gt;-->
+				<!--&lt;!&ndash;ng-click="document.forms['listform'].reset()" type="reset">Clear form&ndash;&gt;-->
+				<!--&lt;!&ndash;</button>&ndash;&gt;-->
+			<!--</div>-->
+			<!--<div style="height: 10px"></div>-->
+			<!--</form>-->
+		<!--</div>-->
+	<!--</div>-->
+<!--</div>-->
 <div>
 	<!-- Sort by type Modal -->
 	<div id="sortTypeModal" class="modalHelp" style="z-index: 9999">
 
 		<!-- Modal content -->
 		<div class="modal-content-help">
-			<span class="close-help" id ="closeType-help">x</span>
-				<p>You can sort the result by type
-				</p>
-			     <ul>
-					 <li> Click on the type you want use to sort the result. </li>
-					 <li> You can select more than one type. </li>
-					 <li>The selected types are highlighted in red.</li>
-					 <li> The number besides each type indicate how many results are found for the type.</li>
-					 <li>You can click on Clear all to cancel your selection.</li>
-					 <li> Note that you can combine any of the sorting possibilities </li>
-				</ul>
+			<span class="close-help" id="closeType-help">x</span>
+			<p>You can sort the result by type
+			</p>
+			<ul>
+				<li> Click on the type you want use to sort the result.</li>
+				<li> You can select more than one type.</li>
+				<li>The selected types are highlighted in red.</li>
+				<li> The number besides each type indicate how many results are found for the type.</li>
+				<li>You can click on Clear all to cancel your selection.</li>
+				<li> Note that you can combine any of the sorting possibilities</li>
+			</ul>
 		</div>
 
 	</div>
@@ -276,15 +295,17 @@
 
 		<!-- Modal content -->
 		<div class="modal-content-help">
-			<span class="close-help" id ="closePrice-help">x</span>
+			<span class="close-help" id="closePrice-help">x</span>
 			<p>You can sort the result by price
 			</p>
 			<ul>
-				<li> Use the slider to define the price range </li>
-				<li> Note that the results shown have their price between the left value of the slider and the right value </li>
+				<li> Use the slider to define the price range</li>
+				<li> Note that the results shown have their price between the left value of the slider and the right
+					value
+				</li>
 				<li>The selected range is also shown on top of the results</li>
 				<li>You can click on Clear all to cancel your selection</li>
-				<li> Note that you can combine any of the sorting possibilities </li>
+				<li> Note that you can combine any of the sorting possibilities</li>
 			</ul>
 		</div>
 
@@ -297,12 +318,12 @@
 
 		<!-- Modal content -->
 		<div class="modal-content-help">
-			<span class="close-help" id ="closeDate-help">x</span>
+			<span class="close-help" id="closeDate-help">x</span>
 			<p>You can sort the result by date
 			</p>
 			<ul>
 				<li> You can specify the period you want results for</li>
-				<li> Note that you can combine any of the sorting possibilities </li>
+				<li> Note that you can combine any of the sorting possibilities</li>
 			</ul>
 		</div>
 
@@ -315,25 +336,26 @@
 
 		<!-- Modal content -->
 		<div class="modal-content-help">
-			<span class="close-help" id ="closeRange-help">x</span>
+			<span class="close-help" id="closeRange-help">x</span>
 			<p>This option is similar to price
 			</p>
 			<ul>
-				<li> You can now type the price change directly </li>
-				<li> Note that the slider is automatically updated to macth your query </li>
+				<li> You can now type the price change directly</li>
+				<li> Note that the slider is automatically updated to macth your query</li>
 				<li>The selected range is also shown on top of the results</li>
 				<li>You can click on Clear all to cancel your selection</li>
-				<li> Note that you can combine any of the sorting possibilities </li>
+				<li> Note that you can combine any of the sorting possibilities</li>
 			</ul>
 		</div>
 
 	</div>
 </div>
 
-<div>
+<div class="w3-container">
 	<header>
 		<div>
-			<input id="search-input" class="w3-half" placeholder="Search for a place" ng-model="search" autofocus required>
+			<input id="search-input" class="w3-half w3-container" placeholder="Search for a place" ng-model="search" autofocus
+				   required>
 		</div>
 	</header>
 	<main style="min-height: 700px">
@@ -355,13 +377,7 @@
 	</main>
 </div>
 <div class="w3-container w3-theme w3-padding-16" style="font-size:small;">
-	<h3>list It — the application to help you track easier the places you visit for your venues</h3>
-
-	<!--<div style="position:relative;bottom:55px;" class="w3-tooltip w3-right">-->
-	<!--<span class="w3-text w3-theme-light w3-padding">Go To Top</span>-->
-	<!--<a class="w3-text-white" href="#myHeader"><span class="w3-xlarge">-->
-	<!--<i class="fa fa-chevron-circle-up"></i></span></a>-->
-	<!--</div>-->
+	<h6>list It — the application to help you track easier the places you visit for your venues</h6>
 </div>
 
 <script type="text/html" id="hit-template">
@@ -370,7 +386,7 @@
 		<div class="hit-image">
 			<img src="img/defaul-image.jpg" alt="default">
 		</div>
-		<div class="hit-content">
+		<div class="hit-content w3-container">
 			<a title="Delete" id="delete-row" class="w3-delete w3-button w3-right w3-hover-grey"
 			   style="margin-top: 10px" ng-click="removePlace(placeId)"><i class="fa fa-remove"
 																		   style="font-size:24px;color:red"></i></a>
