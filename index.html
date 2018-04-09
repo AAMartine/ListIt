@@ -109,9 +109,10 @@
 <!--</div>-->
 <!--</div>-->
 <!--<div style="background-image: url('/img/apartment.jpg');">-->
-<div class="container">
 
-	<div class="card">
+<div class="container mt-2" >
+
+	<div class="card" >
 		<div class="card-header"> Insert the data of the place in the bellow form
 		</div>
 		<div class="card-body">
@@ -144,15 +145,15 @@
 							</select>
 						</div>
 					</div>
-
 					<div class="form-group row">
-						<label for="autocomplete" class="col-3 col-form-label">Address </label>
+						<label for="dateVisitedInput" class="col-3 col-form-label">Date of visited </label>
 						<div class="col-9">
-							<input class="form-control" id="autocomplete" placeholder="Enter address of the place"
-								   ng-model="address"
-								   onFocus="geolocate()" type="text"> </input>
+							<input class="form-control" type="date" id="dateVisitedInput"
+								   placeholder="Pick the date you visited it"
+								   ng-model="dateVisited" >
 						</div>
 					</div>
+
 					<div class="form-group row">
 						<label for="priceInput" class="col-3 col-form-label">Price </label>
 						<div class="col-9">
@@ -163,11 +164,11 @@
 						</div>
 					</div>
 					<div class="form-group row">
-						<label for="dateVisitedInput" class="col-3 col-form-label">Date of visited </label>
+						<label for="phone" class="col-3 col-form-label">Phone number of contact point </label>
 						<div class="col-9">
-							<input class="form-control" type="date" id="dateVisitedInput"
-								   placeholder="Pick the date you visited it"
-								   ng-model="dateVisited" >
+							<input class="form-control" id="phone" min="0" type="number" placeholder="123-456-7890"
+								   ng-model="phone"
+							>
 						</div>
 					</div>
 					<div class="form-group row">
@@ -179,14 +180,16 @@
 
 						</div>
 					</div>
+
 					<div class="form-group row">
-						<label for="phone" class="col-3 col-form-label">Phone number of contact point </label>
+						<label for="autocomplete" class="col-3 col-form-label">Address </label>
 						<div class="col-9">
-							<input class="form-control" id="phone" min="0" type="number" placeholder="123-456-7890"
-								   ng-model="phone"
-								   >
+							<input class="form-control" id="autocomplete" placeholder="Enter address of the place"
+								   ng-model="address"
+								   onFocus="geolocate()" type="text"> </input>
 						</div>
 					</div>
+
 					<div class="form-group row">
 						<label for="notes" class="col-3 col-form-label">Description </label>
 						<div class="col-9">
@@ -355,7 +358,7 @@
 	</div>
 </div>
 
-<div class="container">
+<div class="container mt-3">
 	<div class="card">
 		<div class="card-header"> Search and filter the saved places in the bellow</div>
 		<div class="card-body">
