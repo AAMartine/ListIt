@@ -21,6 +21,7 @@
 		  href="https://cdn.jsdelivr.net/npm/instantsearch.js@2.5.1/dist/instantsearch-theme-algolia.min.css">
 	<link rel="stylesheet" type="text/css" href="css/app.css">
 	<link rel="stylesheet" type="text/css" href="css/modal.css">
+
 	<style>[ng-cloak] {
 		display: none;
 	}</style>
@@ -36,7 +37,7 @@
 			<!--<img src="img/pushpin4.png" alt="Red pin"-->
 			<!--style="margin-right:20px; padding:0;  width: 80px;height: 80px; float:left">-->
 			<div class="row">
-				<img src="img/todo-llist.png"/>
+				<img src="img/todo-llist.png" style="margin-left: 10px"/>
 				<div class="col-10">
 					<h1>List-it application</h1>
 					<h6>We help you save places you visit for your events</h6>
@@ -136,7 +137,7 @@
 								style="color:red; font-size: x-small;">*</span>
 						</label>
 						<div class="col-9">
-							<select id="placeType" class="form-control" ng-model="placeType" autofocus
+							<select id="placeType" class="form-control" ng-model="placeType"
 									required>
 								<option ng-repeat="option in placeTypes" value="{{option}}">{{option}}
 								</option>
@@ -158,7 +159,7 @@
 							<input class="form-control" type="number" min="0" id="priceInput"
 								   placeholder="Price of the place"
 								   ng-model="price"
-								   autofocus>
+								   >
 						</div>
 					</div>
 					<div class="form-group row">
@@ -166,7 +167,7 @@
 						<div class="col-9">
 							<input class="form-control" type="date" id="dateVisitedInput"
 								   placeholder="Pick the date you visited it"
-								   ng-model="dateVisited" autofocus>
+								   ng-model="dateVisited" >
 						</div>
 					</div>
 					<div class="form-group row">
@@ -174,7 +175,7 @@
 						<div class="col-9">
 							<input class="form-control" id="emailContact" type="email" placeholder="Email for contact "
 								   ng-model="emailContact"
-								   autofocus>
+								   >
 
 						</div>
 					</div>
@@ -183,7 +184,7 @@
 						<div class="col-9">
 							<input class="form-control" id="phone" min="0" type="number" placeholder="123-456-7890"
 								   ng-model="phone"
-								   autofocus>
+								   >
 						</div>
 					</div>
 					<div class="form-group row">
@@ -191,7 +192,7 @@
 						<div class="col-9">
 				<textarea class="form-control" id="notes" placeholder="What do you think about this place"
 						  ng-model="notes"
-						  autofocus> </textarea>
+						  > </textarea>
 						</div>
 					</div>
 					<div class="form-group row">
@@ -361,10 +362,10 @@
 			<header>
 				<div class="row">
 					<div class="col-lg-12">
-					<input id="search-input" class="form-control" placeholder="Search for a place" ng-model="search"
-						   autofocus
-						   required>
-				</div>
+						<div class="input-group">
+							<input id="search-input" class="form-control" placeholder="Search for a place"   ng-model="search" >
+						</div>
+					</div>
 				</div>
 			</header>
 			<main style="min-height: 700px">
@@ -393,13 +394,17 @@
 
 <script type="text/html" id="hit-template">
 
+	<div class="container">
 	<div class="hit">
-		<div class="hit-image">
-			<img src="img/defaul-image.jpg" alt="default">
-		</div>
-		<div class="hit-content w3-container">
-			<a title="Delete" id="delete-row" class="w3-delete w3-button w3-right w3-hover-grey"
-			   style="margin-top: 10px" ng-click="removePlace(placeId)"><i class="fa fa-remove" style="font-size:12px;color:red"></i></a>
+		<!--<div class="hit-image">-->
+			<!--<img src="img/defaul-image.jpg" alt="default">-->
+		<!--</div>-->
+		<div class="container">
+			 <!--<span class="pull-right" title="Delete" id="delete-row"><span class="btn btn-xs btn-default" ng-click="removePlace(placeId)">-->
+                            <!--<span class="glyph glyph-remove-sign" aria-hidden="true"></span>-->
+                        <!--</span>-->
+                    <!--</span>-->
+			<a title="Delete" id="delete-row" class="w3-delete w3-button w3-right w3-hover-grey"  ng-click="removePlace(placeId)"><i class="fa fa-remove"   style="font-size:12px;color:red"></i></a>
 			<input class="placeId" style="display: none" type="text" name="input" ng-model="placeId"
 				   value={{objectID}} ng-trim="false">
 			<h4 class="w3-teal">{{title}}</h4>
@@ -416,6 +421,7 @@
 			<h5 class="w3-text-teal">--Notes-</h5>
 			<p class="hit-description">{{{_highlightResult.notes.value}}}</p>
 		</div>
+	</div>
 	</div>
 </script>
 <script src="node_modules/todomvc-common/base.js"></script>
