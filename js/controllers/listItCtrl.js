@@ -5,7 +5,7 @@
  * - retrieves and persists the model via the $firebaseArray service
  * - exposes the model to the template and provides event handlers
  */
-listIt.controller('listItCtrl', function listItCtrl($scope, $filter, $location, $firebaseObject, $firebaseArray){
+listIt.controller('listItCtrl', function listItCtrl($scope, $filter, $location, $firebaseObject, $firebaseArray, $anchorScroll){
 	var ref= firebase.database().ref('places');
 	// Bind the places to the firebase provider.
     $scope.places = $firebaseArray(ref);
@@ -16,7 +16,18 @@ listIt.controller('listItCtrl', function listItCtrl($scope, $filter, $location, 
 	$scope.emailContact = '';
 	$scope.placeType='Apartment';
 
-
+	$scope.gotoAnchor = function(x) {
+		var newHash = x;
+		if ($location.hash() !== newHash) {
+			// set the $location.hash to `newHash` and
+			// $anchorScroll will automatically scroll to it
+			$location.hash(x);
+		} else {
+			// call $anchorScroll() explicitly,
+			// since $location.hash hasn't changed
+			$anchorScroll();
+		}
+	};
 	$scope.$watch('places', function () {
         var total = 0;
         var remaining = 0;

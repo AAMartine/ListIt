@@ -8,7 +8,9 @@
 'use strict';
 
 var listIt = angular.module('listIt', ['firebase', 'ngRoute', 'ngResource']);
-
+listIt.run(['$anchorScroll', function($anchorScroll) {
+	$anchorScroll.yOffset = 50;   // always scroll by 50 extra pixels
+}]);
 listIt.filter('listItFilter', function () {
     return function (input, textsearch) {
         var filtered = {};
