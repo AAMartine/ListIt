@@ -24,7 +24,29 @@
 
 	<style>[ng-cloak] {
 		display: none;
-	}</style>
+	}
+
+		 /* width */
+	 ::-webkit-scrollbar {
+		 width: 10px;
+	 }
+
+	/* Track */
+	::-webkit-scrollbar-track {
+		background: #f1f1f1;
+	}
+
+	/* Handle */
+	::-webkit-scrollbar-thumb {
+		background: #3369E7;
+	}
+
+	/* Handle on hover */
+	::-webkit-scrollbar-thumb:hover {
+		background: #03554a;
+	}
+
+	</style>
 </head>
 
 <body ng-controller="listItCtrl">
@@ -298,7 +320,7 @@
 <section id="help">
 <div>
 
-		<div class="container mt-3">
+		<div class="container mt-3 mb-3">
 		<div class="card">
 			<div class="card-header"> Help Section
 			</div>
