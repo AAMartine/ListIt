@@ -127,8 +127,7 @@ listIt.controller('listItCtrl', function listItCtrl($scope, $filter, $location, 
 		var result = confirm("Do you want to delete the place " + place[0].title + "?");
     	if (result) {
 			$scope.places.$remove(place[0]);
-			//alert("Deleting.....");
-			var delayInMilliseconds = 3000; //1 second
+			var delayInMilliseconds = 1000; //1 second
 			setTimeout(function() {
 				location.reload(true);
 			}, delayInMilliseconds);

@@ -60,19 +60,18 @@
 			<h6>We help you save places you visit for your events</h6>
 			<h6>and facilitate your selection process with our search options </h6>
 		</div>
-		<div class="menu" style="margin-left: auto; margin-right: 20px" ng-controller="listItCtrl">
-			<ul>
-				<li><a href="index.html">Add a new place</a></li>
-				<li><a href="" ng-click="gotoAnchor('searchPlaces')">Search for places</a></li>
-				<li><a href="" ng-click="gotoAnchor('help')">Help</a></li>
-			</ul>
+		<div class="menu" id = "myMenu" style="margin-left: auto; margin-right: 20px" ng-controller="listItCtrl">
+			  <a href="index.html">Add a new place</a></li>
+			  <a href="" ng-click="gotoAnchor('searchPlaces')">Search for places</a></li>
+			  <a href="" ng-click="gotoAnchor('help')">Help</a></li>
+			  <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">&#9776;</a>
 		</div>
 	</div>
 </div>
 
 
 <div class="container">
-	<div class="card" style="margin-top: 220px">
+	<div class="card" style="margin-top: 240px">
 		<div class="card-header"> Add the new place information in the form below
 		</div>
 		<div class="card-body">
@@ -139,8 +138,7 @@
 						<label for="autocomplete" class="col-3 col-form-label">Address </label>
 						<div class="col-9">
 							<input class="form-control" id="autocomplete" placeholder="Enter address of the place"
-								   ng-model="address"
-								   onFocus="geolocate()" type="text">
+								   ng-model="address" onFocus="geolocate()" type="text">
 						</div>
 					</div>
 
@@ -215,7 +213,7 @@
 					<a title="Delete" id="delete-row" class="w3-delete w3-button w3-right w3-hover-grey"  ng-click="removePlace(placeId)"><i class="fa fa-remove"   style="font-size:12px;color:red"></i></a>
 					<input class="placeId" style="display: none" type="text" name="input" ng-model="placeId"
 						   value={{objectID}} ng-trim="false">
-					<h3 class="w3-teal">{{title}}</h3>
+					<h2 class="w3-teal">{{title}}</h2>
 					<h5>{{placeType}}</h5>
 					<h6>Visited on {{dateVisited}}</h6>
 					<p class="hit-description">
