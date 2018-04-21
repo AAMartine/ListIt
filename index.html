@@ -52,7 +52,7 @@
 <body ng-controller="listItCtrl">
 <!--header and app declaration-->
 
-<div class="p-3 mb-2 text-white" style="background-color: #009688; overflow: hidden; position: fixed; top: 0px; width: 100%; z-index: 9999" id="myHeader">
+<div class="p-3 mb-2 text-white" style="background-color: #009688; overflow: hidden; position: fixed; top: 0; width: 100%; z-index: 9999" id="myHeader">
 	<div class="row">
 		<img src="img/todo-llist.png" style="margin-left: 10px"/>
 		<div class="col-10">
@@ -61,9 +61,9 @@
 			<h6>and facilitate your selection process with our search options </h6>
 		</div>
 		<div class="menu" id = "myMenu" style="margin-left: auto; margin-right: 20px" ng-controller="listItCtrl">
-			  <a href="index.html">Add a new place</a></li>
-			  <a href="" ng-click="gotoAnchor('searchPlaces')">Search for places</a></li>
-			  <a href="" ng-click="gotoAnchor('help')">Help</a></li>
+			  <a href="index.html">Add a new place</a>
+			  <a href="" ng-click="gotoAnchor('searchPlaces')">Search for places</a>
+			  <a href="" ng-click="gotoAnchor('help')">Help</a>
 			  <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">&#9776;</a>
 		</div>
 	</div>
@@ -71,7 +71,7 @@
 
 
 <div class="container">
-	<div class="card" style="margin-top: 240px">
+	<div  style="margin-top: 240px">
 		<div class="card-header"> Add the new place information in the form below
 		</div>
 		<div class="card-body">
@@ -168,7 +168,7 @@
 </div>
 <section id ="searchPlaces" ng-controller="listItCtrl">
 		<div class="container mt-3">
-		<div class="card">
+		<div>
 			<div class="card-header"> Search and filter saved places here</div>
 			<div class="card-body">
 				<header>
@@ -210,22 +210,22 @@
 		<div class="container">
 			<!--<div class="hit">-->
 				<div class="container">
-					<a title="Delete" id="delete-row" class="w3-delete w3-button w3-right w3-hover-grey"  ng-click="removePlace(placeId)"><i class="fa fa-remove"   style="font-size:12px;color:red"></i></a>
+					<a title="Delete" id="delete-row" class="w3-delete  w3-right w3-hover-grey"  ng-click="removePlace(placeId)"><i class="fa fa-remove"   style="font-size:12px; margin-right: 2px;  color:red"></i></a>
 					<input class="placeId" style="display: none" type="text" name="input" ng-model="placeId"
 						   value={{objectID}} ng-trim="false">
-					<h2 class="w3-teal">{{title}}</h2>
-					<h5>{{placeType}}</h5>
-					<h6>Visited on {{dateVisited}}</h6>
+					<h4 class="w3-teal" style="font-weight: bolder">{{title}}</h4>
+					<h4 style="font-weight: bolder">{{placeType}}</h4>
+					<h4>Visited on {{dateVisited}}</h4>
 					<p class="hit-description">
-						<a class="w3-text-blue " href="https://www.google.com/maps/search/?api=1&{{address}}"
-						   target="_blank">{{address}}</a>
+						<h4><a class="w3-text-blue " href="https://www.google.com/maps/search/?api=1&{{address}}"
+						   target="_blank">{{address}}</a></h4>
 					</p>
-					<h5 class="w3-teal w3-text-white w3-right hit-price">${{price}}</h5>
-					<h4 class="w3-text-teal w3-large">--Contact--</h4>
-					<a class="w3-text-blue" href="mailto:{{emailContact}}">{{emailContact}} | </a>
-					<a class="w3-text-blue " href="tel:{{telephone}}">{{telephone}}</a>
-					<h5 class="w3-text-teal">--Notes-</h5>
-					<p class="hit-description">{{{_highlightResult.notes.value}}}</p>
+					<h4 style="font-weight: bolder" class="w3-right hit-price">${{price}}</h4>
+					<h4 class="w3-text-teal">--Contact--</h4>
+					<h4><a class="w3-text-blue" href="mailto:{{emailContact}}">{{emailContact}} | </a></h4>
+					<h4><a class="w3-text-blue " href="tel:{{telephone}}">{{telephone}}</a></h4>
+					<h4 class="w3-text-teal">--Notes-</h4>
+					<h4 class="hit-description">{{{_highlightResult.notes.value}}}</h4>
 				</div>
 			<!--</div>-->
 		</div>
@@ -321,7 +321,7 @@
 <div>
 
 		<div class="container mt-3 mb-3">
-		<div class="card">
+		<div>
 			<div class="card-header"> Help Section
 			</div>
 			<p>List it helps you keep details of places you have visited for your events.

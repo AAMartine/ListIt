@@ -154,7 +154,7 @@ search.addWidget(
 	})
 );
 
-search.addWidget(
+/*search.addWidget(
 	instantsearch.widgets.priceRanges({
 		container: '#price-range',
 		attributeName: 'price',
@@ -169,10 +169,10 @@ search.addWidget(
 		},
 		/*collapsible: {
 			collapsed: false,
-		},*/
+		},
 	})
 );
-/*search.addWidget(
+search.addWidget(
 	instantsearch.widgets.sortBySelector({
 		container: '#sort-by',
 		autoHideContainer: true,
