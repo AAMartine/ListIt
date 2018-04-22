@@ -213,7 +213,7 @@
 				<div id=right-column>
 					<div id="stats"></div>
 					<div id="active-filters"></div>
-					<h2 class="w3-xx-large w3-text-teal">List of visited places</h2>
+					<h5 class="w3-xx-large w3-text-teal">List of visited places</h5>
 					<div id="hits"></div>
 					<div id="pagination"></div>
 				</div>
@@ -230,26 +230,75 @@
 				<!--<div class="hit">-->
 				<div class="container">
 					<a title="Delete" id="delete-row" class="w3-delete  w3-right w3-hover-grey"
-					   ng-click="removePlace(placeId)"><i class="fa fa-remove"
-														  style="font-size:12px; margin-right: 2px;  color:red"></i></a>
+					   ng-click="removePlace(placeId)"><i class="fa fa-remove" style="font-size:x-large; margin-right: 2px;  color:red"></i></a>
 					<input class="placeId" style="display: none" type="text" name="input" ng-model="placeId"
 						   value={{objectID}} ng-trim="false">
-					<h4 class="w3-teal" style="font-weight: bolder">{{title}}</h4>
-					<h4 style="font-weight: bolder">{{placeType}}</h4>
-					<h4>Visited on {{dateVisited}}</h4>
-					<p class="hit-description">
-					<h4><a class="w3-text-blue " href="https://www.google.com/maps/search/?api=1&{{address}}"
-						   target="_blank">{{address}}</a></h4>
-					</p>
-					<h4 style="font-weight: bolder" class="w3-right hit-price">${{price}}</h4>
-					<h4 class="w3-text-teal">--Contact--</h4>
-					<h4><a class="w3-text-blue" href="mailto:{{emailContact}}">{{emailContact}} | </a></h4>
-					<h4><a class="w3-text-blue " href="tel:{{telephone}}">{{telephone}}</a></h4>
-					<h4 class="w3-text-teal">--Notes-</h4>
-					<h4 class="hit-description">{{{_highlightResult.notes.value}}}</h4>
+
+					<dl class="row">
+						<dt class="col-sm-3">Title</dt>
+						<dd class="col-sm-6">{{title}}</dd>
+						<dt class="col-sm-3">{{placeType}}</dt>
+
+						<dt class="col-sm-3">Visited on </dt>
+						<dd class="col-sm-9">{{dateVisited}}</dd>
+
+						<dt class="col-sm-3">address</dt>
+						<dd class="col-sm-9"><a class="w3-text-blue " href="https://www.google.com/maps/search/?api=1&{{address}}"
+												target="_blank">{{address}}</a></dd>
+
+						<dt class="col-sm-3">Price</dt>
+						<dd class="col-sm-9">${{price}}</dd>
+
+						<dt class="col-sm-3">Contact</dt>
+						<dd class="col-sm-9">
+							<p><a class="w3-text-blue" href="mailto:{{emailContact}}"> {{emailContact}} </a>| <a class="w3-text-blue " href="tel:{{telephone}}">{{telephone}}</a></p>
+						</dd>
+						<dt class="col-sm-3">Notes</dt>
+						<dd class="col-sm-9">{{{_highlightResult.notes.value}}}</dd>
+
+					</dl>
+					<!--<div class="h-divider">-->
+					<!--</div>-->
+
+					<!--<h4 style="font-weight: bolder" class="w3-right hit-price">${{price}}</h4>-->
+					<!--<h4 class="w3-text-teal">&#45;&#45;Contact&#45;&#45;</h4>-->
+					<!--<h4><a class="w3-text-blue" href="mailto:{{emailContact}}">{{emailContact}} | </a></h4>-->
+					<!--<h4><a class="w3-text-blue " href="tel:{{telephone}}">{{telephone}}</a></h4>-->
+					<!--<h4 class="w3-text-teal">&#45;&#45;Notes-</h4>-->
+					<!--<h4 class="hit-description">{{{_highlightResult.notes.value}}}</h4>-->
 				</div>
+
+				<!--<div class="h-divider">-->
+				<!--</diviv>-->
+
+				<hr >
 				<!--</div>-->
 			</div>
+
+			<!--<div class="container">-->
+				<!--&lt;!&ndash;<div class="hit">&ndash;&gt;-->
+				<!--<div class="container">-->
+					<!--<a title="Delete" id="delete-row" class="w3-delete  w3-right w3-hover-grey"-->
+					   <!--ng-click="removePlace(placeId)"><i class="fa fa-remove"-->
+														  <!--style="font-size:12px; margin-right: 2px;  color:red"></i></a>-->
+					<!--<input class="placeId" style="display: none" type="text" name="input" ng-model="placeId"-->
+						   <!--value={{objectID}} ng-trim="false">-->
+					<!--<h4 class="w3-teal" style="font-weight: bolder">{{title}}</h4>-->
+					<!--<h4 style="font-weight: bolder">{{placeType}}</h4>-->
+					<!--<h4>Visited on {{dateVisited}}</h4>-->
+					<!--<p class="hit-description">-->
+					<!--<h4><a class="w3-text-blue " href="https://www.google.com/maps/search/?api=1&{{address}}"-->
+						   <!--target="_blank">{{address}}</a></h4>-->
+					<!--</p>-->
+					<!--<h4 style="font-weight: bolder" class="w3-right hit-price">${{price}}</h4>-->
+					<!--<h4 class="w3-text-teal">&#45;&#45;Contact&#45;&#45;</h4>-->
+					<!--<h4><a class="w3-text-blue" href="mailto:{{emailContact}}">{{emailContact}} | </a></h4>-->
+					<!--<h4><a class="w3-text-blue " href="tel:{{telephone}}">{{telephone}}</a></h4>-->
+					<!--<h4 class="w3-text-teal">&#45;&#45;Notes-</h4>-->
+					<!--<h4 class="hit-description">{{{_highlightResult.notes.value}}}</h4>-->
+				<!--</div>-->
+				<!--&lt;!&ndash;</div>&ndash;&gt;-->
+			<!--</div>-->
 		</script>
 	</div>
 	<div>

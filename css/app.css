@@ -647,3 +647,6 @@ div.required-field::before {
 		text-align: left;
 	}
 }
+hr.style2 {
+	border-top: 0px double #348c0b;
+}
