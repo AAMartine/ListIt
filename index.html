@@ -26,10 +26,10 @@
 		display: none;
 	}
 
-		 /* width */
-	 ::-webkit-scrollbar {
-		 width: 10px;
-	 }
+	/* width */
+	::-webkit-scrollbar {
+		width: 10px;
+	}
 
 	/* Track */
 	::-webkit-scrollbar-track {
@@ -52,7 +52,9 @@
 <body ng-controller="listItCtrl">
 <!--header and app declaration-->
 
-<div class="p-3 mb-2 text-white" style="background-color: #009688; overflow: hidden; position: fixed; top: 0; width: 100%; z-index: 9999" id="myHeader">
+<div class="p-3 mb-2 text-white"
+	 style="background-color: #009688; overflow: hidden; position: fixed; top: 0; width: 100%; z-index: 9999"
+	 id="myHeader">
 	<div class="row">
 		<img src="img/todo-llist.png" style="margin-left: 10px"/>
 		<div class="col-10">
@@ -60,18 +62,33 @@
 			<h6>We help you save places you visit for your events</h6>
 			<h6>and facilitate your selection process with our search options </h6>
 		</div>
-		<div class="menu" id = "myMenu" style="margin-left: auto; margin-right: 20px" ng-controller="listItCtrl">
-			  <a href="index.html">Add a new place</a>
-			  <a href="" ng-click="gotoAnchor('searchPlaces')">Search for places</a>
-			  <a href="" ng-click="gotoAnchor('help')">Help</a>
-			  <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">&#9776;</a>
-		</div>
 	</div>
+		<!--<nav class="navbar .navbar-toggler-left navbar-light bg-faded">-->
+			<!--<form class="form-inline">-->
+				<!--<button class="btn btn-outline-success" type="button">Main button</button>-->
+		<div class="form-group row">
+			<div class="col-4"></div>
+			<div class="col-4"></div>
+			<div class="col-4">
+				<a href="index.html"><button class="btn  btn-outline-dark" type="button" >Add a new place</button></a>
+				<a href="" ng-click="gotoAnchor('searchPlaces')"><button class="btn  btn-outline-dark" type="button"  >Search for places</button></a>
+				<a href="#helpInside" ><button class="btn  btn-outline-dark " type="button">Help</button></a>
+			</div>
+		</div>
+			<!--</form>-->
+		<!--</nav>-->
+		<!--<div class="menu" id = "myMenu" style="margin-left: auto; margin-right: 20px" ng-controller="listItCtrl">-->
+		<!--<a href="index.html">Add a new place</a>-->
+		<!--<a href="" ng-click="gotoAnchor('searchPlaces')">Search for places</a>-->
+		<!--<a href="" ng-click="gotoAnchor('help')">Help</a>-->
+		<!--<a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">&#9776;</a>-->
+		<!--</div>-->
+	<!--</div>-->
 </div>
 
 
 <div class="container">
-	<div  style="margin-top: 240px">
+	<div style="margin-top: 240px">
 		<div class="card-header"> Add the new place information in the form below
 		</div>
 		<div class="card-body">
@@ -79,7 +96,7 @@
 				<div class="col-lg-1"></div>
 				<form style="width:80%; margin-top:15px;" id="listform" ng-submit="addPlace()"
 					  onSubmit="alert('Successfully added. '); document.forms['listform'].reset();window.location.reload(true); ">
-					  <div class="form-group row">
+					<div class="form-group row">
 						<label for="title" class="col-3 col-form-label">Enter title of place <span
 								style="color:red; font-size: x-small;">*</span> </label>
 						<div class="col-9">
@@ -92,7 +109,8 @@
 								style="color:red; font-size: x-small;">*</span>
 						</label>
 						<div class="col-4">
-							<select id="placeType" class="form-control" ng-model="placeType" style="background-color: #dddddd"
+							<select id="placeType" class="form-control" ng-model="placeType"
+									style="background-color: #dddddd"
 									required>
 								<option ng-repeat="option in placeTypes" value="{{option}}">{{option}}
 								</option>
@@ -104,7 +122,7 @@
 						<div class="col-9">
 							<input class="form-control" type="date" id="dateVisitedInput"
 								   placeholder="Pick the date you visited it"
-								   ng-model="dateVisited" >
+								   ng-model="dateVisited">
 						</div>
 					</div>
 
@@ -114,7 +132,7 @@
 							<input class="form-control" type="number" min="0" id="priceInput"
 								   placeholder="Price of the place"
 								   ng-model="price"
-								   >
+							>
 						</div>
 					</div>
 					<div class="form-group row">
@@ -147,7 +165,7 @@
 						<div class="col-9">
 				<textarea class="form-control" id="notes" placeholder="What do you think about this place"
 						  ng-model="notes"
-						  > </textarea>
+				> </textarea>
 						</div>
 					</div>
 					<div class="form-group row">
@@ -166,8 +184,8 @@
 		</div>
 	</div>
 </div>
-<section id ="searchPlaces" ng-controller="listItCtrl">
-		<div class="container mt-3">
+<section id="searchPlaces" ng-controller="listItCtrl">
+	<div class="container mt-3">
 		<div>
 			<div class="card-header"> Search and filter saved places here</div>
 			<div class="card-body">
@@ -175,49 +193,52 @@
 					<div class="row">
 						<div class="col-8">
 							<div class="input-group">
-								<input id="search-input" class="form-control" placeholder="Search for a place" ng-model="search" >
+								<input id="search-input" class="form-control" placeholder="Search for a place"
+									   ng-model="search">
 								<img onclick="startDictation()" src="//i.imgur.com/cHidSVu.gif" style="margin-left: 35%;
-								float: right; width: 40px; margin-bottom: 3px" />
+								float: right; width: 40px; margin-bottom: 3px"/>
 							</div>
 						</div>
 					</div>
 				</header>
 				<!--<main style="min-height: 700px">-->
-					<div id="left-column">
-						<div id="clear-all"></div>
-						<div id="type">
-						</div>
-						<div id="priceTitle" class="facet"></div>
-						<div id="price-range" class="facet"></div>
-						<div id="date" class="facet"></div>
+				<div id="left-column">
+					<div id="clear-all"></div>
+					<div id="type">
 					</div>
-					<div id=right-column>
-						<div id="stats"></div>
-						<div id="active-filters"></div>
-						<h2 class="w3-xx-large w3-text-teal">List of visited places</h2>
-						<div id="hits"></div>
-						<div id="pagination"></div>
-					</div>
+					<div id="priceTitle" class="facet"></div>
+					<div id="price-range" class="facet"></div>
+					<div id="date" class="facet"></div>
+				</div>
+				<div id=right-column>
+					<div id="stats"></div>
+					<div id="active-filters"></div>
+					<h2 class="w3-xx-large w3-text-teal">List of visited places</h2>
+					<div id="hits"></div>
+					<div id="pagination"></div>
+				</div>
 				<!--</main>-->
 			</div>
 		</div>
 	</div>
 
 
-	<div class="container" >
-	<script type="text/html" id="hit-template">
+	<div class="container">
+		<script type="text/html" id="hit-template">
 
-		<div class="container">
-			<!--<div class="hit">-->
+			<div class="container">
+				<!--<div class="hit">-->
 				<div class="container">
-					<a title="Delete" id="delete-row" class="w3-delete  w3-right w3-hover-grey"  ng-click="removePlace(placeId)"><i class="fa fa-remove"   style="font-size:12px; margin-right: 2px;  color:red"></i></a>
+					<a title="Delete" id="delete-row" class="w3-delete  w3-right w3-hover-grey"
+					   ng-click="removePlace(placeId)"><i class="fa fa-remove"
+														  style="font-size:12px; margin-right: 2px;  color:red"></i></a>
 					<input class="placeId" style="display: none" type="text" name="input" ng-model="placeId"
 						   value={{objectID}} ng-trim="false">
 					<h4 class="w3-teal" style="font-weight: bolder">{{title}}</h4>
 					<h4 style="font-weight: bolder">{{placeType}}</h4>
 					<h4>Visited on {{dateVisited}}</h4>
 					<p class="hit-description">
-						<h4><a class="w3-text-blue " href="https://www.google.com/maps/search/?api=1&{{address}}"
+					<h4><a class="w3-text-blue " href="https://www.google.com/maps/search/?api=1&{{address}}"
 						   target="_blank">{{address}}</a></h4>
 					</p>
 					<h4 style="font-weight: bolder" class="w3-right hit-price">${{price}}</h4>
@@ -227,9 +248,9 @@
 					<h4 class="w3-text-teal">--Notes-</h4>
 					<h4 class="hit-description">{{{_highlightResult.notes.value}}}</h4>
 				</div>
-			<!--</div>-->
-		</div>
-	</script>
+				<!--</div>-->
+			</div>
+		</script>
 	</div>
 	<div>
 		<!-- Sort by type Modal -->
@@ -318,37 +339,39 @@
 </section>
 
 <section id="help">
-<div>
+	<div>
 
-		<div class="container mt-3 mb-3">
-		<div>
-			<div class="card-header"> Help Section
+		<div class="container mt-3 mb-3" id="helpInside">
+			<div>
+				<div class="card-header"> Help Section
+				</div>
+				<p>List it helps you keep details of places you have visited for your events.
+				</p>
+				<ul>
+					<li>You can add a place easily right from the home page.
+						<ul>
+							<li>You must provide key information about the place</li>
+							<li>Just keep in mind that Title and Type are required for adding a place.</li>
+							<li>You can save the information you entered by clicking 'Save it' button</li>
+						</ul>
+					</li>
+					<li>You can search between places you have seen using different filters in the left side of the main
+						page. If you have any doubt on how the filter works just click the question mark in each
+						section.
+					</li>
+					<li>
+						You can remove the place that you have added via red cross button on the right top of each item
+						in the search area.
+					</li>
+					<li>If you need any additional help please <a style="color: darkblue"
+																  href="mailto:aaugust4@gmu.edu">email us
+						here</a>.
+					</li>
+				</ul>
 			</div>
-			<p>List it helps you keep details of places you have visited for your events.
-			</p>
-			<ul>
-				<li>You can add a place easily right from the home page.
-					<ul>
-						<li>You must provide key information about the place</li>
-						<li>Just keep in mind that Title and Type are required for adding a place.</li>
-						<li>You can save the information you entered by clicking 'Save it' button</li>
-					</ul>
-				</li>
-				<li>You can search between places you have seen using different filters in the left side of the main
-					page. If you have any doubt on how the filter works just click the question mark in each section.
-				</li>
-				<li>
-					You can remove the place that you have added via red cross button on the right top of each item
-					in the search area.
-				</li>
-				<li>If you need any additional help please <a style="color: darkblue" href="mailto:aaugust4@gmu.edu">email us
-					here</a>.
-				</li>
-			</ul>
-		</div>
 
+		</div>
 	</div>
-</div>
 </section>
 
 <div class="w3-container white w3-text-white" style="background-color: #009688">
