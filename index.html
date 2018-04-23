@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="listIt" data-framework="firebase" xmlns="http://www.w3.org/1999/html">
+<html lang="en" ng-app="listIt" data-framework="firebase" xmlns="http://www.w3.org/1999/html"
+	  xmlns:overflow="http://www.w3.org/1999/xhtml">
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="expires" content="0"/>
@@ -49,49 +50,49 @@
 	</style>
 </head>
 
-<body ng-controller="listItCtrl">
+<body ng-controller="listItCtrl" class="container-fluid"  >
 <!--header and app declaration-->
 
-<div class="p-3 mb-2 text-white"
-	 style="background-color: #009688; overflow: hidden; position: fixed; top: 0; width: 100%; z-index: 9999"
-	 id="myHeader">
-	<div class="row">
-		<img src="img/todo-llist.png" style="margin-left: 10px"/>
-		<div class="col-10">
-			<h1>List-it application</h1>
-			<h6>We help you save places you visit for your events</h6>
-			<h6>and facilitate your selection process with our search options </h6>
+<div class="container-fluid  text-white"  style="background-color: #009688;  position: fixed; z-index: 9999";   id="myHeader">
+	<div class=" form-group row">
+		<div class="col-1">
+
+			<img src="img/todo-llist.png" class="ml-1 mt-1"/>
+		</div>
+		<div class="col-8">
+			<h2>List-it</h2>
+			<h6>We help you save places you visit for your events and facilitate your selection process with our search options </h6>
+		</div>
+
+		<div class="col-3 mt-4">
+			<a href="index.html">
+				<button class="btn  btn-outline-dark" type="button">Add a new place</button>
+			</a>
+			<a href="" ng-click="gotoAnchor('searchPlaces')">
+				<button class="btn  btn-outline-dark" type="button">Search for places</button>
+			</a>
+			<a href="#helpInside">
+				<button class="btn  btn-outline-dark " type="button">Help</button>
+			</a>
 		</div>
 	</div>
-		<!--<nav class="navbar .navbar-toggler-left navbar-light bg-faded">-->
-			<!--<form class="form-inline">-->
-				<!--<button class="btn btn-outline-success" type="button">Main button</button>-->
-		<div class="form-group row">
-			<div class="col-4"></div>
-			<div class="col-4"></div>
-			<div class="col-4">
-				<a href="index.html"><button class="btn  btn-outline-dark" type="button" >Add a new place</button></a>
-				<a href="" ng-click="gotoAnchor('searchPlaces')"><button class="btn  btn-outline-dark" type="button"  >Search for places</button></a>
-				<a href="#helpInside" ><button class="btn  btn-outline-dark " type="button">Help</button></a>
-			</div>
-		</div>
-			<!--</form>-->
-		<!--</nav>-->
-		<!--<div class="menu" id = "myMenu" style="margin-left: auto; margin-right: 20px" ng-controller="listItCtrl">-->
-		<!--<a href="index.html">Add a new place</a>-->
-		<!--<a href="" ng-click="gotoAnchor('searchPlaces')">Search for places</a>-->
-		<!--<a href="" ng-click="gotoAnchor('help')">Help</a>-->
-		<!--<a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">&#9776;</a>-->
-		<!--</div>-->
+	<!--</form>-->
+	<!--</nav>-->
+	<!--<div class="menu" id = "myMenu" style="margin-left: auto; margin-right: 20px" ng-controller="listItCtrl">-->
+	<!--<a href="index.html">Add a new place</a>-->
+	<!--<a href="" ng-click="gotoAnchor('searchPlaces')">Search for places</a>-->
+	<!--<a href="" ng-click="gotoAnchor('help')">Help</a>-->
+	<!--<a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">&#9776;</a>-->
+	<!--</div>-->
 	<!--</div>-->
 </div>
 
 
-<div class="container">
-	<div style="margin-top: 240px ">
+<div class="container ">
+	<div >
 		<div class="card-header" style="background-color: #dddddd"> Add the new place information in the form below
 		</div>
-		<div class="card-body" style="max-width: 75%" >
+		<div class="card-body" style="max-width: 75%">
 			<div class="row">
 				<div class="col-lg-1"></div>
 				<form style="width:80%; margin-top:15px;" id="listform" ng-submit="addPlace()"
@@ -184,11 +185,11 @@
 		</div>
 	</div>
 </div>
-<section id="searchPlaces" ng-controller="listItCtrl" >
+<section id="searchPlaces" class="container-fluid" ng-controller="listItCtrl">
 	<div class="container mt-3">
 		<div>
 			<div class="card-header" style="background-color: #dddddd"> Search and filter saved places here</div>
-			<div class="card-body" >
+			<div class="card-body">
 				<header>
 					<div class="row">
 						<div class="col-8">
@@ -230,7 +231,8 @@
 				<!--<div class="hit">-->
 				<div class="container">
 					<a title="Delete" id="delete-row" class="w3-delete  w3-right w3-hover-grey"
-					   ng-click="removePlace(placeId)"><i class="fa fa-remove" style="font-size:x-large; margin-right: 2px;  color:red"></i></a>
+					   ng-click="removePlace(placeId)"><i class="fa fa-remove"
+														  style="font-size:x-large; margin-right: 2px;  color:red"></i></a>
 					<input class="placeId" style="display: none" type="text" name="input" ng-model="placeId"
 						   value={{objectID}} ng-trim="false">
 
@@ -239,11 +241,12 @@
 						<dd class="col-sm-6">{{title}}</dd>
 						<dt class="col-sm-3">{{placeType}}</dt>
 
-						<dt class="col-sm-3">Visited on </dt>
+						<dt class="col-sm-3">Visited on</dt>
 						<dd class="col-sm-9">{{dateVisited}}</dd>
 
 						<dt class="col-sm-3">address</dt>
-						<dd class="col-sm-9"><a class="w3-text-blue " href="https://www.google.com/maps/search/?api=1&{{address}}"
+						<dd class="col-sm-9"><a class="w3-text-blue "
+												href="https://www.google.com/maps/search/?api=1&{{address}}"
 												target="_blank">{{address}}</a></dd>
 
 						<dt class="col-sm-3">Price</dt>
@@ -251,7 +254,8 @@
 
 						<dt class="col-sm-3">Contact</dt>
 						<dd class="col-sm-9">
-							<p><a class="w3-text-blue" href="mailto:{{emailContact}}"> {{emailContact}} </a>| <a class="w3-text-blue " href="tel:{{telephone}}">{{telephone}}</a></p>
+							<p><a class="w3-text-blue" href="mailto:{{emailContact}}"> {{emailContact}} </a>| <a
+									class="w3-text-blue " href="tel:{{telephone}}">{{telephone}}</a></p>
 						</dd>
 						<dt class="col-sm-3">Notes</dt>
 						<dd class="col-sm-9">{{{_highlightResult.notes.value}}}</dd>
@@ -271,33 +275,33 @@
 				<!--<div class="h-divider">-->
 				<!--</diviv>-->
 
-				<hr >
+				<hr>
 				<!--</div>-->
 			</div>
 
 			<!--<div class="container">-->
-				<!--&lt;!&ndash;<div class="hit">&ndash;&gt;-->
-				<!--<div class="container">-->
-					<!--<a title="Delete" id="delete-row" class="w3-delete  w3-right w3-hover-grey"-->
-					   <!--ng-click="removePlace(placeId)"><i class="fa fa-remove"-->
-														  <!--style="font-size:12px; margin-right: 2px;  color:red"></i></a>-->
-					<!--<input class="placeId" style="display: none" type="text" name="input" ng-model="placeId"-->
-						   <!--value={{objectID}} ng-trim="false">-->
-					<!--<h4 class="w3-teal" style="font-weight: bolder">{{title}}</h4>-->
-					<!--<h4 style="font-weight: bolder">{{placeType}}</h4>-->
-					<!--<h4>Visited on {{dateVisited}}</h4>-->
-					<!--<p class="hit-description">-->
-					<!--<h4><a class="w3-text-blue " href="https://www.google.com/maps/search/?api=1&{{address}}"-->
-						   <!--target="_blank">{{address}}</a></h4>-->
-					<!--</p>-->
-					<!--<h4 style="font-weight: bolder" class="w3-right hit-price">${{price}}</h4>-->
-					<!--<h4 class="w3-text-teal">&#45;&#45;Contact&#45;&#45;</h4>-->
-					<!--<h4><a class="w3-text-blue" href="mailto:{{emailContact}}">{{emailContact}} | </a></h4>-->
-					<!--<h4><a class="w3-text-blue " href="tel:{{telephone}}">{{telephone}}</a></h4>-->
-					<!--<h4 class="w3-text-teal">&#45;&#45;Notes-</h4>-->
-					<!--<h4 class="hit-description">{{{_highlightResult.notes.value}}}</h4>-->
-				<!--</div>-->
-				<!--&lt;!&ndash;</div>&ndash;&gt;-->
+			<!--&lt;!&ndash;<div class="hit">&ndash;&gt;-->
+			<!--<div class="container">-->
+			<!--<a title="Delete" id="delete-row" class="w3-delete  w3-right w3-hover-grey"-->
+			<!--ng-click="removePlace(placeId)"><i class="fa fa-remove"-->
+			<!--style="font-size:12px; margin-right: 2px;  color:red"></i></a>-->
+			<!--<input class="placeId" style="display: none" type="text" name="input" ng-model="placeId"-->
+			<!--value={{objectID}} ng-trim="false">-->
+			<!--<h4 class="w3-teal" style="font-weight: bolder">{{title}}</h4>-->
+			<!--<h4 style="font-weight: bolder">{{placeType}}</h4>-->
+			<!--<h4>Visited on {{dateVisited}}</h4>-->
+			<!--<p class="hit-description">-->
+			<!--<h4><a class="w3-text-blue " href="https://www.google.com/maps/search/?api=1&{{address}}"-->
+			<!--target="_blank">{{address}}</a></h4>-->
+			<!--</p>-->
+			<!--<h4 style="font-weight: bolder" class="w3-right hit-price">${{price}}</h4>-->
+			<!--<h4 class="w3-text-teal">&#45;&#45;Contact&#45;&#45;</h4>-->
+			<!--<h4><a class="w3-text-blue" href="mailto:{{emailContact}}">{{emailContact}} | </a></h4>-->
+			<!--<h4><a class="w3-text-blue " href="tel:{{telephone}}">{{telephone}}</a></h4>-->
+			<!--<h4 class="w3-text-teal">&#45;&#45;Notes-</h4>-->
+			<!--<h4 class="hit-description">{{{_highlightResult.notes.value}}}</h4>-->
+			<!--</div>-->
+			<!--&lt;!&ndash;</div>&ndash;&gt;-->
 			<!--</div>-->
 		</script>
 	</div>
